@@ -16,7 +16,6 @@
 				<img alt="" src="../static/logo.png">
 			</a>
 		</div>
-		<a :class="colorClasses" href="#">{{ text }}</a>
 
 		<div class="character fu" title="这位是弟弟">
 			<img alt="" src="../static/qifu.png">
