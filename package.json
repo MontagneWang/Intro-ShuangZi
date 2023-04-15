@@ -9,7 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-fullpage.js": "^0.2.13",
+    "unplugin-auto-import": "^0.15.1",
+    "unplugin-vue-components": "^0.24.1",
+    "wow.js": "^1.2.2",
+    "sass": "^1.59.3",
+    "animate.css": "^4.1.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
