@@ -6,42 +6,47 @@
 <template>
 	<div class="content">
 		<div class="logo2">
-			<img alt="" src="../static/logo2.png">
+			<!--<img alt="" src="../static/logo2.png">-->
+			<img alt="" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
 		</div>
 
 		<div class="logo">
 			<a href="https://space.bilibili.com/193181849"
 			   target="_blank"
 			   title="点击前往 起氏双子 官方">
-				<img alt="" src="../static/logo.png">
+				<!--<img alt="" src="../static/logo.png">-->
+				<img alt="" src="https://article.biliimg.com/bfs/article/fb8ddc21ba9a464df32a226acdef3ad740c8bff5.png">
 			</a>
 		</div>
 
 		<div class="character fu" title="这位是弟弟">
-			<img alt="" src="../static/qifu.png">
+			<!--<img alt="" src="../static/qifu.png">-->
+			<img alt="" src="https://article.biliimg.com/bfs/article/14e5de6c0c0b91173ea5fb162ab15bccf5571b36.png">
 			<div class="name fu">起 <span style="color: #99FF00">复</span></div>
 		</div>
 
 		<div class="character li" title="这位是姐姐">
-			<img alt="" src="../static/qili.png">
+			<!--<img alt="" src="../static/qili.png">-->
+			<img alt="" src="https://article.biliimg.com/bfs/article/4fbca0f859749e425e444f4bc5a7cb8156c978e6.png">
 			<div class="name li">起 <span style="color: #FF0099">礼</span></div>
 		</div>
 
 		<div class="intro">
 			<h2>
 				你好！这里是『<a href="https://space.bilibili.com/193181849"
-				   target="_blank"
-				   title="点击前往 起氏双子 官方">
-					<span>起</span>
-					<span>氏</span>
-					<span>双</span>
-					<span>子</span>
-				</a>』的介绍页面
+				          target="_blank"
+				          title="点击前往 起氏双子 官方">
+				<span>起</span>
+				<span>氏</span>
+				<span>双</span>
+				<span>子</span>
+			</a>』的介绍页面
 			</h2>
 			<h3>『起氏双子』是 <span class="text-underline qifu">起复</span>
 				与 <span class="text-underline qili">起礼</span> 的合称</h3>
 			<p>二人是以「歌声合成软件」为基础的「中文声库」与「虚拟形象」</p>
-			<p><span class="text-underline qili">起礼</span>与<span class="text-underline qifu">起复</span>是双胞胎，其中<span class="text-underline qili">起礼</span>是姐姐，<span class="text-underline qifu">起复</span>是弟弟</p>
+			<p><span class="text-underline qili">起礼</span>与<span class="text-underline qifu">起复</span>是双胞胎，其中<span
+					class="text-underline qili">起礼</span>是姐姐，<span class="text-underline qifu">起复</span>是弟弟</p>
 			<p>双子的名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
 			<p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
 			<!--todo 从问答中获取简介可以填写的信息-->
@@ -49,16 +54,16 @@
 			<iframe border="0" frameborder="no" height=86
 			        marginheight="0" marginwidth="0"
 			        src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-			        width=450 style="margin-left:-8px"></iframe>
+			        style="margin-left:-8px" width=450></iframe>
 		</div>
-			<!--下面这些应该在其他页面展示  Utau、DeepVocal、ACE -->
-			<!-- todo 时间轴-->
-			<!--<p>2016年03月19日，立项</p>-->
-			<!--<p>2016年6月18日，确立立绘想象</p>-->
-			<!--<p>2018年1月6日，起氏双子的首个 Utau 声库发布</p>-->
-			<!--<p>2018年7月13日，正式发布起氏双子cvvc绊生声库</p>-->
-			<!--<p>2019年7月13日，正式发布起氏双子Deep vocal中文声库</p>-->
-			<!--<p>2022年5月1日，正式发布起氏双子ACE AI中文声库</p>-->
+		<!--下面这些应该在其他页面展示  Utau、DeepVocal、ACE -->
+		<!-- todo 时间轴-->
+		<!--<p>2016年03月19日，立项</p>-->
+		<!--<p>2016年6月18日，确立立绘想象</p>-->
+		<!--<p>2018年1月6日，起氏双子的首个 Utau 声库发布</p>-->
+		<!--<p>2018年7月13日，正式发布起氏双子cvvc绊生声库</p>-->
+		<!--<p>2019年7月13日，正式发布起氏双子Deep vocal中文声库</p>-->
+		<!--<p>2022年5月1日，正式发布起氏双子ACE AI中文声库</p>-->
 	</div>
 </template>
 
@@ -142,7 +147,7 @@ a {
 }
 
 // 最少需要传入两个颜色参数，不然下划线不会显示
-@mixin underline($colors...) {  // 使用可变参数
+@mixin underline($colors...) { // 使用可变参数
 	text-decoration: none;
 	position: relative;
 	&:after {
@@ -152,17 +157,19 @@ a {
 		bottom: -2px;
 		width: 100%;
 		height: 2px;
-		background: linear-gradient(to right, $colors);  // 使用 $colors 变量
+		background: linear-gradient(to right, $colors); // 使用 $colors 变量
 	}
 	&:hover {
-		color: nth($colors, 1);  // 设置 hover 时的颜色为第一个颜色
+		color: nth($colors, 1); // 设置 hover 时的颜色为第一个颜色
 	}
 }
-.qifu{
-	@include underline(#99FF00,#99FF00);
+
+.qifu {
+	@include underline(#99FF00, #99FF00);
 }
-.qili{
-	@include underline(#FF0099,#FF0099);
+
+.qili {
+	@include underline(#FF0099, #FF0099);
 }
 
 @keyframes slide-from-left {
@@ -243,7 +250,7 @@ a {
 			margin-top: 0;
 		}
 
-		p:last-of-type{
+		p:last-of-type {
 			margin-bottom: -10px;
 		}
 	}
