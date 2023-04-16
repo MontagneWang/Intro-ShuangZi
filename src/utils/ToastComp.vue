@@ -22,7 +22,6 @@ const props = defineProps({
 
 					</slot>
 				</div>
-
 			</div>
 		</div>
 	</Transition>
