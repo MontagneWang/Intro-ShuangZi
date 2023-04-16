@@ -62,7 +62,8 @@
 
 <style lang="scss" scoped>
 .content{
-	background: url("./static/bg.jpg") no-repeat bottom;
+	//background: url("./static/bg.jpg") no-repeat bottom;
+	background: url("https://article.biliimg.com/bfs/article/1cfc75da378f55aa0a355da4dfc4426a44a74465.jpg") no-repeat bottom;
 	background-size: cover;
 }
 .mask{
