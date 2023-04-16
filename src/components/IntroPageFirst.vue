@@ -19,13 +19,13 @@
 			</a>
 		</div>
 
-		<div class="character fu" title="这位是弟弟">
+		<div class="character fu">
 			<!--<img alt="" src="../static/qifu.png">-->
 			<img alt="" src="https://article.biliimg.com/bfs/article/14e5de6c0c0b91173ea5fb162ab15bccf5571b36.png">
 			<div class="name fu">起 <span style="color: #99FF00">复</span></div>
 		</div>
 
-		<div class="character li" title="这位是姐姐">
+		<div class="character li">
 			<!--<img alt="" src="../static/qili.png">-->
 			<img alt="" src="https://article.biliimg.com/bfs/article/4fbca0f859749e425e444f4bc5a7cb8156c978e6.png">
 			<div class="name li">起 <span style="color: #FF0099">礼</span></div>
@@ -267,7 +267,7 @@ a {
 			left: 1vw;
 
 			.name {
-				animation: fade-in 1s ease-in-out 2.5s forwards;
+				animation: fade-in 1s ease-in-out 3s forwards;
 				opacity: 0;
 				position: absolute;
 				writing-mode: vertical-rl;
@@ -287,7 +287,7 @@ a {
 			animation: slide-from-right 1s ease-in-out 0.75s forwards;
 
 			.name {
-				animation: fade-in 1s ease-in-out 2.5s forwards;
+				animation: fade-in 1s ease-in-out 3s forwards;
 				opacity: 0;
 				position: absolute;
 				writing-mode: vertical-rl;
