@@ -213,8 +213,9 @@ $eachItemHeight: 50px;
 	width: $eachItemHeight;
 	height: $eachItemHeight;
 	line-height: $eachItemHeight;
-	margin-left: -($eachItemHeight/2 + 1px);
-	margin-top: -($eachItemHeight/2 + 1px);
+	// 避免使用除法
+	margin-left: -($eachItemHeight*0.5 + 1px);
+	margin-top: -($eachItemHeight*0.5 + 1px);
 	background-size: $eachItemHeight;
 	position: absolute;
 	text-align: center;
@@ -242,8 +243,9 @@ $eachItemHeight: 50px;
 		width: $eachItemHeight*1.5;
 		height: $eachItemHeight*1.5;
 		line-height: $eachItemHeight*1.5;
-		margin-left: -($eachItemHeight*1.5/2 + 1px);
-		margin-top: -($eachItemHeight*1.5/2 + 1px);
+		// 避免使用除法
+		margin-left: -($eachItemHeight*0.75 + 1px);
+		margin-top: -($eachItemHeight*0.75 + 1px);
 		background-size: $eachItemHeight*1.5;
 	}
 
