@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import {onMounted} from "vue";
+import Modal from '../utils/ToastComp.vue'
+import {ref} from 'vue'
+// toast
+const showModal = ref(false)
+
 // 全局变量，整个圆盘的半径 radius
 let radius = 100
 onMounted(() => {
@@ -128,10 +133,7 @@ onMounted(() => {
 	})(jQuery);
 });
 
-import Modal from '../utils/ToastComp.vue'
-import {ref} from 'vue'
 
-const showModal = ref(false)
 </script>
 
 <template>
