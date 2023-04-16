@@ -24,10 +24,10 @@ onMounted(() => {
 			<!--	<intro-page-second/>-->
 			<!--</div>-->
 			<div class="section">
+				<temp-comp/>
 				<!--<button class="prev" @click="$refs.fullpage.api.moveSectionUp()">-->
 				<!--	Prev-->
 				<!--</button>-->
-				<temp-comp/>
 			</div>
 		</full-page>
 	</div>
