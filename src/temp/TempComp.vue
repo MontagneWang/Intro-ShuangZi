@@ -5,6 +5,7 @@
 <template>
 	<h2>之后的介绍页还在努力开发中……</h2>
 	<h3><del>（移动端也还没适配）</del></h3>
+	<h4><del>而且不同尺寸的屏幕也没适配，所以页面在您那里看起来可能会有点奇怪</del></h4>
 	<br/>
 	<div>如果您是官方且需要回收该域名，可以通过 <a href="mailto:ling.vc@foxmail.com" target="_blank" title="邮箱：ling.vc@foxmail.com">邮箱</a>
 		联系我，我会将当前域名转入到您所提供的域名注册商

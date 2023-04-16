@@ -6,7 +6,7 @@ import {ref} from 'vue'
 const showModal = ref(false)
 
 // 全局变量，整个圆盘的半径 radius
-let radius = 100
+let radius = 110
 onMounted(() => {
 	// @ts-ignore
 	$(document).ready(function () {
@@ -133,7 +133,6 @@ onMounted(() => {
 	})(jQuery);
 });
 
-
 </script>
 
 <template>
@@ -205,7 +204,7 @@ onMounted(() => {
 	-transform: scale(1) rotate(0);
 }
 
-$eachItemHeight: 50px;
+$eachItemHeight: 60px;
 .eachItem {
 	border-radius: 50%;
 	color: #eeeeee;
@@ -236,17 +235,18 @@ $eachItemHeight: 50px;
 
 	// 放大且变亮
 	&:hover {
+		z-index: 1000;
 		transition: all 0.5s;
 		//box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
 		//-webkit-box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
 		//-moz-box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
-		width: $eachItemHeight*1.5;
-		height: $eachItemHeight*1.5;
-		line-height: $eachItemHeight*1.5;
+		width: $eachItemHeight*1.6;
+		height: $eachItemHeight*1.6;
+		line-height: $eachItemHeight*1.6;
 		// 避免使用除法
-		margin-left: -($eachItemHeight*0.75 + 1px);
-		margin-top: -($eachItemHeight*0.75 + 1px);
-		background-size: $eachItemHeight*1.5;
+		margin-left: -($eachItemHeight*0.8 + 1px);
+		margin-top: -($eachItemHeight*0.8 + 1px);
+		background-size: $eachItemHeight*1.6;
 	}
 
 	&:hover::before {
@@ -276,7 +276,7 @@ $eachItemHeight: 50px;
 		width: 100%;
 		height: 100%;
 		line-height: 1;
-		font-size: 1.2em;
+		font-size: 1.8em;
 		opacity: 0;
 		transition: opacity 0.5s ease;
 		display: flex; /* 添加flex布局 */
@@ -287,26 +287,32 @@ $eachItemHeight: 50px;
 
 	&:nth-child(1)::before {
 		content: "B站\A账号";
+		color: #ff0099;
 	}
 
 	&:nth-child(2)::before {
 		content: "微博\A账号";
+		color: #99FF00;
 	}
 
 	&:nth-child(3)::before {
 		content: "官方\A百科";
+		color: #ff0099;
 	}
 
 	&:nth-child(4)::before {
 		content: "加入\A Q群";
+		color: #99FF00;
 	}
 
 	&:nth-child(5)::before {
 		content: "双子\A作品";
+		color: #ff0099;
 	}
 
 	&:nth-child(6)::before {
 		content: "反馈\A Bug";
+		color: #99FF00;
 	}
 }
 

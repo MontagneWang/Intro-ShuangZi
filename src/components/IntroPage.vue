@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {onMounted} from "vue";
 import IntroPageFirst from "./IntroPageFirst.vue";
+import IntroPageSecond from "./IntroPageSecond.vue";
 import TempComp from "../temp/TempComp.vue";
 
 let options = {}
@@ -19,15 +20,15 @@ onMounted(() => {
 			<div class="section">
 				<intro-page-first/>
 			</div>
+			<!--<div class="section">-->
+			<!--	<intro-page-second/>-->
+			<!--</div>-->
 			<div class="section">
+				<!--<button class="prev" @click="$refs.fullpage.api.moveSectionUp()">-->
+				<!--	Prev-->
+				<!--</button>-->
 				<temp-comp/>
 			</div>
-			<!--<div class="section">-->
-			<!--	<button class="prev" @click="$refs.fullpage.api.moveSectionUp()">-->
-			<!--		Prev-->
-			<!--	</button>-->
-			<!--	Section 3-->
-			<!--</div>-->
 		</full-page>
 	</div>
 </template>

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 
-
 </script>
 
 <template>
 	<div class="content">
+		<div class="mask"></div>
+
 		<div class="logo2">
 			<!--<img alt="" src="../static/logo2.png">-->
 			<img alt="" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
@@ -56,19 +57,23 @@
 			        src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
 			        style="margin-left:-8px" width=450></iframe>
 		</div>
-		<!--下面这些应该在其他页面展示  Utau、DeepVocal、ACE -->
-		<!-- todo 时间轴-->
-		<!--<p>2016年03月19日，立项</p>-->
-		<!--<p>2016年6月18日，确立立绘想象</p>-->
-		<!--<p>2018年1月6日，起氏双子的首个 Utau 声库发布</p>-->
-		<!--<p>2018年7月13日，正式发布起氏双子cvvc绊生声库</p>-->
-		<!--<p>2019年7月13日，正式发布起氏双子Deep vocal中文声库</p>-->
-		<!--<p>2022年5月1日，正式发布起氏双子ACE AI中文声库</p>-->
 	</div>
 </template>
 
 <style lang="scss" scoped>
-
+.content{
+	background: url("./static/bg.jpg") no-repeat bottom;
+	background-size: cover;
+}
+.mask{
+	width: 84vw;
+	height: 88vh;
+	position: absolute;
+	left: 8vw;
+	top: 6vh;
+	background-color: #ffffff90;
+	border-radius: 10px;
+}
 a {
 	text-decoration: none;
 	/*正常的未被访问过的链接*/
@@ -203,7 +208,6 @@ a {
 	}
 }
 
-
 .content {
 	height: 100vh;
 	position: relative;
@@ -268,7 +272,7 @@ a {
 			left: 1vw;
 
 			.name {
-				animation: fade-in 1s ease-in-out 3s forwards;
+				animation: fade-in 1s ease-in-out 2.75s forwards;
 				opacity: 0;
 				position: absolute;
 				writing-mode: vertical-rl;
@@ -288,7 +292,7 @@ a {
 			animation: slide-from-right 1s ease-in-out 0.75s forwards;
 
 			.name {
-				animation: fade-in 1s ease-in-out 3s forwards;
+				animation: fade-in 1s ease-in-out 2.75s forwards;
 				opacity: 0;
 				position: absolute;
 				writing-mode: vertical-rl;
