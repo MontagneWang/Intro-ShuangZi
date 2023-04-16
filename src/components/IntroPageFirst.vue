@@ -43,7 +43,7 @@
 				<span>子</span>
 			</a>』的介绍页面
 			</h2>
-			<h3>『起氏双子』是 <span class="text-underline qifu">起复</span>
+			<h3 style="transform: translateX(-10px)">『起氏双子』是 <span class="text-underline qifu">起复</span>
 				与 <span class="text-underline qili">起礼</span> 的合称</h3>
 			<p>二人是以「歌声合成软件」为基础的「中文声库」与「虚拟形象」</p>
 			<p><span class="text-underline qili">起礼</span>与<span class="text-underline qifu">起复</span>是双胞胎，其中<span
@@ -52,21 +52,23 @@
 			<p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
 			<!--todo 从问答中获取简介可以填写的信息-->
 			<br>
-			<iframe border="0" frameborder="no" height=86
-			        marginheight="0" marginwidth="0"
+			<iframe border="0" frameborder="no" height=86 marginheight="0"
+			        marginwidth="0" style="box-shadow: none!important;margin-left:-8px"
 			        src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-			        style="margin-left:-8px" width=450></iframe>
+			        width=450></iframe>
 		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.content{
+
+.content {
 	//background: url("./static/bg.jpg") no-repeat bottom;
 	background: url("https://article.biliimg.com/bfs/article/1cfc75da378f55aa0a355da4dfc4426a44a74465.jpg") no-repeat bottom;
 	background-size: cover;
 }
-.mask{
+
+.mask {
 	width: 84vw;
 	height: 88vh;
 	position: absolute;
@@ -75,6 +77,7 @@
 	background-color: #ffffff90;
 	border-radius: 10px;
 }
+
 a {
 	text-decoration: none;
 	/*正常的未被访问过的链接*/
@@ -231,16 +234,17 @@ a {
 		animation: fade-in 0.75s ease-in-out 0.5s forwards;
 
 		img {
-			margin-top: 7vh;
+			margin-top: 9vh;
 			height: 100%;
 		}
 	}
+
 
 	.intro {
 		overflow: auto;
 		animation: fade-in 1s ease-in-out 2s forwards;
 		opacity: 0;
-		background-color: rgba(0, 0, 0, 0.07);
+		background-color: rgba(0, 0, 0, 0.15);
 		padding: 2% 2% 1%; // 最下方为 1%
 		box-sizing: border-box;
 		border-radius: 7px;
@@ -274,13 +278,14 @@ a {
 
 			.name {
 				animation: fade-in 1s ease-in-out 2.75s forwards;
+				background-color: rgba(0, 0, 0, 0.25);
 				opacity: 0;
 				position: absolute;
 				writing-mode: vertical-rl;
 				font-size: 2.5em;
-				right: 15%;
+				right: 11%;
 				top: 31%;
-				padding: 4px;
+				padding: 12px 8px 18px 7px;
 				border: 2px inset rgba(153, 255, 0, 0.5);
 				border-radius: 5px;
 				z-index: -1;
@@ -296,11 +301,12 @@ a {
 				animation: fade-in 1s ease-in-out 2.75s forwards;
 				opacity: 0;
 				position: absolute;
+				background-color: rgba(0, 0, 0, 0.25);
 				writing-mode: vertical-rl;
 				font-size: 2.5em;
-				left: 16%;
-				top: 3%;
-				padding: 4px;
+				left: 14%;
+				top: 2%;
+				padding: 12px 7px 18px 8px;
 				border: 2px outset rgba(255, 0, 153, 0.5);
 				border-radius: 5px;
 				z-index: -1;

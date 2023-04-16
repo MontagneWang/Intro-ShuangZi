@@ -293,6 +293,7 @@ $eachItemHeight: 60px;
 	&:nth-child(2)::before {
 		content: "微博\A账号";
 		color: #99FF00;
+		background-color: #00000070;
 	}
 
 	&:nth-child(3)::before {
@@ -303,6 +304,7 @@ $eachItemHeight: 60px;
 	&:nth-child(4)::before {
 		content: "加入\A Q群";
 		color: #99FF00;
+		background-color: #00000070;
 	}
 
 	&:nth-child(5)::before {
@@ -313,6 +315,7 @@ $eachItemHeight: 60px;
 	&:nth-child(6)::before {
 		content: "反馈\A Bug";
 		color: #99FF00;
+		background-color: #00000070;
 	}
 }
 
