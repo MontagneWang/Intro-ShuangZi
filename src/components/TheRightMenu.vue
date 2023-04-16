@@ -128,9 +128,26 @@ onMounted(() => {
 	})(jQuery);
 });
 
+import Modal from '../utils/ToastComp.vue'
+import {ref} from 'vue'
+
+const showModal = ref(false)
 </script>
 
 <template>
+	<Teleport to="body">
+		<!-- 使用这个 modal 组件，传入 prop -->
+		<modal :show="showModal" @close="showModal = false">
+			<template #header>
+				<h3>欢迎加入『起氏双子』官方 QQ 群 ~</h3>
+			</template>
+			<template #body>
+				<p>一群：234143343（起氏双子萌萌萌萌萌萌哒）</p>
+				<p>二群：808408382（起氏双子团团团团团团转）</p>
+			</template>
+		</modal>
+	</Teleport>
+
 	<div class="rightMenu circleMenu">
 		<div id="rightCircle" class="circle">
 			<div :style="{height:radius*2+'px',width:radius*2+'px'}" class="item">
@@ -138,7 +155,7 @@ onMounted(() => {
 				<a class="eachItem" href="https://weibo.com/7670516154" target="_blank"></a>
 				<a class="eachItem" href="https://www.bilibili.com/read/cv16388511" target="_blank"></a>
 				<!--加群改为 toast 提醒，展示两个群号-->
-				<a class="eachItem" href="/" target="_blank"></a>
+				<a class="eachItem" href="/" target="_blank" @click.prevent="showModal = true"></a>
 				<a class="eachItem" href="https://space.bilibili.com/193181849/video" target="_blank"></a>
 				<a class="eachItem" href="mailto:ling.vc@foxmail.com" target="_blank"></a>
 			</div>
@@ -293,28 +310,28 @@ $eachItemHeight: 50px;
 	background-size: cover;
 
 	&:nth-of-type(1) {
-		background-image: url("../static/Icon/1.jpg");
+		background-image: url("../../static/Icon/1.jpg");
 		//background-image: url("https://article.biliimg.com/bfs/article/850121f432591413f7427cf54a1e5727f1356aec.jpg");
 	}
 
 	&:nth-of-type(2) {
-		background-image: url("../static/Icon/3.jpg");
+		background-image: url("../../static/Icon/3.jpg");
 	}
 
 	&:nth-of-type(3) {
-		background-image: url("../static/Icon/5.jpg");
+		background-image: url("../../static/Icon/5.jpg");
 	}
 
 	&:nth-of-type(4) {
-		background-image: url("../static/Icon/welcomejpg.jpg");
+		background-image: url("../../static/Icon/welcomejpg.jpg");
 	}
 
 	&:nth-of-type(5) {
-		background-image: url("../static/Icon/2.jpg");
+		background-image: url("../../static/Icon/2.jpg");
 	}
 
 	&:nth-of-type(6) {
-		background-image: url("../static/Icon/4.jpg");
+		background-image: url("../../static/Icon/4.jpg");
 	}
 }
 
