@@ -47,6 +47,7 @@ document.addEventListener('keydown', e => {
 	}
 })
 
+
 </script>
 
 <template>
@@ -54,9 +55,10 @@ document.addEventListener('keydown', e => {
 	<intro-page/>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 html * {
 	font-family: LXGW WenKai Lite, serif !important;
+	//font-size: 2rem!important;
 }
 
 </style>

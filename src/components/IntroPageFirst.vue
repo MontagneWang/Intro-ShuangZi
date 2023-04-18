@@ -4,12 +4,6 @@
 
 <template>
 	<div class="content">
-		<div class="mask"></div>
-
-		<div class="logo2">
-			<!--<img alt="" src="../static/logo2.png">-->
-			<img alt="" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
-		</div>
 
 		<div class="logo">
 			<a href="https://space.bilibili.com/193181849"
@@ -31,7 +25,6 @@
 			<img alt="" src="https://article.biliimg.com/bfs/article/4fbca0f859749e425e444f4bc5a7cb8156c978e6.png">
 			<div class="name li">起 <span style="color: #FF0099">礼</span></div>
 		</div>
-
 		<div class="intro">
 			<h2>
 				你好！这里是『<a href="https://space.bilibili.com/193181849"
@@ -50,32 +43,138 @@
 					class="text-underline qili">起礼</span>是姐姐，<span class="text-underline qifu">起复</span>是弟弟</p>
 			<p>双子的名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
 			<p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
-			<!--todo 从问答中获取简介可以填写的信息-->
 			<br>
 			<iframe border="0" frameborder="no" height=86 marginheight="0"
-			        marginwidth="0" style="box-shadow: none!important;margin-left:-8px"
-			        src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
+			        marginwidth="0" src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
+			        style="box-shadow: none!important;margin-left:-8px"
 			        width=450></iframe>
 		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-
-.content {
-	//background: url("./static/bg.jpg") no-repeat bottom;
-	background: url("https://article.biliimg.com/bfs/article/1cfc75da378f55aa0a355da4dfc4426a44a74465.jpg") no-repeat bottom;
-	background-size: cover;
+@media screen and (min-width: 1366px) {
+	.fu .name {
+		right: 16% !important;
+		font-size: 3rem !important;
+	}
+	.li .name {
+		left: 16% !important;
+		top: 3% !important;
+		font-size: 3rem !important;
+	}
+	.intro {
+		width: 40vw !important;
+		font-size: 1.1rem !important;
+		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+	}
+	.logo {
+		img {
+			margin-top: 10vh !important;
+		}
+	}
+	iframe {
+		width: 25vw !important;
+	}
 }
 
-.mask {
-	width: 84vw;
-	height: 88vh;
-	position: absolute;
-	left: 8vw;
-	top: 6vh;
-	background-color: #ffffff90;
-	border-radius: 10px;
+@media screen and (min-width: 1440px) {
+	.fu .name {
+		right: 18% !important;
+		font-size: 3rem !important;
+	}
+	.li .name {
+		left: 18% !important;
+		top: 5% !important;
+		font-size: 3rem !important;
+	}
+	.intro {
+		width: 35vw !important;
+		font-size: 1.1rem !important;
+		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+	}
+	.logo {
+		img {
+			margin-top: 10vh !important;
+		}
+	}
+	iframe {
+		width: 25vw !important;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.fu .name {
+		right: 16% !important;
+		font-size: 3rem !important;
+	}
+	.li .name {
+		left: 16% !important;
+		top: 3% !important;
+		font-size: 3rem !important;
+	}
+	.intro {
+		width: 40vw !important;
+		font-size: 1.2rem !important;
+		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+	}
+	.logo {
+		img {
+			margin-top: 10vh !important;
+		}
+	}
+	iframe {
+		width: 25vw !important;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.fu .name {
+		right: 18% !important;
+		font-size: 3.5rem !important;
+	}
+	.li .name {
+		left: 18% !important;
+		font-size: 3.5rem !important;
+	}
+	.intro {
+		width: 42vw !important;
+		font-size: 1.6rem !important;
+		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+	}
+	.logo {
+		img {
+			margin-top: 10vh !important;
+		}
+	}
+	iframe {
+		width: 30vw !important;
+	}
+}
+
+@media screen and (min-width: 2560px) {
+	.fu .name {
+		right: 18% !important;
+		font-size: 5rem !important;
+	}
+	.li .name {
+		left: 18% !important;
+		font-size: 5rem !important;
+	}
+	.intro {
+		margin-top: 16vh!important;
+		width: 42vw !important;
+		font-size: 2.3rem !important;
+		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+	}
+	.logo {
+		img {
+			margin-top: 10vh !important;
+		}
+	}
+	iframe {
+		width: 30vw !important;
+	}
 }
 
 a {
@@ -216,17 +315,6 @@ a {
 	height: 100vh;
 	position: relative;
 	overflow-x: hidden;
-
-	.logo2 {
-		height: 15vh;
-		position: absolute;
-		top: 4vh;
-		left: 4vh;
-
-		img {
-			height: 100%;
-		}
-	}
 
 	.logo {
 		height: 15vh;
