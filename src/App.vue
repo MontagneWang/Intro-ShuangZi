@@ -2,9 +2,10 @@
 import IntroPage from "./components/IntroPage.vue";
 import TheRightMenu from "./components/TheRightMenu.vue";
 
-if (window.innerWidth <= 768) { // 768是一个常用的移动设备屏幕宽度阈值
-	document.body.innerHTML = '<br><p>非常抱歉，页面暂时尚未适配移动端</p><br><p>还请移步至 PC 端访问</p>';
+if (window.innerWidth <= 768) {
+	window.location.href = 'https://space.bilibili.com/193181849';
 }
+
 // 随机返回一个字符串
 function randomChoose(str1: string, str2: string) {
 	if (Math.random() >= 0.5) {

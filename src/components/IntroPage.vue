@@ -2,6 +2,8 @@
 import {onMounted} from "vue";
 import IntroPageFirst from "./IntroPageFirst.vue";
 import IntroPageSecond from "./IntroPageSecond.vue";
+import IntroPageThird from "./IntroPageThird.vue";
+import FinalPage from "./FinalPage.vue";
 import TempComp from "../temp/TempComp.vue";
 
 let options = {}
@@ -21,27 +23,28 @@ onMounted(() => {
 	<div class="full-page">
 		<div class="mask"></div>
 		<full-page ref="fullpage" :options="options">
-
 			<div class="section">
 				<intro-page-first/>
 			</div>
-			<!--<div class="section">-->
-			<!--	<intro-page-second/>-->
-			<!--</div>-->
 			<div class="section">
-				<temp-comp/>
-				<!--<button class="prev" @click="$refs.fullpage.api.moveSectionUp()">-->
-				<!--	Prev-->
-				<!--</button>-->
+				<intro-page-second/>
+			</div>
+			<div class="section">
+				<intro-page-third/>
+			</div>
+			<div class="section">
+				<final-page/>
+				<!--<temp-comp/>-->
 			</div>
 		</full-page>
 	</div>
 </template>
 
 <style lang="scss" scoped>
+
 .full-page {
 	text-align: center;
-	background: url("https://article.biliimg.com/bfs/article/1cfc75da378f55aa0a355da4dfc4426a44a74465.jpg") no-repeat fixed bottom;
+	background: url("https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg") no-repeat fixed bottom;
 	background-size: cover;
 }
 
