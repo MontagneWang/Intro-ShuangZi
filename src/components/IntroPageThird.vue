@@ -17,18 +17,15 @@ onMounted(() => {
 		entries2.forEach(entry => {
 			// 元素出现在视窗内
 			if (entry.isIntersecting) {
+				// 通过在添加	animation-delay 实现延迟，而不是 setTimeOut（会存在系统与性能误差）
 				fu.value!.classList.add('fade-in');
-				setTimeout(function () {
-					text.value!.classList.add('textMove');
-				}, 500)
-				setTimeout(function () {
-					timeline2.value!.classList.add('fade-in');
-				}, 1000)
+				text.value!.classList.add('textMove');
+				timeline2.value!.classList.add('fade-in');
 				document.querySelectorAll('.fu .el-timeline-item').forEach((item, index) => {
-					setTimeout(function () {
-						item.classList.remove('hide')
-						item.classList.add('animate__animated', 'animate__fadeInUp')
-					}, index * 500 + 1500)
+					const delay = index * 500 + 2000; // 计算每个元素的延迟时间
+					(item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
+					item.classList.remove('hide')
+					item.classList.add('animate__animated', 'animate__fadeInUp')
 				})
 			}
 		});
@@ -317,6 +314,7 @@ iframe {
 				opacity: 0;
 				width: 71%;
 				transition: all 1s;
+				transition-delay: 500ms;
 
 
 				div {
@@ -367,7 +365,7 @@ iframe {
 		overflow-y: hidden;
 		text-align: left;
 		opacity: 0;
-
+		animation-delay: 1500ms;
 
 		.el-timeline {
 			margin-left: -15% !important;

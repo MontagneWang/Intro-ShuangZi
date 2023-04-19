@@ -14,18 +14,18 @@ onMounted(() => {
 		entries.forEach(entry => {
 			// 元素出现在视窗内
 			if (entry.isIntersecting) {
+				// 通过在添加	animation-delay 实现延迟，而不是 setTimeOut（会存在系统与性能误差）
 				li.value!.classList.add('move');
+				// fixme 这个暂时无法解决
 				setTimeout(function () {
 					text.value!.classList.add('textMove');
 				}, 1000)
-				setTimeout(function () {
-					timeline.value!.classList.add('fade-in');
-				}, 2000)
+				timeline.value!.classList.add('fade-in');
 				document.querySelectorAll('.li .el-timeline-item').forEach((item, index) => {
-					setTimeout(function () {
-						item.classList.remove('hide')
-						item.classList.add('animate__animated', 'animate__fadeInUp')
-					}, index * 500 + 2500)
+					const delay = index * 500 + 3000; // 计算每个元素的延迟时间
+					(item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
+					item.classList.remove('hide')
+					item.classList.add('animate__animated', 'animate__fadeInUp')
 				})
 			}
 		});
@@ -154,7 +154,7 @@ onMounted(() => {
 	}
 }
 
-@media screen and (min-width: 	1536px) {
+@media screen and (min-width: 1536px) {
 	.content {
 		.name {
 			font-size: 3em !important;
@@ -232,7 +232,7 @@ onMounted(() => {
 
 				.el-card {
 					width: 90% !important;
-					margin: 0 auto!important;
+					margin: 0 auto !important;
 					--el-card-padding: 20px 50px !important;
 				}
 			}
@@ -249,6 +249,7 @@ onMounted(() => {
 	transition: all 0.75s;
 	filter: none;
 }
+
 a {
 	text-decoration: none;
 	/*正常的未被访问过的链接*/
@@ -318,6 +319,7 @@ a {
 				opacity: 0;
 				width: 72%;
 				transition: all 1s;
+				//animation-delay: 2000ms !important;
 
 
 				div {
@@ -368,6 +370,7 @@ a {
 		overflow-y: hidden;
 		text-align: left;
 		opacity: 0;
+		animation-delay: 2000ms;
 
 
 		.el-timeline {
