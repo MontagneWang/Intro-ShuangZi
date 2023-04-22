@@ -6,75 +6,55 @@ import {ref} from 'vue'
 const showModal = ref(false)
 
 let rightMenu = ref<HTMLDivElement | null>(null)
-let rightCircle = ref<HTMLDivElement | null>(null)
 
 // 全局变量，整个圆盘的半径 radius
 const radius = 110;
 onMounted(() => {
 	const items = document.querySelectorAll('.eachItem') as unknown as HTMLElement[];
-	const numOfItems = items.length;
 	// 设置每个元素位置
 	items.forEach((item, index) => {
-		item.style.left = `${(50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / numOfItems) * index * Math.PI)).toFixed(4)}%`;
-		item.style.top = `${(50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / numOfItems) * index * Math.PI)).toFixed(4)}%`;
+		item.style.left = `${(50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)).toFixed(4)}%`;
+		item.style.top = `${(50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)).toFixed(4)}%`;
 	});
+	// （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
+	window.addEventListener('mousedown', e =>
+			e.which !== 3
+			&& !isDescendant(rightMenu.value as HTMLElement, e.target as HTMLElement)
+			&& rightMenu.value!.classList.remove("active"));
+	// 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
+	window.addEventListener('contextmenu', e => {
+		e.preventDefault();
+		rightMenu.value!.classList.contains("active") ?
+				rightMenu.value!.classList.remove("active") : showRightMenu(e);
+	})
 
-	// 绑定 rightMenu 插件
-	document.addEventListener('DOMContentLoaded', function () {
-		let html = document.querySelector('html');
-		rightMenu({'menu': 'circleMenu'}, html as HTMLHtmlElement);
-	});
-
-	// 定义 rightMenu 函数
-	function rightMenu(options: { menu: string; }, element: HTMLHtmlElement) {
-		let defaults = {
-			menu: ''
-		};
-		let settings = Object.assign({}, defaults, options);
-		// let settings = { ...defaults, ...options };
-		let menu = element.querySelector('.' + settings.menu) as HTMLElement;
-
-		// （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
-		element.addEventListener('mousedown', function (e) {
-			if (e.which !== 3 && !isDescendant(menu, e.target as HTMLElement)) {
-				rightCircle.value!.classList.remove("active");
-			}
+	// 显示右键菜单
+	function showRightMenu(e: MouseEvent) {
+		let top = e.clientY - radius;
+		let left = e.clientX - radius;
+		// 设置rightMenu的位置并显示
+		rightMenu.value!.style.top = top + 'px';
+		rightMenu.value!.style.left = left + 'px';
+		rightMenu.value!.style.display = 'block';
+		rightMenu.value!.style.opacity = String(0);
+		rightMenu.value!.style.transition = 'opacity 0.5s';
+		// 使用requestAnimationFrame触发动画
+		requestAnimationFrame(() => {
+			rightMenu.value!.style.opacity = String(1);
+			rightMenu.value!.classList.add("active");
+			rightMenu.value!.style.display = "block";
 		});
-
-		// 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
-		element.addEventListener('contextmenu', function (e) {
-			e.preventDefault();
-			if (rightCircle.value!.classList.contains("active")) {
-				rightCircle.value!.classList.remove("active");
-			} else {
-				let top = e.clientY - radius;
-				let left = e.clientX - radius;
-				// 设置rightMenu的位置并显示
-				menu.style.top = top + 'px';
-				menu.style.left = left + 'px';
-				menu.style.display = 'block';
-				menu.style.opacity = String(0);
-				menu.style.transition = 'opacity 0.5s';
-				// 使用requestAnimationFrame触发动画
-				requestAnimationFrame(() => {
-					menu.style.opacity = String(1);
-					rightCircle.value!.classList.add("active");
-					rightCircle.value!.style.display = "block";
-				});
-			}
-		})
 	}
 
 	// 判断一个元素是否是另一个元素的后代元素
-	function isDescendant(parent: HTMLElement, child: HTMLElement) {
-		let node = child.parentNode;
-		while (node != null) {
-			if (node === parent) {
-				return true;
-			}
-			node = node.parentNode;
+	function isDescendant(parent: ParentNode, child: HTMLElement): boolean {
+		if (child.parentNode === parent) {
+			return true;
+		} else if (child.parentNode === null!) {
+			return false;
+		} else {
+			return isDescendant(parent, child.parentNode as HTMLElement);
 		}
-		return false;
 	}
 })
 </script>
@@ -94,7 +74,7 @@ onMounted(() => {
 	</Teleport>
 
 	<div ref="rightMenu" class="rightMenu circleMenu">
-		<div id="rightCircle" ref="rightCircle" class="circle">
+		<div id="rightCircle" class="circle">
 			<div :style="{height:radius*2+'px',width:radius*2+'px'}" class="item">
 				<a class="eachItem" href="https://space.bilibili.com/193181849" target="_blank"></a>
 				<a class="eachItem" href="https://weibo.com/7670516154" target="_blank"></a>
