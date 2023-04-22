@@ -5,134 +5,78 @@ import {ref} from 'vue'
 // toast
 const showModal = ref(false)
 
+let rightMenu = ref<HTMLDivElement | null>(null)
+let rightCircle = ref<HTMLDivElement | null>(null)
+
 // 全局变量，整个圆盘的半径 radius
-let radius = 110
+const radius = 110;
 onMounted(() => {
-	// @ts-ignore
-	$(document).ready(function () {
-		// DOM 加载完毕后，绑定 rightMenu 插件到 html
-		// @ts-ignore
-		$('html').rightMenu({'menu': 'circleMenu'})
+	const items = document.querySelectorAll('.eachItem') as unknown as HTMLElement[];
+	const numOfItems = items.length;
+	// 设置每个元素位置
+	items.forEach((item, index) => {
+		item.style.left = `${(50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / numOfItems) * index * Math.PI)).toFixed(4)}%`;
+		item.style.top = `${(50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / numOfItems) * index * Math.PI)).toFixed(4)}%`;
 	});
 
-	let Coords: { clientY: number; clickX: number; clientX: number; clickY?: number; screenX?: number; screenY?: number; }
-	let items = document.querySelectorAll('.eachItem');
-	for (let i = 0, l = items.length; i < l; i++) {
-		// 计算eachItem元素的位置
-		(items[i] as HTMLElement).style.left = (50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
-		(items[i] as HTMLElement).style.top = (50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+	// 绑定 rightMenu 插件
+	document.addEventListener('DOMContentLoaded', function () {
+		let html = document.querySelector('html');
+		rightMenu({'menu': 'circleMenu'}, html as HTMLHtmlElement);
+	});
+
+	// 定义 rightMenu 函数
+	function rightMenu(options: { menu: string; }, element: HTMLHtmlElement) {
+		let defaults = {
+			menu: ''
+		};
+		let settings = Object.assign({}, defaults, options);
+		// let settings = { ...defaults, ...options };
+		let menu = element.querySelector('.' + settings.menu) as HTMLElement;
+
+		// （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
+		element.addEventListener('mousedown', function (e) {
+			if (e.which !== 3 && !isDescendant(menu, e.target as HTMLElement)) {
+				rightCircle.value!.classList.remove("active");
+			}
+		});
+
+		// 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
+		element.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+			if (rightCircle.value!.classList.contains("active")) {
+				rightCircle.value!.classList.remove("active");
+			} else {
+				let top = e.clientY - radius;
+				let left = e.clientX - radius;
+				// 设置rightMenu的位置并显示
+				menu.style.top = top + 'px';
+				menu.style.left = left + 'px';
+				menu.style.display = 'block';
+				menu.style.opacity = String(0);
+				menu.style.transition = 'opacity 0.5s';
+				// 使用requestAnimationFrame触发动画
+				requestAnimationFrame(() => {
+					menu.style.opacity = String(1);
+					rightCircle.value!.classList.add("active");
+					rightCircle.value!.style.display = "block";
+				});
+			}
+		})
 	}
 
-	// 定义 rightMenu 插件
-	(function ($) {
-		let rightMenu = {
-			// 插件默认设置
-			defaults: {click_to_close: true, stay_open: false}, init: function (options: any) {
-				let o = options, $this = $(this);
-				$this.each(function (i: any) {
-					// @ts-ignore
-					let $this = $(this), settings = $.extend({}, rightMenu.defaults, o), $menu = $('.' + settings.menu);
-					// 鼠标按下事件
-					$this.on('mousedown', function (e: { which: number; target: any; }) {
-						// 如果 不是右键点击 或者 点击的元素不是 rightMenu 的子元素 ，且设置了 click_to_close，则关闭 rightMenu（左键点击其他区域关闭菜单）
-						if (e.which !== 3 && $(e.target).parents('.rightMenu').length < 1 && settings.click_to_close) {
-							$this.find('.rightMenu').stop(true, false).animate({opacity: 0}, {
-								// 改长消失时间
-								duration: 1000,
-								queue: false,
-								complete: function () {
-									$(this).css('display', 'none').find('.active').removeClass('active').next().stop(true, true).slideUp('normal')
-								}
-							});
-							$(".circle").removeClass("active");
-							$(".rightMenu").delay(400).hide(0);
-						}
-					});
-					// 鼠标右键点击事件
-					$this.on('contextmenu', function (e: { preventDefault: () => void; stopPropagation: () => void; target: any; }) {
-						e.preventDefault();
-						e.stopPropagation();
-						rightMenu.getCoords(e);
-						// $('.rightMenu_close_me').stop(true, false).animate({opacity: 0}, {
-						// 	duration: 100,
-						// 	queue: false,
-						// 	complete: function () {
-						// 		$(this).css('display', 'none')
-						// 	}
-						// });
-						// 如果已经有active类，则关闭rightMenu，否则打开rightMenu
-						if ($("#rightCircle").hasClass("active")) {
-							$(".circle").removeClass("active");
-							$(".rightMenu").delay(400).hide(0);
-						} else {
-							// 需要在右键其他地方时跟左键其他地方一样，不更改消失的位置
-							let top = Coords.clientY - radius,
-									left = ($('html')[0] === e.target) ? Coords.clickX - radius : Coords.clientX - radius;
-							let bodyHe = document.documentElement.clientHeight;
-							let bodyWi = document.documentElement.clientWidth;
-							if (top < 0) top = 0;
-							if (bodyHe - Coords.clientY < 150) top = bodyHe - 300;
-							if (left < 0) left = 0;
-							if ($('html')[0] === e.target) {
-								if (bodyWi - Coords.clickX < 150) left = bodyWi - 300
-							} else {
-								if (bodyWi - Coords.clientX < 150) left = bodyWi - 300
-							}
-							// 设置rightMenu的位置并显示
-							$menu.css({
-								top: top + 'px',
-								left: left + 'px',
-								display: 'block'
-							}).stop(true, false).animate({opacity: 1}, {duration: 100, queue: false});
-							$(".circle").addClass("active");
-							$(".rightMenu").show();
-						}
-					})
-				})
-			},
-			// 获取鼠标点击的坐标
-			getCoords: function (e: any) {
-				let evt = e ? e : window.event;
-				let clickX = 0, clickY = 0;
-				if ((evt.clientX || evt.clientY) && document.body && document.body.scrollLeft != null) {
-					clickX = evt.clientX + document.body.scrollLeft;
-					clickY = evt.clientY + document.body.scrollTop
-				}
-				if ((evt.clientX || evt.clientY) && document.compatMode == 'CSS1Compat' && document.documentElement && document.documentElement.scrollLeft != null) {
-					clickX = evt.clientX + document.documentElement.scrollLeft;
-					clickY = evt.clientY + document.documentElement.scrollTop
-				}
-				if (evt.pageX || evt.pageY) {
-					clickX = evt.pageX;
-					clickY = evt.pageY
-				}
-				return Coords = {
-					clickX: clickX,
-					clickY: clickY,
-					clientX: evt.clientX,
-					clientY: evt.clientY,
-					screenX: evt.screenX,
-					screenY: evt.screenY
-				}
+	// 判断一个元素是否是另一个元素的后代元素
+	function isDescendant(parent: HTMLElement, child: HTMLElement) {
+		let node = child.parentNode;
+		while (node != null) {
+			if (node === parent) {
+				return true;
 			}
-		};
-		// 绑定rightMenu插件到jQuery
-		$.fn.rightMenu = function (method: string, options: any) {
-			// @ts-ignore
-			if (rightMenu[method]) {
-				// @ts-ignore
-				return rightMenu[method].apply(this, Array.prototype.slice.call(arguments, 1))
-			} else if (typeof method === 'object' || !method) {
-				// @ts-ignore
-				return rightMenu.init.apply(this, arguments)
-			} else {
-				$.error('Method ' + method + ' does not exist')
-			}
+			node = node.parentNode;
 		}
-		// @ts-ignore
-	})(jQuery);
-});
-
+		return false;
+	}
+})
 </script>
 
 <template>
@@ -149,8 +93,8 @@ onMounted(() => {
 		</modal>
 	</Teleport>
 
-	<div class="rightMenu circleMenu">
-		<div id="rightCircle" class="circle">
+	<div ref="rightMenu" class="rightMenu circleMenu">
+		<div id="rightCircle" ref="rightCircle" class="circle">
 			<div :style="{height:radius*2+'px',width:radius*2+'px'}" class="item">
 				<a class="eachItem" href="https://space.bilibili.com/193181849" target="_blank"></a>
 				<a class="eachItem" href="https://weibo.com/7670516154" target="_blank"></a>
