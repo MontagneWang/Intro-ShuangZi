@@ -77,13 +77,17 @@ let age = ref(5005 + year - 2022)
 				                  type="success">
 					<el-card>
 						<h3>🎉 起氏双子 ACE 声库发布
-							<iframe border="0" frameborder="no" height=86 marginheight="0"
-							        marginwidth="0" src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-							        style="box-shadow: none!important;margin-left:-8px"
-							        width=86></iframe>
+							<!--<iframe border="0" frameborder="no" height=86 marginheight="0"-->
+							<!--        marginwidth="0" src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"-->
+							<!--        style="box-shadow: none!important;margin-left:-8px"-->
+							<!--        width=86></iframe>-->
 						</h3>
-						<p>『要将等待换成什么　我早就数不清楚了</p>
-						<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>
+						<!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
+						<!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
+						<p>
+							Ace 声库依托于 Ace Studio 平台，您可以在 <a href="https://ace-studio.timedomain.cn/#download_home" target="_blank"
+							                                title="点击前往单音阶声库下载地址">此处</a> 下载
+						</p>
 					</el-card>
 				</el-timeline-item>
 				<el-timeline-item icon="mic" placement="top"
@@ -96,6 +100,11 @@ let age = ref(5005 + year - 2022)
 				                  type="danger">
 					起氏双子设定集《万灵梦歌》发售
 				</el-timeline-item>
+				<el-timeline-item icon="mic" placement="top"
+				                  timestamp="2023 年 7 月 13 日"
+				                  type="primary">
+					起氏双子六岁啦，生贺曲《神|子》发布
+				</el-timeline-item>
 			</el-timeline>
 		</div>
 	</div>
@@ -103,7 +112,26 @@ let age = ref(5005 + year - 2022)
 </template>
 
 <style lang="scss" scoped>
+a {
+	text-decoration: none;
+	/*正常的未被访问过的链接*/
+	&:link {
+		color: #99FF00;
+	}
 
+	&:hover {
+		color: #FF0099;
+	}
+
+	/* 正在点击的链接*/
+	&:visited {
+		color: #99FF00;
+	}
+
+	&:hover:visited {
+		color: #FF0099;
+	}
+}
 @media screen and (min-width: 1366px) {
 	.content {
 		.fu {
