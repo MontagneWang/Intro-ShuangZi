@@ -11,28 +11,48 @@ let rightMenu = ref<HTMLDivElement | null>(null)
 const radius = 110;
 onMounted(() => {
 	const items = document.querySelectorAll('.eachItem') as unknown as HTMLElement[];
+	const zIndex = window.getComputedStyle(rightMenu.value!).getPropertyValue('z-index');
+	let zIndexTimer: string | number | NodeJS.Timeout | undefined
 	// 设置每个元素位置
 	items.forEach((item, index) => {
 		item.style.left = `${(50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)).toFixed(4)}%`;
 		item.style.top = `${(50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)).toFixed(4)}%`;
 	});
 	// （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
-	window.addEventListener('mousedown', e =>
-			e.which !== 3
-			&& !isDescendant(rightMenu.value as HTMLElement, e.target as HTMLElement)
-			&& rightMenu.value!.classList.remove("active"));
+	window.addEventListener('mousedown', e => {
+		if (e.which !== 3
+				&& rightMenu.value!.classList.contains("active")
+				&& !isDescendant(rightMenu.value as HTMLElement, e.target as HTMLElement)) {
+			closeRightMenu()
+		}
+	});
 	// 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
 	window.addEventListener('contextmenu', e => {
+		// ctrl + 右键，呼出原版菜单
+		if (e.ctrlKey) {
+			return
+		}
 		e.preventDefault();
 		rightMenu.value!.classList.contains("active") ?
-				rightMenu.value!.classList.remove("active") : showRightMenu(e);
+				closeRightMenu() : showRightMenu(e);
 	})
+
+	// 关闭右键菜单，z-index 取反 防止无法点击页面
+	function closeRightMenu() {
+		rightMenu.value!.classList.remove("active");
+		clearTimeout(zIndexTimer)
+		zIndexTimer = setTimeout(()=>{
+			rightMenu.value!.style.zIndex = `-${zIndex}`
+		},400)
+	}
 
 	// 显示右键菜单
 	function showRightMenu(e: MouseEvent) {
+		clearTimeout(zIndexTimer)
 		let top = e.clientY - radius;
 		let left = e.clientX - radius;
-		// 设置rightMenu的位置并显示
+		// 设置 rightMenu 的位置并显示，z-index 取反为正
+		rightMenu.value!.style.zIndex = zIndex
 		rightMenu.value!.style.top = top + 'px';
 		rightMenu.value!.style.left = left + 'px';
 		rightMenu.value!.style.display = 'block';
@@ -74,7 +94,7 @@ onMounted(() => {
 	</Teleport>
 
 	<div ref="rightMenu" class="rightMenu circleMenu">
-		<div id="rightCircle" class="circle">
+		<div id="rightCircle" ref="rightCircle"  class="circle">
 			<div :style="{height:radius*2+'px',width:radius*2+'px'}" class="item">
 				<a class="eachItem" href="https://space.bilibili.com/193181849" target="_blank"></a>
 				<a class="eachItem" href="https://weibo.com/7670516154" target="_blank"></a>
@@ -247,30 +267,38 @@ $eachItemHeight: 60px;
 	background-size: cover;
 
 	&:nth-of-type(1) {
-		background-image: url("../../static/Icon/1.jpg");
-		//background-image: url("https://article.biliimg.com/bfs/article/850121f432591413f7427cf54a1e5727f1356aec.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg");
+		//background-image: url("../../static/Icon/1.jpg");
 	}
 
 	&:nth-of-type(2) {
-		background-image: url("../../static/Icon/3.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg");
+		//background-image: url("../../static/Icon/3.jpg");
 	}
 
 	&:nth-of-type(3) {
-		background-image: url("../../static/Icon/5.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg");
+		//background-image: url("../../static/Icon/5.jpg");
 	}
 
 	&:nth-of-type(4) {
-		background-image: url("../../static/Icon/welcomejpg.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg");
+		//background-image: url("../../static/Icon/welcomejpg.jpg");
 	}
 
 	&:nth-of-type(5) {
-		background-image: url("../../static/Icon/2.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg");
+		//background-image: url("../../static/Icon/2.jpg");
 	}
 
 	&:nth-of-type(6) {
-		background-image: url("../../static/Icon/4.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg");
+		//background-image: url("../../static/Icon/4.jpg");
 	}
 }
+
+
+
 
 
 </style>
