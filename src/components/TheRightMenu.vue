@@ -12,7 +12,8 @@ const radius = 110;
 onMounted(() => {
 	const items = document.querySelectorAll('.eachItem') as unknown as HTMLElement[];
 	const zIndex = window.getComputedStyle(rightMenu.value!).getPropertyValue('z-index');
-	let zIndexTimer: string | number | undefined
+	// @ts-ignore
+	let zIndexTimer: string | number | NodeJS.Timeout | undefined
 	// 设置每个元素位置
 	items.forEach((item, index) => {
 		item.style.left = `${(50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)).toFixed(4)}%`;
