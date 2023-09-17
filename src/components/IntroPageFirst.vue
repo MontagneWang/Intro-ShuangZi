@@ -41,7 +41,7 @@
 			<p>二人是以「歌声合成软件」为基础的「中文声库」与「虚拟形象」</p>
 			<p><span class="text-underline qili">起礼</span>与<span class="text-underline qifu">起复</span>是双胞胎，其中<span
 					class="text-underline qili">起礼</span>是姐姐，<span class="text-underline qifu">起复</span>是弟弟</p>
-			<p>双子的名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
+			<p>名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
 			<p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
 			<br>
 			<iframe border="0" frameborder="no" height=86 marginheight="0"
@@ -53,6 +53,30 @@
 </template>
 
 <style lang="scss" scoped>
+// @media screen and (min-width: 1280px) {
+// 	.fu .name {
+// 		right: 14% !important;
+// 		font-size: 2.5rem !important;
+// 	}
+// 	.li .name {
+// 		left: 16% !important;
+// 		top: 3% !important;
+// 		font-size: 2.5rem !important;
+// 	}
+// 	.intro {
+// 		width: 40vw !important;
+// 		font-size: 1rem !important;
+// 		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
+// 	}
+// 	.logo {
+// 		img {
+// 			margin-top: 10vh !important;
+// 		}
+// 	}
+// 	iframe {
+// 		width: 25vw !important;
+// 	}
+// }
 @media screen and (min-width: 1366px) {
 	.fu .name {
 		right: 16% !important;
@@ -64,7 +88,7 @@
 		font-size: 3rem !important;
 	}
 	.intro {
-		width: 40vw !important;
+		width: 42vw !important;
 		font-size: 1.1rem !important;
 		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
 	}
@@ -138,7 +162,7 @@
 		font-size: 3.5rem !important;
 	}
 	.intro {
-		width: 42vw !important;
+		width: 43vw !important;
 		font-size: 1.6rem !important;
 		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
 	}

@@ -98,6 +98,34 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+// @media screen and (min-width: 1280px) {
+// 	.content {
+// 		.name {
+// 			font-size: 2.5em !important;
+// 			left: 18% !important;
+// 		}
+
+// 		.text {
+// 			left: 2.5vw !important;
+// 			top: -2vh !important;
+// 			width: 20vw !important;
+// 			font-size: 1.3em !important;
+// 		}
+
+// 		.timeline {
+// 			.el-timeline {
+// 				font-size: 1em !important;
+// 				--el-font-size-small: 1em !important;
+// 				padding-left: 9%;
+// 				--el-timeline-node-size-large: 1em !important;
+
+// 				.el-card {
+// 					--el-card-padding: 20px 35px !important;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 @media screen and (min-width: 1366px) {
 	.content {
 		.name {

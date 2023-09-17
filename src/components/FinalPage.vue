@@ -28,6 +28,7 @@ onMounted(() => {
 			<h2>我们将情感寄托于他们的歌声之中</h2>
 			<h2>借由他们之口，唱出心中所思</h2>
 			<h2>祝我们的双子越来越好，听众越来越多🎉</h2>
+			<h4 style="margin-bottom: -3em;">您可以通过<span style="color:#FF0099" tilte="尝试点击你的鼠标右键">「右键菜单」</span>了解更多有关双子的信息</h4>
 		</div>
 
 		<div ref="fu" class="character fu">
@@ -53,6 +54,20 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+// @media screen and (min-width: 1280px) {
+// 	.content{
+// 		font-size: 1.15em;
+// 		.character {
+// 			&.fu {
+// 				left: -0.5vw!important;
+// 			}
+
+// 			&.li {
+// 				right: 1vw!important;
+// 			}
+// 		}
+// 	}
+// }
 @media screen and (min-width: 1366px) {
 	.content{
 		font-size: 1.25em;
@@ -104,11 +119,11 @@ onMounted(() => {
 		font-size: 1.4em;
 		.character {
 			&.fu {
-				left: 4vw!important;
+				left: 0vw!important;
 			}
 
 			&.li {
-				right: 5vw!important;
+				right: 1vw!important;
 			}
 		}
 	}
@@ -127,11 +142,11 @@ onMounted(() => {
 		font-size: 1.75em;
 		.character {
 			&.fu {
-				left: 4vw!important;
+				left:0vw!important;
 			}
 
 			&.li {
-				right: 5vw!important;
+				right: 1vw!important;
 			}
 		}
 	}
@@ -150,11 +165,11 @@ onMounted(() => {
 		font-size: 2.3em;
 		.character {
 			&.fu {
-				left: 4vw!important;
+				left: 0vw!important;
 			}
 
 			&.li {
-				right: 5vw!important;
+				right: 1vw!important;
 			}
 		}
 	}

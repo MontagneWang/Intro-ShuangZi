@@ -103,7 +103,7 @@ let age = ref(5005 + year - 2022)
 				<el-timeline-item icon="mic" placement="top"
 				                  timestamp="2023 年 7 月 13 日"
 				                  type="primary">
-					起氏双子六岁啦，生贺曲《神|子》发布
+					起氏双子六岁啦，生贺曲《神子》发布
 				</el-timeline-item>
 			</el-timeline>
 		</div>
@@ -132,6 +132,38 @@ a {
 		color: #FF0099;
 	}
 }
+// @media screen and (min-width: 1280px) {
+// 	.content {
+// 		.fu {
+// 			left: 3.5vw !important;
+// 		}
+
+// 		.name {
+// 			font-size: 2.5em !important;
+// 			left: 20% !important;
+// 		}
+
+// 		.text {
+// 			left: 3.5vw !important;
+// 			top: -2vh !important;
+// 			width: 20vw !important;
+// 			font-size: 1.3em !important;
+// 		}
+
+// 		.timeline {
+// 			.el-timeline {
+// 				font-size: 1em !important;
+// 				--el-font-size-small: 1em !important;
+// 				padding-left: 9%;
+// 				--el-timeline-node-size-large: 1em !important;
+
+// 				.el-card {
+// 					--el-card-padding: 20px 35px !important;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 @media screen and (min-width: 1366px) {
 	.content {
 		.fu {
