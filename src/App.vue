@@ -27,9 +27,9 @@ document.addEventListener('visibilitychange', function () {
 	}
 	// 可以直接 else if
 	if (document.visibilityState === 'visible') {
-		document.title = '欢迎回来'
+		document.title = '欢迎回来✧(≖ ◡ ≖✿)'
 		if (title === undefined) {
-			title = '起氏双子'
+			title = '这里是起氏双子~'
 		}
 		t = setTimeout(function () {
 			document.title = title as string
