@@ -33,12 +33,12 @@ onMounted(() => {
 
 		<div ref="fu" class="character fu">
 			<!--<img alt="" src="../static/qifu.png">-->
-			<img alt="起复" src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png">
+			<img alt="起复" src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp">
 		</div>
 
 		<div ref="li" class="character li">
 			<!--<img alt="" src="../static/qili.png">-->
-			<img alt="起礼" src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png">
+			<img alt="起礼" src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp">
 		</div>
 
 		<p>如果您需要反馈页面中存在的错误，可以通过右键菜单中的“反馈Bug”联系我，我会尽可能及时做出修正</p>
