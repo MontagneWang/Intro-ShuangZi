@@ -28,7 +28,7 @@ onMounted(() => {
 			<h2>我们将情感寄托于他们的歌声之中</h2>
 			<h2>借由他们之口，唱出心中所思</h2>
 			<h2>祝我们的双子越来越好，听众越来越多🎉</h2>
-			<h4 style="margin-bottom: -3em;">您可以通过<span style="color:#FF0099" tilte="尝试点击你的鼠标右键">「右键菜单」</span>了解更多有关双子的信息</h4>
+			<h3 style="margin-bottom: -2.5em;font-size:1em">您可以通过<span style="color:#FF0099" tilte="尝试点击你的鼠标右键">「右键菜单」</span>了解更多有关双子的信息</h3>
 		</div>
 
 		<div ref="fu" class="character fu">
