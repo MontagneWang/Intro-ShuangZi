@@ -92,7 +92,7 @@ let age = ref(5005 + year - 2022);
       <!--<img alt="" src="../static/qifu.png">-->
       <img
         alt="起复"
-        src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png"
+        src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
       />
       <div class="name fu">起 <span style="color: #99ff00">复</span></div>
 

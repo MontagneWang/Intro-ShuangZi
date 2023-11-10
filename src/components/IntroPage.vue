@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
 	<div class="logo2">
 		<!--<img alt="" src="../static/logo2.png">-->
-		<img alt="logo" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
+		<img alt="logo" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png@1e_1c.webp">
 	</div>
 	<div class="full-page">
 		<div class="mask"></div>
@@ -44,7 +44,7 @@ onMounted(() => {
 
 .full-page {
 	text-align: center;
-	background: url("https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg") no-repeat fixed bottom;
+	background: url("https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg@1e_1c.webp") no-repeat fixed bottom;
 	background-size: cover;
 }
 

@@ -106,7 +106,7 @@ onMounted(() => {
       <!--<img alt="" src="../static/qili.png">-->
       <img
         alt="起礼"
-        src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png"
+        src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
       />
       <div class="name">起 <span style="color: #ff0099">礼</span></div>
       <!-- <div ref="text" class="text">

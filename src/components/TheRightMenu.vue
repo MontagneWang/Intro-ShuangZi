@@ -270,32 +270,32 @@ $eachItemHeight: 60px;
 	background-size: cover;
 
 	&:nth-of-type(1) {
-		background-image: url("https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/1.jpg");
 	}
 
 	&:nth-of-type(2) {
-		background-image: url("https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/3.jpg");
 	}
 
 	&:nth-of-type(3) {
-		background-image: url("https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/5.jpg");
 	}
 
 	&:nth-of-type(4) {
-		background-image: url("https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/welcomejpg.jpg");
 	}
 
 	&:nth-of-type(5) {
-		background-image: url("https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/2.jpg");
 	}
 
 	&:nth-of-type(6) {
-		background-image: url("https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg");
+		background-image: url("https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp");
 		//background-image: url("../../static/Icon/4.jpg");
 	}
 }
