@@ -1,56 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8"/>
-	<link href="/src/assets/icon.jpg" rel="icon" type="image/svg+xml"/>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-	<title>起氏双子</title>
-	<meta name="description" content="你好，这里是「起氏双子」的介绍页面~ 起氏双子是「起复」与「起礼」的合称，二人是以歌声合成软件为基础的「中文声库」与「虚拟形象」。双子的名字源于《论语》中的「克己复礼」，设计灵感源于《尚书》中的「箫韶九成 凤凰来仪」。">
-	<meta name="keywords" content="起氏双子, 起礼, 起复, 虚拟歌手, 软件歌手, 中文声库, 虚拟形象">
-	<meta content="no-referrer" name="referrer">
-	<!-- <link href="https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-regular.css" rel="stylesheet"/> -->
-	<!-- <link href="https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-bold.css" rel="stylesheet"/> -->
-	<div style="display: none">
-		<img alt="background" src="https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg@1e_1c.webp">
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg@1e_1c.webp"/>
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp"/>
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg@1e_1c.webp"/>
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp"/>
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg@1e_1c.webp"/>
-		<img alt="rightmenuImg" src="https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp"/>
-	</div>
-	<script>
-		function loadFont() {
-			let link = document.createElement('link');
-			link.href = 'https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-regular.css';
-			link.rel = 'stylesheet';
-			document.head.appendChild(link);
-			let link2 = document.createElement('link');
-			link2.href = 'https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-bold.css';
-			link2.rel = 'stylesheet';
-			document.head.appendChild(link2);
-		}
-		window.onload = loadFont;
-	</script>
-	<!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
-	<script>
-		!function (p) {
-			"use strict";
-			!function (t) {
-				var s = window, e = document, i = p,
-						c = "".concat("https:" === e.location.protocol ? "https://" : "http://", "sdk.51.la/js-sdk-pro.min.js"),
-						n = e.createElement("script"), r = e.getElementsByTagName("script")[0];
-				n.type = "text/javascript", n.setAttribute("charset", "UTF-8"), n.async = !0, n.src = c, n.id = "LA_COLLECT", i.d = n;
-				var o = function () {
-					s.LA.ids.push(i)
-				};
-				s.LA ? s.LA.ids && o() : (s.LA = p, s.LA.ids = [], o()), r.parentNode.insertBefore(n, r)
-			}()
-		}({id: "K2AJ1fneZgMpQbNZ", ck: "K2AJ1fneZgMpQbNZ", autoTrack: true, hashMode: true});
-	</script>
-</head>
-<body>
-<div id="app"></div>
-<script src="/src/main.ts" type="module"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/src/assets/icon.jpg" rel="icon" type="image/svg+xml" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>起氏双子</title>
+    <meta
+      name="description"
+      content="你好，这里是「起氏双子」的介绍页面~ 起氏双子是「起复」与「起礼」的合称，二人是以歌声合成软件为基础的「中文声库」与「虚拟形象」。双子的名字源于《论语》中的「克己复礼」，设计灵感源于《尚书》中的「箫韶九成 凤凰来仪」。"
+    />
+    <meta
+      name="keywords"
+      content="起氏双子, 起礼, 起复, 虚拟歌手, 软件歌手, 中文声库, 虚拟形象"
+    />
+    <meta content="no-referrer" name="referrer" />
+    <!-- <link href="https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-regular.css" rel="stylesheet"/> -->
+    <!-- <link href="https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-bold.css" rel="stylesheet"/> -->
+    <div style="display: none">
+      <img
+        alt="background"
+        src="https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg@1e_1c.webp"
+      />
+      <img
+        alt="rightmenuImg"
+        src="https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp"
+      />
+    </div>
+    <script>
+      function loadFont() {
+        let link = document.createElement("link");
+        link.href =
+          "https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-regular.css";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+        let link2 = document.createElement("link");
+        link2.href =
+          "https://font.onmicrosoft.cn/lxgw-wenkai-lite-webfont@1.6.0/lxgwwenkailite-bold.css";
+        link2.rel = "stylesheet";
+        document.head.appendChild(link2);
+      }
+      window.onload = loadFont;
+    </script>
+    <!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <script>
+      !(function (p) {
+        "use strict";
+        !(function (t) {
+          var s = window,
+            e = document,
+            i = p,
+            c = "".concat(
+              "https:" === e.location.protocol ? "https://" : "http://",
+              "sdk.51.la/js-sdk-pro.min.js"
+            ),
+            n = e.createElement("script"),
+            r = e.getElementsByTagName("script")[0];
+          (n.type = "text/javascript"),
+            n.setAttribute("charset", "UTF-8"),
+            (n.async = !0),
+            (n.src = c),
+            (n.id = "LA_COLLECT"),
+            (i.d = n);
+          var o = function () {
+            s.LA.ids.push(i);
+          };
+          s.LA ? s.LA.ids && o() : ((s.LA = p), (s.LA.ids = []), o()),
+            r.parentNode.insertBefore(n, r);
+        })();
+      })({
+        id: "K2AJ1fneZgMpQbNZ",
+        ck: "K2AJ1fneZgMpQbNZ",
+        autoTrack: true,
+        hashMode: true,
+      });
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/src/main.ts" type="module"></script>
+		<script
+      type="text/javascript"
+      src="http://stats.screenresolution.org/site-report.js?siteid=1612"
+      language="javascript"
+    ></script>
+  </body>
 </html>
