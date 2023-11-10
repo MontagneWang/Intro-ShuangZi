@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
 	<div class="logo2">
 		<!--<img alt="" src="../static/logo2.png">-->
-		<img alt="" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
+		<img alt="logo" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png">
 	</div>
 	<div class="full-page">
 		<div class="mask"></div>

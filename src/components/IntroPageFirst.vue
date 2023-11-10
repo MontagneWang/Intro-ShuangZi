@@ -10,19 +10,19 @@
 			   target="_blank"
 			   title="点击前往 起氏双子 官方">
 				<!--<img alt="" src="../static/logo.png">-->
-				<img alt="" src="https://article.biliimg.com/bfs/article/fb8ddc21ba9a464df32a226acdef3ad740c8bff5.png">
+				<img alt="logo" src="https://article.biliimg.com/bfs/article/fb8ddc21ba9a464df32a226acdef3ad740c8bff5.png">
 			</a>
 		</div>
 
 		<div class="character fu">
 			<!--<img alt="" src="../static/qifu.png">-->
-			<img alt="" src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png">
+			<img alt="起复" src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png">
 			<div class="name fu">起 <span style="color: #99FF00">复</span></div>
 		</div>
 
 		<div class="character li">
 			<!--<img alt="" src="../static/qili.png">-->
-			<img alt="" src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png">
+			<img alt="起礼" src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png">
 			<div class="name li">起 <span style="color: #FF0099">礼</span></div>
 		</div>
 		<div class="intro">
