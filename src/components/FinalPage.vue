@@ -41,7 +41,7 @@ onMounted(() => {
 			<img alt="起礼" src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp">
 		</div>
 
-		<p>如果您需要反馈页面中存在的错误，可以通过右键菜单中的“反馈Bug”联系我，我会尽可能及时做出修正</p>
+		<p>如果您需要反馈页面中存在的错误/错位，可以通过右键菜单中的[<a href="mailto:ling.vc@foxmail.com" style="color:#FF0099" target="_blank" title="反馈Bug">反馈Bug</a>]联系我，我会尽可能及时修正</p>
 		<p>如果您是官方且需要回收该域名，可以通过[<a href="mailto:ling.vc@foxmail.com" style="color:#FF0099" target="_blank" title="邮箱：ling.vc@foxmail.com">邮箱</a>]联系我，我会将当前域名转入到您所提供的域名注册商
 		</p>
 		<!--<div class="blur">-->

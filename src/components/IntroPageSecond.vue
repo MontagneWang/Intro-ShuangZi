@@ -518,7 +518,8 @@ a {
     transition: all 1s;
     opacity: 1 !important;
     // 修改人物运动结束位置
-    right: 65.5vw !important;
+    // right: 65.5vw !important;
+    transform: translateX(-63.5vw) !important;
   }
 
   .textMove {
