@@ -183,14 +183,7 @@ onMounted(() => {
         >
           起氏双子立项
         </el-timeline-item>
-        <el-timeline-item
-          icon="user"
-          placement="top"
-          timestamp="2016 年 6 月 18 日"
-          type="warning"
-        >
-          双子立绘确定
-        </el-timeline-item>
+        
         <el-timeline-item
           icon="Promotion"
           placement="top"
@@ -200,7 +193,7 @@ onMounted(() => {
           <el-card>
             <h3>🎉 起氏双子首个 Utau 声库发布</h3>
             <p>
-              之后陆续更新了 Utau cvvc
+              并在之后陆续更新了 Utau cvvc
               <a
                 href="https://pan.baidu.com/s/1Rwu-U5OixQyX5yHm5uh6_g?pwd=04tx"
                 target="_blank"
@@ -218,7 +211,6 @@ onMounted(() => {
         </el-timeline-item>
 
         <el-timeline-item
-          center
           icon="Promotion"
           placement="top"
           timestamp="2019 年 7 月 13 日"
@@ -243,6 +235,15 @@ onMounted(() => {
             </p>
           </el-card>
         </el-timeline-item>
+        <el-timeline-item
+          icon="mic"
+          placement="top"
+          timestamp="2020 年 7 月 13 日"
+          type="primary"
+        >
+          双子三周年，生贺曲《不揽清风不望月》发布
+        </el-timeline-item>
+        
       </el-timeline>
     </div>
   </div>
@@ -434,7 +435,7 @@ onMounted(() => {
 }
 
 a {
-  @include hyperlink(#ff0099,#99ff00);
+  @include hyperlink(#ff0099, #99ff00);
 }
 
 .hide {
@@ -554,7 +555,9 @@ a {
       --el-timeline-node-size-large: 18px;
       --el-text-color-secondary: #fff;
     }
-
+    .el-timeline-item{
+      --el-text-color-primary: #000 ; 
+    }
     //
     //.el-timeline-item {
     //	width: 75%;

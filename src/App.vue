@@ -62,4 +62,7 @@ html * {
 	//font-size: 2rem!important;
 }
 
+*{
+	user-select: none;
+}
 </style>

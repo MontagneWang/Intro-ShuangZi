@@ -172,14 +172,6 @@ let age = ref(5005 + year - 2022);
         <el-timeline-item
           icon="mic"
           placement="top"
-          timestamp="2020 年 7 月 13 日"
-          type="primary"
-        >
-          双子三周年，生贺曲《不揽清风不望月》发布
-        </el-timeline-item>
-        <el-timeline-item
-          icon="mic"
-          placement="top"
           timestamp="2021 年 7 月 13 日"
           type="primary"
         >
@@ -221,7 +213,15 @@ let age = ref(5005 + year - 2022);
           timestamp="2022 年 9 月 2 日"
           type="danger"
         >
-          起氏双子设定集《万灵梦歌》发售
+        <!-- todo -->
+          起氏双子设定集《万灵梦歌》发售，您可在
+          <a
+            href="https://gf.bilibili.com/item/detail/1105040028"
+            target="_blank"
+            title="点击前往 B 站工房"
+            >此处</a
+          >
+          获取小说部分的电子版
         </el-timeline-item>
         <el-timeline-item
           icon="mic"
@@ -230,6 +230,14 @@ let age = ref(5005 + year - 2022);
           type="primary"
         >
           起氏双子六岁啦，生贺曲《神子》发布
+        </el-timeline-item>
+        <el-timeline-item
+          icon="Promotion"
+          placement="top"
+          timestamp="「但愿你走向我那个时刻，一切都没改变过」"
+          type="success"
+        >
+          <!--  -->
         </el-timeline-item>
       </el-timeline>
     </div>
@@ -426,7 +434,7 @@ let age = ref(5005 + year - 2022);
 }
 
 a {
-  @include hyperlink(#99ff00,#ff0099);
+  @include hyperlink(#99ff00, #ff0099);
 }
 
 iframe {
@@ -556,7 +564,9 @@ iframe {
       --el-timeline-node-size-large: 18px !important;
       --el-text-color-secondary: #fff;
     }
-
+    .el-timeline-item {
+      --el-text-color-primary: #000;
+    }
     //
     //.el-timeline-item {
     //	width: 75%;
