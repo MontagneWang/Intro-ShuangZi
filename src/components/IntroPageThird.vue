@@ -116,8 +116,8 @@ let age = ref(5005 + year - 2022);
             margin-bottom: 0.15em;
             background-image: linear-gradient(
               20deg,
-              #ffffffcc 0%,
-              #ffffffcc 75%,
+              transparent 0%,
+              transparent 75%,
               #99ff00aa 100%
             );
             background-size: 100% 75%;
@@ -168,7 +168,7 @@ let age = ref(5005 + year - 2022);
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          代表色：<span style="color: #99ff00">#99FF00</span>
+          代表色：<span style="color: #99ff00">■ #99FF00</span>
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -187,12 +187,12 @@ let age = ref(5005 + year - 2022);
         <el-card
           style="
             margin-bottom: 0.15em;
-            font-size: 0.95rem;
+            /* font-size: 0.95rem; */
             background-image: linear-gradient(
               20deg,
               #99ff00aa 0%,
-              #ffffffcc 20%,
-              #ffffffcc 100%
+              transparent 20%,
+              transparent 100%
             );
             background-size: 100% 100%;
             background-repeat: no-repeat;
@@ -200,7 +200,7 @@ let age = ref(5005 + year - 2022);
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：黑发带墨绿挑染，左侧有个小麻花辫，右侧有三角耳饰，四条眉毛，红瞳<br />性格：孤僻寡言
+          形象：红瞳，黑发带墨绿挑染<br />&emsp;&emsp;&emsp;左侧有个小麻花辫<br />&emsp;&emsp;&emsp;右侧有三角耳饰
         </el-card>
       </div>
     </div>
@@ -495,7 +495,7 @@ iframe {
 }
 
 .blur {
-  filter: blur(3.5px);
+  filter: blur(2px);
   transition: all 0.75s;
 }
 
@@ -548,7 +548,11 @@ iframe {
 
         transition: all 1s;
         transition-delay: 500ms;
-
+        .el-card {
+          --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          margin-bottom: 0.25rem !important;
+        }
         div {
           margin-bottom: 15px;
         }

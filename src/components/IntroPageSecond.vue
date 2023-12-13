@@ -32,12 +32,14 @@ onMounted(() => {
         await delay(1200);
 
         // 人物属性文本动画 向上滑动显示
-        document.querySelectorAll(".li .text .el-card").forEach((item, index) => {
-          let delayTime = index * 70;
-          (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-          item.classList.remove("hide");
-          item.classList.add("animate__animated", "animate__flipInX");
-        });
+        document
+          .querySelectorAll(".li .text .el-card")
+          .forEach((item, index) => {
+            let delayTime = index * 70;
+            (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
+            item.classList.remove("hide");
+            item.classList.add("animate__animated", "animate__flipInX");
+          });
         await delay(10);
 
         // fixme 不知道为什么出来的特别晚，可能和 global.scss 中定义的方法有关？
@@ -134,8 +136,8 @@ onMounted(() => {
             margin-bottom: 0.15em;
             background-image: linear-gradient(
               20deg,
-              #ffffffcc 0%,
-              #ffffffcc 75%,
+              transparent 0%,
+              transparent 75%,
               #ff0099aa 100%
             );
             background-size: 100% 75%;
@@ -165,7 +167,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          年龄：<span class="blur">保密</span>
+          年龄：<span class="blur">秘密</span>
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -186,7 +188,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          代表色：<span style="color: #ff0099">#FF0099</span>
+          代表色：<span style="color: #ff0099">■ #FF0099</span>
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -205,12 +207,12 @@ onMounted(() => {
         <el-card
           style="
             margin-bottom: 0.15em;
-            font-size: 1.05rem;
+            /* font-size: 1.05rem; */
             background-image: linear-gradient(
               20deg,
               #ff0099aa 0%,
-              #ffffffcc 20%,
-              #ffffffcc 100%
+              transparent 20%,
+              transparent 100%
             );
             background-size: 100% 100%;
             background-repeat: no-repeat;
@@ -218,7 +220,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：发色外白内粉，有四条长发和一个侧马尾，绿瞳<br />性格：活泼开朗，喜欢瞎折腾
+          形象：绿瞳，发色外白内粉<br />&emsp;&emsp;&emsp;四条长发与一个侧马尾
         </el-card>
       </div>
     </div>
@@ -298,6 +300,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+// region
 // @media screen and (min-width: 1280px) {
 // 	.content {
 // 		.name {
@@ -326,6 +329,8 @@ onMounted(() => {
 // 		}
 // 	}
 // }
+// endregion
+
 @media screen and (min-width: 1366px) {
   .content {
     .name {
@@ -334,7 +339,7 @@ onMounted(() => {
     }
 
     .text {
-			top: 1vh !important;
+      top: 1vh !important;
       left: 4vw !important;
       width: 20vw !important;
       font-size: 1.4em !important;
@@ -512,7 +517,7 @@ a {
   .move {
     transition: all 1s;
     opacity: 1 !important;
-		// 修改人物运动结束位置
+    // 修改人物运动结束位置
     right: 65.5vw !important;
   }
 
@@ -527,8 +532,8 @@ a {
     max-width: 30vw;
     position: absolute;
     bottom: 4vh;
-		// 注意，人物是从右往左滑动的，所以这里不能改成 left 属性，如果想改动位置需要修改动画结束的位置
-		right: 2vw;
+    // 注意，人物是从右往左滑动的，所以这里不能改成 left 属性，如果想改动位置需要修改动画结束的位置
+    right: 2vw;
     opacity: 0;
 
     &.li {
@@ -552,6 +557,13 @@ a {
         border-top: 1.5px solid #ff0099;
         border-right: 1.5px solid #ff0099;
         //animation-delay: 2000ms !important;
+
+        // 修改每项文本框属性
+        .el-card {
+          --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          margin-bottom: 0.25rem !important;
+        }
 
         div {
           // border-bottom: #ff009970 1.5px solid;
