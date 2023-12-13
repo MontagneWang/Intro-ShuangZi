@@ -6,13 +6,7 @@ let text = ref<HTMLDivElement | null>(null);
 let timeline2 = ref<HTMLDivElement | null>(null);
 
 onMounted(() => {
-  // document.querySelectorAll('.el-timeline-item__node--normal').forEach((item) => {
-  // 	item.classList.add('el-timeline-item__node--large')
-  // })
-  // document.querySelectorAll('.el-timeline-item').forEach((item, index) => {
-  // 	item.classList.add('hide')
-  // })
-	document.querySelectorAll(".text .el-card").forEach((item, index) => {
+  document.querySelectorAll(".text .el-card").forEach((item, index) => {
     item.classList.add("hide");
   });
   // 判断元素是否在视窗内
@@ -26,7 +20,7 @@ onMounted(() => {
 
         // 人物动画 显示
         await delay(500);
-				fu.value!.classList.remove("hide");
+        fu.value!.classList.remove("hide");
         fu.value!.classList.add("animate__animated", "animate__fadeIn");
         await delay(300);
 
@@ -35,12 +29,14 @@ onMounted(() => {
         await delay(1300);
 
         // 人物属性文本动画 向上滑动显示
-        document.querySelectorAll(".fu .text .el-card").forEach((item, index) => {
-          let delayTime = index * 70;
-          (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-          item.classList.remove("hide");
-          item.classList.add("animate__animated", "animate__flipInX");
-        });
+        document
+          .querySelectorAll(".fu .text .el-card")
+          .forEach((item, index) => {
+            let delayTime = index * 70;
+            (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
+            item.classList.remove("hide");
+            item.classList.add("animate__animated", "animate__flipInX");
+          });
         await delay(100);
 
         // 显示时间线背景板
@@ -56,24 +52,6 @@ onMounted(() => {
             item.classList.remove("hide");
             item.classList.add("animate__animated", "animate__fadeInUp");
           });
-
-        // fu.value!.classList.add("fade-in");
-        // text.value!.classList.add("textMove");
-        // document.querySelectorAll(".text .el-card").forEach((item, index) => {
-        //   let delayTime = index * 70;
-        //   (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-        //   item.classList.remove("hide");
-        //   item.classList.add("animate__animated", "animate__flipInX");
-        // });
-        // timeline2.value!.classList.add("fade-in");
-        // document
-        //   .querySelectorAll(".fu .el-timeline-item")
-        //   .forEach((item, index) => {
-        //     const delay = index * 500 + 2000; // 计算每个元素的延迟时间
-        //     (item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
-        //     item.classList.remove("hide");
-        //     item.classList.add("animate__animated", "animate__fadeInUp");
-        //   });
       }
     });
   });
@@ -89,26 +67,11 @@ let age = ref(5005 + year - 2022);
 <template>
   <div class="content fu">
     <div ref="fu" class="character fu hide">
-      <!--<img alt="" src="../static/qifu.png">-->
       <img
         alt="起复"
         src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
       />
       <div class="name fu">起 <span style="color: #99ff00">复</span></div>
-
-      <!-- <div ref="text" class="text">
-				<div>&nbsp;<b>·</b>&nbsp;身高：142cm</div>
-				<div>&nbsp;<b>·</b>&nbsp;体重：31kg</div>
-				<div>&nbsp;<b>·</b>&nbsp;性别：男</div>
-				<div>&nbsp;<b>·</b>&nbsp;年龄：12 <span class="blur">其实已经{{ age }}岁了</span></div>
-				<div>&nbsp;<b>·</b>&nbsp;生日：7月13日</div>
-				<div>&nbsp;<b>·</b>&nbsp;代表物：笛子</div>
-				<div>&nbsp;<b>·</b>&nbsp;代表色：<span style="color: #99FF00">#99FF00</span></div>
-				<div>&nbsp;<b>·</b>&nbsp;性格：孤僻寡言</div>
-				<div>&nbsp;<b>·</b>&nbsp;声源：手指</div>
-				<div>&nbsp;<b>·</b>&nbsp;文字形象：黑发带墨绿挑染，左侧有个小麻花辫，右侧有三角耳饰，四条眉毛，红瞳。</div>
-				<div>&nbsp;<b>·</b>&nbsp;人设画师：ideolo/酥妃</div>
-			</div> -->
 
       <div ref="text" class="text">
         <el-card
@@ -175,7 +138,7 @@ let age = ref(5005 + year - 2022);
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          声源：手指
+          声源：这是一根手指
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -229,13 +192,7 @@ let age = ref(5005 + year - 2022);
           type="success"
         >
           <el-card>
-            <h3>
-              🎉 起氏双子 ACE 声库发布
-              <!--<iframe border="0" frameborder="no" height=86 marginheight="0"-->
-              <!--        marginwidth="0" src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"-->
-              <!--        style="box-shadow: none!important;margin-left:-8px"-->
-              <!--        width=86></iframe>-->
-            </h3>
+            <h3>🎉 起氏双子 ACE 声库发布</h3>
             <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
             <!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
             <p>
@@ -280,26 +237,6 @@ let age = ref(5005 + year - 2022);
 </template>
 
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-  /*正常的未被访问过的链接*/
-  &:link {
-    color: #99ff00;
-  }
-
-  &:hover {
-    color: #ff0099;
-  }
-
-  /* 正在点击的链接*/
-  &:visited {
-    color: #99ff00;
-  }
-
-  &:hover:visited {
-    color: #ff0099;
-  }
-}
 // @media screen and (min-width: 1280px) {
 // 	.content {
 // 		.fu {
@@ -344,7 +281,7 @@ a {
     }
 
     .text {
-			top: -1vh !important;
+      top: -1vh !important;
       left: 4.5vw !important;
       width: 20vw !important;
       font-size: 1.4em !important;
@@ -406,7 +343,7 @@ a {
     }
 
     .text {
-			top: 0.5vh !important;
+      top: 0.5vh !important;
       left: 4.5vw !important;
       width: 20vw !important;
       font-size: 1.6em !important;
@@ -466,7 +403,7 @@ a {
     }
 
     .text {
-			top:-2vh !important;
+      top: -2vh !important;
       left: 4vw !important;
       width: 21vw !important;
       font-size: 3em !important;
@@ -485,6 +422,23 @@ a {
         }
       }
     }
+  }
+}
+
+a {
+  text-decoration: none;
+  
+  &:link {
+    color: #99ff00;
+  }
+  &:hover {
+    color: #ff0099;
+  }
+  &:visited {
+    color: #99ff00;
+  }
+  &:hover:visited {
+    color: #ff0099;
   }
 }
 

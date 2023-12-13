@@ -4,7 +4,6 @@ import IntroPageFirst from "./IntroPageFirst.vue";
 import IntroPageSecond from "./IntroPageSecond.vue";
 import IntroPageThird from "./IntroPageThird.vue";
 import FinalPage from "./FinalPage.vue";
-import TempComp from "../temp/TempComp.vue";
 
 let options = {}
 
@@ -17,7 +16,6 @@ onMounted(() => {
 
 <template>
 	<div class="logo2">
-		<!--<img alt="" src="../static/logo2.png">-->
 		<img alt="logo" src="https://article.biliimg.com/bfs/article/039f61c59927cd7a98f656e46571f617c224ab4c.png@1e_1c.webp">
 	</div>
 	<div class="full-page">
@@ -34,7 +32,6 @@ onMounted(() => {
 			</div>
 			<div class="section">
 				<final-page/>
-				<!--<temp-comp/>-->
 			</div>
 		</full-page>
 	</div>

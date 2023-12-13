@@ -27,7 +27,6 @@ onMounted(() => {
         target="_blank"
         title="点击前往 起氏双子 官方"
       >
-        <!--<img alt="" src="../static/logo.png">-->
         <img
           alt="logo"
           src="https://article.biliimg.com/bfs/article/fb8ddc21ba9a464df32a226acdef3ad740c8bff5.png@1e_1c.webp"
@@ -36,7 +35,6 @@ onMounted(() => {
     </div>
 
     <div ref="fu" class="character fu">
-      <!--<img alt="" src="../static/qifu.png">-->
       <img
         alt="起复"
         src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
@@ -45,7 +43,6 @@ onMounted(() => {
     </div>
 
     <div ref="li" class="character li">
-      <!--<img alt="" src="../static/qili.png">-->
       <img
         alt="起礼"
         src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
@@ -58,6 +55,7 @@ onMounted(() => {
           href="https://space.bilibili.com/193181849"
           target="_blank"
           title="点击前往 起氏双子 官方"
+          class="link"
         >
           <span>起</span>
           <span>氏</span>
@@ -339,7 +337,13 @@ a {
     color: nth($colors, 1); // 设置 hover 时的颜色为第一个颜色
   }
 }
+.link {
+  @include underline(#99ff00, #ff0099);
 
+  &:hover {
+    @include underline(#ff0099, #99ff00);
+  }
+}
 .qifu {
   @include underline(#99ff00, #99ff00);
 }
@@ -378,10 +382,10 @@ a {
 }
 // 动画名 | 持续时间 | 动画方式 | 延迟时间 | forwards 保持在最后一帧
 .slide-from-left {
-  animation: slide-from-left 1.5s ease 1s forwards;
+  animation: slide-from-left 1.25s ease 1s forwards;
 }
 .slide-from-right {
-  animation: slide-from-right 1.5s ease 1s forwards;
+  animation: slide-from-right 1.25s ease 1s forwards;
 }
 
 .content {

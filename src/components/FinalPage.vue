@@ -44,12 +44,7 @@ onMounted(() => {
 		<p>如果您需要反馈页面中存在的错误/错位，可以通过右键菜单中的[<a href="mailto:ling.vc@foxmail.com" style="color:#FF0099" target="_blank" title="反馈Bug">反馈Bug</a>]联系我，我会尽可能及时修正</p>
 		<p>如果您是官方且需要回收该域名，可以通过[<a href="mailto:ling.vc@foxmail.com" style="color:#FF0099" target="_blank" title="邮箱：ling.vc@foxmail.com">邮箱</a>]联系我，我会将当前域名转入到您所提供的域名注册商
 		</p>
-		<!--<div class="blur">-->
-		<!--	<p>本来是打算之后着手 SEO 收录，使其被搜索引擎收录，成为一个真正可访问的站点。</p>-->
-		<!--	<p>不过有朋友提醒了我，这样一来就太正式了，好像有些许越俎代庖的意味。</p>-->
-		<!--	<p>我也想了一下，作为双子的听众，确实做到这一步也差不多了。</p>-->
-		<!--	<p>之后就让这个页面静候到访于此的有缘人吧。</p>-->
-		<!--</div>-->
+
 	</div>
 </template>
 

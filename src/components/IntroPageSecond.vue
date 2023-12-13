@@ -57,38 +57,6 @@ onMounted(() => {
             item.classList.add("animate__animated", "animate__fadeInUp");
           });
       }
-
-      // region 以前的实现方法
-      // setTimeout(function () {
-      //   text.value!.classList.add("textMove");
-      //   setTimeout(function () {
-      //     document
-      //       .querySelectorAll(".text .el-card")
-      //       .forEach((item, index) => {
-      //         const delay = index * 50; // 计算每个元素的延迟时间
-      //         (item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
-      //         item.classList.remove("hide");
-      //         item.classList.add("animate__animated", "animate__fadeInUp");
-      //       });
-      //     setTimeout(function () {
-      //       timeline.value!.classList.add("fade-in");
-      //       setTimeout(function () {
-      //         document
-      //           .querySelectorAll(".li .el-timeline-item")
-      //           .forEach((item, index) => {
-      //             const delay = index * 500 + 2000; // 计算每个元素的延迟时间
-      //             (item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
-      //             item.classList.remove("hide");
-      //             item.classList.add(
-      //               "animate__animated",
-      //               "animate__fadeInUp"
-      //             );
-      //           });
-      //       }, 100);
-      //     }, 200);
-      //   }, 500);
-      // }, 1000);
-      // endregion
     });
   });
 
@@ -111,25 +79,6 @@ onMounted(() => {
         src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
       />
       <div class="name">起 <span style="color: #ff0099">礼</span></div>
-      <!-- <div ref="text" class="text">
-        <div>&nbsp;<b>·</b>&nbsp;身高：140cm</div>
-        <div>&nbsp;<b>·</b>&nbsp;体重：30kg</div>
-        <div>&nbsp;<b>·</b>&nbsp;性别：女</div>
-        <div>&nbsp;<b>·</b>&nbsp;年龄：<span class="blur">保密</span></div>
-        <div>&nbsp;<b>·</b>&nbsp;生日：7月13日</div>
-        <div>&nbsp;<b>·</b>&nbsp;代表物：凤凰</div>
-        <div>
-          &nbsp;<b>·</b>&nbsp;代表色：<span style="color: #ff0099"
-            >#FF0099</span
-          >
-        </div>
-        <div>&nbsp;<b>·</b>&nbsp;性格：活泼开朗，喜欢瞎折腾</div>
-        <div>&nbsp;<b>·</b>&nbsp;声源：悠茗月尘</div>
-        <div>
-          &nbsp;<b>·</b>&nbsp;文字形象：发色外白内粉，有四条长发和一个侧马尾，绿瞳
-        </div>
-        <div>&nbsp;<b>·</b>&nbsp;人设画师：ideolo/酥妃</div>
-      </div> -->
       <div ref="text" class="text">
         <el-card
           style="
@@ -486,7 +435,7 @@ onMounted(() => {
 
 a {
   text-decoration: none;
-  /*正常的未被访问过的链接*/
+
   &:link {
     color: #ff0099;
   }
@@ -495,7 +444,6 @@ a {
     color: #99ff00;
   }
 
-  /* 正在点击的链接*/
   &:visited {
     color: #ff0099;
   }
