@@ -242,101 +242,36 @@ onMounted(() => {
   }
 }
 
+
 a {
   text-decoration: none;
-  /*正常的未被访问过的链接*/
-  &:link {
-    span:nth-child(1) {
-      color: #ff0099;
-    }
 
-    span:nth-child(2) {
-      color: #99ff00;
-    }
-
-    span:nth-child(3) {
-      color: #ff0099;
-    }
-
-    span:nth-child(4) {
-      color: #99ff00;
-    }
-  }
-
-  &:hover {
-    span:nth-child(1) {
-      color: #99ff00;
-    }
-
-    span:nth-child(2) {
-      color: #ff0099;
-    }
-
-    span:nth-child(3) {
-      color: #99ff00;
-    }
-
-    span:nth-child(4) {
-      color: #ff0099;
-    }
-  }
-
-  /* 正在点击的链接*/
+  &:link,
   &:visited {
-    span:nth-child(1) {
-      color: #ff0099;
-    }
-
-    span:nth-child(2) {
-      color: #99ff00;
-    }
-
+    span:nth-child(1),
     span:nth-child(3) {
       color: #ff0099;
     }
 
+    span:nth-child(2),
     span:nth-child(4) {
       color: #99ff00;
     }
   }
 
-  &:hover:visited {
-    span:nth-child(1) {
-      color: #99ff00;
-    }
-
-    span:nth-child(2) {
-      color: #ff0099;
-    }
-
-    span:nth-child(3) {
-      color: #99ff00;
-    }
-
-    span:nth-child(4) {
-      color: #ff0099;
-    }
-  }
-}
-
-// 最少需要传入两个颜色参数，不然下划线不会显示
-@mixin underline($colors...) {
-  // 使用可变参数
-  text-decoration: none;
-  position: relative;
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, $colors); // 使用 $colors 变量
-  }
   &:hover {
-    color: nth($colors, 1); // 设置 hover 时的颜色为第一个颜色
+    span:nth-child(1),
+    span:nth-child(3) {
+      color: #99ff00;
+    }
+
+    span:nth-child(2),
+    span:nth-child(4) {
+      color: #ff0099;
+    }
   }
 }
+
 .link {
   @include underline(#99ff00, #ff0099);
 
@@ -350,42 +285,6 @@ a {
 
 .qili {
   @include underline(#ff0099, #ff0099);
-}
-
-@keyframes slide-from-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-20vw);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-from-right {
-  0% {
-    opacity: 0;
-    transform: translateX(20vw);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-// 动画名 | 持续时间 | 动画方式 | 延迟时间 | forwards 保持在最后一帧
-.slide-from-left {
-  animation: slide-from-left 1.25s ease 1s forwards;
-}
-.slide-from-right {
-  animation: slide-from-right 1.25s ease 1s forwards;
 }
 
 .content {
@@ -406,7 +305,7 @@ a {
 
   .intro {
     overflow: auto;
-    animation: fade-in 1s ease 3.75s forwards;
+    animation: fade-in 1s ease 3.5s forwards;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.15);
     padding: 2% 2% 1%; // 最下方为 1%
@@ -440,7 +339,7 @@ a {
       left: 1vw;
 
       .name {
-        animation: fade-in 1s ease 2.75s forwards;
+        animation: fade-in 1s ease 2.5s forwards;
         background-color: rgba(0, 0, 0, 0.25);
         opacity: 0;
         position: absolute;
@@ -460,7 +359,7 @@ a {
       opacity: 0;
 
       .name {
-        animation: fade-in 1s ease 2.75s forwards;
+        animation: fade-in 1s ease 2.5s forwards;
         opacity: 0;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.25);

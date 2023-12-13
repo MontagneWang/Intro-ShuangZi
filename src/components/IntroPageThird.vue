@@ -426,20 +426,7 @@ let age = ref(5005 + year - 2022);
 }
 
 a {
-  text-decoration: none;
-  
-  &:link {
-    color: #99ff00;
-  }
-  &:hover {
-    color: #ff0099;
-  }
-  &:visited {
-    color: #99ff00;
-  }
-  &:hover:visited {
-    color: #ff0099;
-  }
+  @include hyperlink(#99ff00,#ff0099);
 }
 
 iframe {

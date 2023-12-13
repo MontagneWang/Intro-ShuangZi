@@ -6,7 +6,7 @@ import 'vue-fullpage.js/dist/style.css'
 // @ts-ignore
 import VueFullPage from 'vue-fullpage.js'
 import 'animate.css/animate.min.css' //引入
-import './global.scss';
+// import './global.scss';
 
 // 如果您正在使用CDN引入，请删除下面一行。
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'

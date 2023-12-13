@@ -434,23 +434,7 @@ onMounted(() => {
 }
 
 a {
-  text-decoration: none;
-
-  &:link {
-    color: #ff0099;
-  }
-
-  &:hover {
-    color: #99ff00;
-  }
-
-  &:visited {
-    color: #ff0099;
-  }
-
-  &:hover:visited {
-    color: #99ff00;
-  }
+  @include hyperlink(#ff0099,#99ff00);
 }
 
 .hide {
