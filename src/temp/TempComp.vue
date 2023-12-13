@@ -56,7 +56,12 @@
 // }, 1000);
 // endregion
 </script>
-
+// 询问屏幕分辨率
+<!-- <script
+  type="text/javascript"
+  src="https://stats.screenresolution.org/site-report.js?siteid=1612"
+  language="javascript"
+></script> -->
 <template>
   <!--<iframe border="0" frameborder="no" height=86 marginheight="0"-->
   <!--        marginwidth="0" src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"-->
