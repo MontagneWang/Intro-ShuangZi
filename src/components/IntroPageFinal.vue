@@ -74,8 +74,6 @@ onMounted(() => {
       <br />
       <br />
       <br />
-      <br />
-      <br />
       <p>
         您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
           >「右键菜单」</span
