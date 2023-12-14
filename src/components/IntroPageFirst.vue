@@ -341,17 +341,11 @@ a {
 
       .name {
         animation: fade-in 1s ease 2.5s forwards;
-        background-color: rgba(0, 0, 0, 0.25);
         opacity: 0;
-        position: absolute;
-        writing-mode: vertical-rl;
-        font-size: 2.5em;
+        @include name-fu;
         right: 11%;
         top: 31%;
         padding: 12px 8px 18px 7px;
-        border: 2px inset rgba(153, 255, 0, 0.5);
-        border-radius: 5px;
-        z-index: -1;
       }
     }
 
@@ -362,16 +356,7 @@ a {
       .name {
         animation: fade-in 1s ease 2.5s forwards;
         opacity: 0;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.25);
-        writing-mode: vertical-rl;
-        font-size: 2.5em;
-        left: 14%;
-        top: 2%;
-        padding: 12px 7px 18px 8px;
-        border: 2px outset rgba(255, 0, 153, 0.5);
-        border-radius: 5px;
-        z-index: -1;
+        @include name-li;
       }
     }
 

@@ -37,6 +37,59 @@
   }
 }
 
+@mixin name-li {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.15);
+  writing-mode: vertical-rl;
+  font-size: 2.5em;
+  left: 14%;
+  top: 2%;
+  padding: 12px 7px 18px 8px;
+  border: 2px outset rgba(255, 0, 153, 0.7);
+  border-radius: 5px;
+  z-index: -1;
+}
+
+@mixin name-fu {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.15);
+  writing-mode: vertical-rl;
+  font-size: 2.5em;
+
+  border: 2px inset rgba(153, 255, 0, 0.7);
+  border-radius: 5px;
+  z-index: -1;
+}
+
+@mixin timeline {
+  position: absolute;
+  top: 15vh;
+  right: 10vw;
+  height: 80vh;
+  width: 40vw;
+  margin-top: -5vh;
+  background-color: #00000040;
+  border-radius: 10px;
+  padding: 2.5% 0 0 4.5%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-align: left;
+  opacity: 0;
+}
+@mixin text($color){
+  position: absolute;
+  text-align: left;
+  font-size: 1.1em;
+  padding: 3%;
+  margin-top: 2%;
+  opacity: 0;
+  width: 72%;
+  transition: all 1s;
+  border-top-right-radius: 10px;
+  border-top: 1.5px solid $color;
+  border-right: 1.5px solid $color;
+}
 .fade-in {
   animation: fade-in 0.75s forwards;
 }

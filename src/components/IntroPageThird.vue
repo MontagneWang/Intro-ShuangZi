@@ -184,7 +184,12 @@ let age = ref(5005 + year - 2022);
           type="success"
         >
           <el-card>
-            <h3>🎉 起氏双子 ACE 声库发布</h3>
+            <h3>🎉 起氏双子 Ace 声库发布&emsp;<a
+                href="https://www.bilibili.com/video/BV1wL4y1c7J8"
+                target="_blank"
+                title="点击前往 B 站"
+                >🎧试听曲</a
+              ></h3>
             <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
             <!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
             <p>
@@ -213,8 +218,8 @@ let age = ref(5005 + year - 2022);
           timestamp="2022 年 9 月 2 日"
           type="danger"
         >
-        <!-- todo -->
-          起氏双子设定集《万灵梦歌》发售，您可在
+          <!-- todo -->
+          设定集《万灵梦书》发售，您可在
           <a
             href="https://gf.bilibili.com/item/detail/1105040028"
             target="_blank"
@@ -480,22 +485,9 @@ iframe {
       transition: all 1s;
 
       .text {
-        position: absolute;
+        @include text(#99ff00);
         top: -1vh;
         left: 2.5vw;
-        text-align: left;
-        font-size: 1.1em;
-        //border: #ff0099 2px solid;
-        //border-radius: 10px;
-        padding: 3%;
-        margin-top: 2%;
-        opacity: 0;
-        width: 72%;
-        border-top-right-radius: 10px;
-        border-top: 1.5px solid #99ff00;
-        border-right: 1.5px solid #99ff00;
-
-        transition: all 1s;
         transition-delay: 500ms;
         .el-card {
           --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
@@ -516,16 +508,10 @@ iframe {
       }
 
       .name {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.25);
-        writing-mode: vertical-rl;
-        font-size: 2.5em;
+        @include name-fu;
         left: 15%;
         top: 2%;
         padding: 12px 7px 18px 8px;
-        border: 2px inset rgba(153, 255, 0, 0.5);
-        border-radius: 5px;
-        z-index: -1;
       }
     }
 
@@ -535,20 +521,7 @@ iframe {
   }
 
   .timeline {
-    position: absolute;
-    top: 15vh;
-    right: 10vw;
-    height: 80vh;
-    width: 40vw;
-    margin-top: -5vh;
-    background-color: #00000040;
-    border-radius: 10px;
-    padding: 2.5% 0 0 4.5%;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-align: left;
-    opacity: 0;
+    @include timeline;
     animation-delay: 1500ms;
 
     .el-timeline {
@@ -561,16 +534,14 @@ iframe {
     }
 
     .el-timeline {
-      --el-timeline-node-size-large: 18px !important;
+      --el-timeline-node-size-large: 20px !important;
       --el-text-color-secondary: #fff;
+      --el-fill-color-blank: rgba(255, 255, 255, 0.15);
     }
     .el-timeline-item {
       --el-text-color-primary: #000;
+      //	width: 75%;
     }
-    //
-    //.el-timeline-item {
-    //	width: 75%;
-    //}
   }
 }
 </style>

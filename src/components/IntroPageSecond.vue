@@ -180,10 +180,21 @@ onMounted(() => {
           placement="top"
           timestamp="2016 年 3 月 19 日"
           type="primary"
+          style="font-size: 1.1rem; font-weight: bold"
         >
-          起氏双子立项
+          「<a
+            href="https://space.bilibili.com/193181849"
+            target="_blank"
+            title="点击前往 B 站"
+            >起氏双子</a
+          >」立项 —— 官方负责人：<a
+            href="https://space.bilibili.com/1961304"
+            target="_blank"
+            title="点击前往 B 站"
+            >阿铃养鲸鱼</a
+          >
         </el-timeline-item>
-        
+
         <el-timeline-item
           icon="Promotion"
           placement="top"
@@ -222,7 +233,7 @@ onMounted(() => {
               DeepVocal 共更新了两版声库：<a
                 href="https://pan.baidu.com/s/1HDjBLn8HFJIu5lKLDXx6Gw?pwd=4bl1"
                 target="_blank"
-                title="点击前往单音阶声库下载地址"
+                title="点击前往 1.0 版声库下载地址"
                 >1.0版</a
               >
               声库、<a
@@ -243,7 +254,6 @@ onMounted(() => {
         >
           双子三周年，生贺曲《不揽清风不望月》发布
         </el-timeline-item>
-        
       </el-timeline>
     </div>
   </div>
@@ -474,22 +484,9 @@ a {
       transition: all 1s;
 
       .text {
-        position: absolute;
+        @include text(#ff0099);
         top: -1.5vh;
         left: 2vw;
-        text-align: left;
-        font-size: 1.1em;
-        //border: #ff0099 2px solid;
-        //border-radius: 10px;
-        // border: none; /* 去掉所有边框 */
-        padding: 3%;
-        margin-top: 2%;
-        opacity: 0;
-        width: 72%;
-        transition: all 1s;
-        border-top-right-radius: 10px;
-        border-top: 1.5px solid #ff0099;
-        border-right: 1.5px solid #ff0099;
         //animation-delay: 2000ms !important;
 
         // 修改每项文本框属性
@@ -514,16 +511,7 @@ a {
       }
 
       .name {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.25);
-        writing-mode: vertical-rl;
-        font-size: 2.5em;
-        left: 14%;
-        top: 2%;
-        padding: 12px 7px 18px 8px;
-        border: 2px outset rgba(255, 0, 153, 0.5);
-        border-radius: 5px;
-        z-index: -1;
+        @include name-li;
       }
     }
 
@@ -533,35 +521,23 @@ a {
   }
 
   .timeline {
-    position: absolute;
-    top: 15vh;
-    right: 10vw;
-    height: 80vh;
-    width: 40vw;
-    margin-top: -5vh;
-    background-color: #00000040;
-    border-radius: 10px;
-    padding: 2.5% 0 0 4.5%;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-align: left;
-    opacity: 0;
+    @include timeline;
     animation-delay: 2000ms;
 
     .el-timeline {
       margin-left: -15% !important;
       width: 100%;
-      --el-timeline-node-size-large: 18px;
+      --el-timeline-node-size-large: 20px;
       --el-text-color-secondary: #fff;
+
+      --el-fill-color-blank: rgba(255, 255, 255, 0.45);
     }
-    .el-timeline-item{
-      --el-text-color-primary: #000 ; 
+    .el-timeline-item {
+      margin-bottom: -0.25rem;
+      --el-text-color-primary: #000;
+      // width: 75%;
+      
     }
-    //
-    //.el-timeline-item {
-    //	width: 75%;
-    //}
   }
 }
 </style>
