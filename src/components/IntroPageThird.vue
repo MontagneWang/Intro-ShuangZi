@@ -288,8 +288,8 @@ let age = ref(5005 + year - 2022);
     }
 
     .text {
-      width: 19vw !important;
-      font-size: 1.2rem !important;
+      width: 18vw !important;
+      font-size: 1.25rem !important;
     }
 
     .timeline {
@@ -299,8 +299,8 @@ let age = ref(5005 + year - 2022);
         --el-timeline-node-size-large: 1.5rem !important;
 
         .el-card {
-          font-size: 1.1rem !important;
-          --el-card-padding: 0.8rem 2rem !important;
+          font-size: 1.3rem !important;
+          --el-card-padding: 1rem 2rem !important;
         }
         .el-timeline-item {
           font-size: 1.5rem !important;

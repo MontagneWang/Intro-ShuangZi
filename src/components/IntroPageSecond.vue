@@ -236,8 +236,7 @@ onMounted(() => {
                   target="_blank"
                   title="点击前往 1.0 版声库下载地址"
                   >1.0版</a
-                >
-                声库、<a
+                >、<a
                   href="https://pan.baidu.com/s/18LWNKq5hxL4P_xTp7Xv0Qg?pwd=ggv7"
                   target="_blank"
                   title="点击前往三音阶声库下载地址"
@@ -307,8 +306,8 @@ onMounted(() => {
         --el-timeline-node-size-large: 1.5rem !important;
 
         .el-card {
-          font-size: 1.1rem !important;
-          --el-card-padding: 0.8rem 2rem !important;
+          font-size: 1.2rem !important;
+          --el-card-padding: 1rem 2rem !important;
         }
         .el-timeline-item {
           font-size: 1.5rem !important;
@@ -419,6 +418,7 @@ a {
         --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
         border: 1px solid rgba(0, 0, 0, 0.15);
         margin-bottom: 0.25rem !important;
+        font-size: 1.3rem;
       }
     }
     .timeline {
@@ -438,7 +438,7 @@ a {
         --el-fill-color-blank: rgba(255, 255, 255, 0.5);
         .el-card {
           width: 92%;
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
         .el-timeline-item {
           font-size: 1.1rem;
