@@ -22,11 +22,11 @@ onMounted(() => {
         await delay(500);
         fu.value!.classList.remove("hide");
         fu.value!.classList.add("animate__animated", "animate__fadeIn");
-        await delay(300);
+        await delay(1000);
 
         // 文本框动画 向右移动
         text.value!.classList.add("textMove");
-        await delay(1300);
+        await delay(1000);
 
         // 人物属性文本动画 向上滑动显示
         document
@@ -37,7 +37,7 @@ onMounted(() => {
             item.classList.remove("hide");
             item.classList.add("animate__animated", "animate__flipInX");
           });
-        await delay(100);
+        await delay(200);
 
         // 显示时间线背景板
         timeline2.value!.classList.add("fade-in");
@@ -66,12 +66,14 @@ let age = ref(5005 + year - 2022);
 
 <template>
   <div class="content fu">
-    <div ref="fu" class="character fu hide">
-      <img
-        alt="起复"
-        src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
-      />
-      <div class="name fu">起 <span style="color: #99ff00">复</span></div>
+    <div class="container">
+      <div ref="fu" class="character fu hide">
+        <img
+          alt="起复"
+          src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
+        />
+        <div class="name fu">起 <span style="color: #99ff00">复</span></div>
+      </div>
 
       <div ref="text" class="text">
         <el-card
@@ -163,185 +165,115 @@ let age = ref(5005 + year - 2022);
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：红瞳，黑发带墨绿挑染<br />&emsp;&emsp;&emsp;左侧有个小麻花辫<br />&emsp;&emsp;&emsp;右侧有三角耳饰
+          形象：红瞳，黑发带墨绿挑染。左侧有个小麻花辫，右侧有三角耳饰。
         </el-card>
       </div>
-    </div>
-    <div ref="timeline2" class="timeline">
-      <el-timeline>
-        <el-timeline-item
-          icon="mic"
-          placement="top"
-          timestamp="2021 年 7 月 13 日"
-          type="primary"
-        >
-          双子四周年，生贺曲《交彗 Comets Meet》发布
-        </el-timeline-item>
-        <el-timeline-item
-          icon="Promotion"
-          placement="top"
-          timestamp="2022 年 5 月 1 日"
-          type="success"
-        >
-          <el-card>
-            <h3>🎉 起氏双子 Ace 声库发布&emsp;<a
-                href="https://www.bilibili.com/video/BV1wL4y1c7J8"
-                target="_blank"
-                title="点击前往 B 站"
-                >🎧试听曲</a
-              ></h3>
-            <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
-            <!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
-            <p>
-              Ace 声库依托于 Ace Studio 平台，您可以在
-              <a
-                href="https://ace-studio.timedomain.cn/#download_home"
-                target="_blank"
-                title="点击前往单音阶声库下载地址"
-                >此处</a
-              >
-              下载
-            </p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item
-          icon="mic"
-          placement="top"
-          timestamp="2022 年 7 月 13 日"
-          type="primary"
-        >
-          双子五周年，生贺曲《如果仅靠谎言将我的世界照亮》发布
-        </el-timeline-item>
-        <el-timeline-item
-          icon="Management"
-          placement="top"
-          timestamp="2022 年 9 月 2 日"
-          type="danger"
-        >
-          <!-- todo -->
-          设定集《万灵梦书》发售，您可在
-          <a
-            href="https://gf.bilibili.com/item/detail/1105040028"
-            target="_blank"
-            title="点击前往 B 站工房"
-            >此处</a
+
+      <div ref="timeline2" class="timeline">
+        <el-timeline>
+          <el-timeline-item
+            icon="mic"
+            placement="top"
+            timestamp="2021 年 7 月 13 日"
+            type="primary"
           >
-          获取小说部分的电子版
-        </el-timeline-item>
-        <el-timeline-item
-          icon="mic"
-          placement="top"
-          timestamp="2023 年 7 月 13 日"
-          type="primary"
-        >
-          起氏双子六岁啦，生贺曲《神子》发布
-        </el-timeline-item>
-        <el-timeline-item
-          icon="Promotion"
-          placement="top"
-          timestamp="「但愿你走向我那个时刻，一切都没改变过」"
-          type="success"
-        >
-          <!--  -->
-        </el-timeline-item>
-      </el-timeline>
+            双子四周年，生贺曲《交彗 Comets Meet》发布
+          </el-timeline-item>
+          <el-timeline-item
+            icon="Promotion"
+            placement="top"
+            timestamp="2022 年 5 月 1 日"
+            type="success"
+          >
+            <el-card>
+              <h3>
+                🎉 起氏双子 Ace 声库发布&emsp;<a
+                  href="https://www.bilibili.com/video/BV1wL4y1c7J8"
+                  target="_blank"
+                  title="点击前往 B 站"
+                  >🎧试听曲</a
+                >
+              </h3>
+              <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
+              <!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
+              <p>
+                声库依托 Ace Studio 平台，您可以在
+                <a
+                  href="https://ace-studio.timedomain.cn/#download_home"
+                  target="_blank"
+                  title="点击前往单音阶声库下载地址"
+                  >此处</a
+                >
+                下载
+              </p>
+            </el-card>
+          </el-timeline-item>
+          <el-timeline-item
+            icon="mic"
+            placement="top"
+            timestamp="2022 年 7 月 13 日"
+            type="primary"
+          >
+            双子五周年，《如果仅靠谎言将我的世界照亮》发布
+          </el-timeline-item>
+          <el-timeline-item
+            icon="Management"
+            placement="top"
+            timestamp="2022 年 9 月 2 日"
+            type="danger"
+          >
+            设定集《万灵梦书》发售，您可在
+            <a
+              href="https://gf.bilibili.com/item/detail/1105040028"
+              target="_blank"
+              title="点击前往 B 站工房"
+              >此处</a
+            >
+            获取小说版
+          </el-timeline-item>
+          <el-timeline-item
+            icon="mic"
+            placement="top"
+            timestamp="2023 年 7 月 13 日"
+            type="primary"
+          >
+            起氏双子六岁啦，生贺曲《神子》发布
+          </el-timeline-item>
+          <el-timeline-item
+            icon="Promotion"
+            placement="top"
+            timestamp="「但愿你走向我那个时刻，一切都没改变过」"
+            type="success"
+          >
+            <!--  -->
+          </el-timeline-item>
+        </el-timeline>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1280px) {
-// 	.content {
-// 		.fu {
-// 			left: 3.5vw !important;
-// 		}
-
-// 		.name {
-// 			font-size: 2.5em !important;
-// 			left: 20% !important;
-// 		}
-
-// 		.text {
-// 			left: 3.5vw !important;
-// 			top: -2vh !important;
-// 			width: 20vw !important;
-// 			font-size: 1.3em !important;
-// 		}
-
-// 		.timeline {
-// 			.el-timeline {
-// 				font-size: 1em !important;
-// 				--el-font-size-small: 1em !important;
-// 				padding-left: 9%;
-// 				--el-timeline-node-size-large: 1em !important;
-
-// 				.el-card {
-// 					--el-card-padding: 20px 35px !important;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1280px) {
   .content {
-    .fu {
-      left: 3vw !important;
-    }
-
     .name {
       font-size: 2.5em !important;
-      left: 20% !important;
+      left: 16% !important;
     }
-
     .text {
-      top: -1vh !important;
-      left: 4.5vw !important;
-      width: 20vw !important;
-      font-size: 1.4em !important;
+      width: 18vw !important;
+      font-size: 1rem !important;
     }
-
     .timeline {
       .el-timeline {
-        font-size: 1.1em !important;
-        --el-font-size-small: 1em !important;
-        padding-left: 9%;
-        --el-timeline-node-size-large: 1em !important;
-
+        --el-font-size-small: 1rem !important;
+        --el-timeline-node-size-large: 1.2rem !important;
         .el-card {
-          --el-card-padding: 20px 35px !important;
+          font-size: 1rem !important;
+          --el-card-padding: 0.5rem 1.3rem !important;
         }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  iframe {
-    position: absolute;
-    top: 14%;
-    right: 2% !important;
-  }
-  .content {
-    .name {
-      font-size: 3em !important;
-      left: 20% !important;
-    }
-
-    .text {
-      left: 3vw !important;
-      width: 20vw !important;
-      font-size: 1.6em !important;
-    }
-
-    .timeline {
-      .el-timeline {
-        font-size: 1.2em !important;
-        --el-font-size-small: 1em !important;
-        padding-left: 9%;
-        --el-timeline-node-size-large: 1em !important;
-
-        .el-card {
-          --el-card-padding: 20px 35px !important;
+        .el-timeline-item {
+          font-size: 1.2rem !important;
         }
       }
     }
@@ -351,26 +283,27 @@ let age = ref(5005 + year - 2022);
 @media screen and (min-width: 1536px) {
   .content {
     .name {
-      font-size: 3em !important;
-      left: 20% !important;
+      font-size: 3rem !important;
+      left: 16% !important;
     }
 
     .text {
-      top: 0.5vh !important;
-      left: 4.5vw !important;
-      width: 20vw !important;
-      font-size: 1.6em !important;
+      width: 19vw !important;
+      font-size: 1.2rem !important;
     }
 
     .timeline {
       .el-timeline {
-        font-size: 1.3em !important;
-        --el-font-size-small: 1em !important;
-        padding-left: 9%;
-        --el-timeline-node-size-large: 1em !important;
+        font-size: 1rem !important;
+        --el-font-size-small: 1.3rem !important;
+        --el-timeline-node-size-large: 1.5rem !important;
 
         .el-card {
-          --el-card-padding: 20px 35px !important;
+          font-size: 1.1rem !important;
+          --el-card-padding: 0.8rem 2rem !important;
+        }
+        .el-timeline-item {
+          font-size: 1.5rem !important;
         }
       }
     }
@@ -380,25 +313,22 @@ let age = ref(5005 + year - 2022);
 @media screen and (min-width: 1920px) {
   .content {
     .name {
-      font-size: 4em !important;
-      left: 20% !important;
+      font-size: 4rem !important;
+      left: 17% !important;
+      top: 5% !important;
     }
-
     .text {
-      left: 4.5vw !important;
       width: 20vw !important;
-      font-size: 2.1em !important;
+      font-size: 1.7rem !important;
     }
-
     .timeline {
       .el-timeline {
-        font-size: 1.8em !important;
-        --el-font-size-small: 1em !important;
-        padding-left: 9%;
-        --el-timeline-node-size-large: 1em !important;
+        font-size: 1.8rem !important;
+        --el-font-size-small: 1.8rem !important;
+        --el-timeline-node-size-large: 2rem !important;
 
         .el-card {
-          --el-card-padding: 20px 35px !important;
+          --el-card-padding: 0.75rem 2.5rem !important;
         }
       }
     }
@@ -406,141 +336,114 @@ let age = ref(5005 + year - 2022);
 }
 
 @media screen and (min-width: 2560px) {
-  .blur {
-    filter: blur(7px) !important;
-  }
   .content {
     .name {
-      font-size: 5.5em !important;
-      left: 20% !important;
+      font-size: 6rem !important;
+      left: 17% !important;
+      top: 4.5% !important;
     }
-
     .text {
-      top: -2vh !important;
-      left: 4vw !important;
-      width: 21vw !important;
-      font-size: 3em !important;
+      margin-left: -13.5% !important;
+      width: 18vw !important;
+      font-size: 2.3rem !important;
     }
-
     .timeline {
       .el-timeline {
-        font-size: 2.4em !important;
-        --el-font-size-small: 1em !important;
-        padding-left: 9%;
-        --el-timeline-node-size-large: 1em !important;
-
+        font-size: 2.4rem !important;
+        --el-font-size-small: 2.4rem !important;
+        --el-timeline-node-size-large: 3rem !important;
         .el-card {
-          margin: 0 auto !important;
-          --el-card-padding: 20px 50px !important;
+          --el-card-padding: 1.75rem 3.5rem !important;
+          width: 100% !important;
+          font-size: 2.5rem !important;
+        }
+        .el-timeline-item {
+          font-size: 2.5rem !important;
         }
       }
     }
   }
 }
-
 a {
   @include hyperlink(#99ff00, #ff0099);
 }
-
-iframe {
-  position: absolute;
-  bottom: 10%;
-  right: 5%;
-}
-
-.blur {
-  filter: blur(2px);
-  transition: all 0.75s;
-}
-
-.blur:hover {
-  transition: all 0.75s;
-  filter: none;
-}
-
-.hide {
-  opacity: 0;
-}
-
 .content {
   height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-
-  .textMove {
-    transition: all 1s;
-    opacity: 1 !important;
-    transform: translateX(19.5vw) !important;
-  }
-
-  .character {
-    height: 85vh;
-    max-width: 30vw;
-    position: absolute;
-    bottom: 4vh;
-    left: 5.5vw;
-    //opacity: 0;
-
-    &.fu {
-      transition: all 1s;
-
-      .text {
-        @include text(#99ff00);
-        top: -1vh;
-        left: 2.5vw;
-        transition-delay: 500ms;
-        .el-card {
-          --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
-          border: 1px solid rgba(0, 0, 0, 0.15);
-          margin-bottom: 0.25rem !important;
-        }
-        div {
-          margin-bottom: 15px;
-        }
-
-        p:first-of-type {
-          margin-top: 0;
-        }
-
-        p:last-of-type {
-          margin-bottom: 0;
-        }
-      }
-
+  overflow: hidden;
+  .container {
+    width: 84vw;
+    height: 88vh;
+    margin: 6vh auto;
+    text-align: left;
+    display: flex;
+    .character {
+      opacity: 0;
+      position: relative;
+      left: -4.5%;
       .name {
-        @include name-fu;
-        left: 15%;
-        top: 2%;
+        position: absolute;
+        writing-mode: vertical-rl;
+        font-size: 2.5em;
+        left: 16%;
+        top: 4%;
         padding: 12px 7px 18px 8px;
+        border: 2px inset rgba(153, 255, 0, 0.7);
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.15);
+        z-index: -1;
       }
     }
+  }
+  .text {
+    opacity: 0;
+    overflow: hidden;
 
-    img {
-      height: 95%;
+    width: 14.5em;
+    max-width: 20vw;
+
+    margin: 4% 1.6% 4.5% -13%;
+    padding: 1.5% 1.4%;
+
+    border-top-right-radius: 10px;
+    border-top: 1.5px solid #99ff00;
+    border-right: 1.5px solid #99ff00;
+
+    transition-delay: 500ms;
+    .el-card {
+      --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      margin-bottom: 0.25rem !important;
     }
   }
 
   .timeline {
-    @include timeline;
-    animation-delay: 1500ms;
+    overflow: hidden;
+    margin: 2%;
+    margin-left: 0;
+    flex-grow: 1; // 占满剩余空间
 
-    .el-timeline {
-      margin-left: -15% !important;
-      width: 100%;
-    }
+    background-color: #00000040;
+    border-radius: 10px;
+    opacity: 0;
+    animation-delay: 1500ms;
 
     .el-timeline-item__timestamp {
       color: #ff0099 !important;
     }
 
     .el-timeline {
-      --el-timeline-node-size-large: 20px !important;
+      width: 92%;
+        margin: 3.5% auto;
       --el-text-color-secondary: #fff;
       --el-fill-color-blank: rgba(255, 255, 255, 0.15);
-    }
-    .el-timeline-item {
-      --el-text-color-primary: #000;
-      //	width: 75%;
+      .el-card {
+        width: 92%;
+        font-size: 0.9rem;
+      }
+      .el-timeline-item {
+        font-size: 1.1rem;
+        --el-text-color-primary: #000;
+      }
     }
   }
 }

@@ -12,8 +12,10 @@ onMounted(() => {
     entries3.forEach((entry) => {
       // 元素出现在视窗内
       if (entry.isIntersecting) {
-        fu.value!.classList.add("fade-in");
-        li.value!.classList.add("fade-in");
+        setTimeout(() => {
+          fu.value!.classList.add("fade-in");
+          li.value!.classList.add("fade-in");
+        }, 400);
       }
     });
   });
@@ -195,10 +197,6 @@ onMounted(() => {
 a {
   text-decoration: none;
   color: #000;
-}
-
-.fade-in {
-  animation: fade-in 1s ease-in-out 0.5s forwards;
 }
 
 .content {

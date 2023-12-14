@@ -349,5 +349,9 @@ template {
 }
 
 ul{
-	list-style:none
+	list-style:none;
+  margin: 0;
+	padding-inline-start: 0px;
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
