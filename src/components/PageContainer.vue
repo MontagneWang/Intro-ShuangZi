@@ -3,7 +3,7 @@ import { onMounted } from "vue";
 import IntroPageFirst from "./IntroPageFirst.vue";
 import IntroPageSecond from "./IntroPageSecond.vue";
 import IntroPageThird from "./IntroPageThird.vue";
-import FinalPage from "./FinalPage.vue";
+import IntroPageFinal from "./IntroPageFinal.vue";
 
 let options = {};
 
@@ -35,7 +35,7 @@ onMounted(() => {
         <intro-page-third />
       </div>
       <div class="section">
-        <final-page />
+        <intro-page-final />
       </div>
     </full-page>
   </div>
@@ -70,8 +70,4 @@ onMounted(() => {
     height: 100%;
   }
 }
-
-
-
-
 </style>

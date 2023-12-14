@@ -16,9 +16,12 @@ declare module '@vue/runtime-core' {
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     FinalPage: typeof import('./src/components/FinalPage.vue')['default']
     IntroPage: typeof import('./src/components/IntroPage.vue')['default']
+    IntroPageFinal: typeof import('./src/components/IntroPageFinal.vue')['default']
     IntroPageFirst: typeof import('./src/components/IntroPageFirst.vue')['default']
+    IntroPageLast: typeof import('./src/components/IntroPageLast.vue')['default']
     IntroPageSecond: typeof import('./src/components/IntroPageSecond.vue')['default']
     IntroPageThird: typeof import('./src/components/IntroPageThird.vue')['default']
+    PageContainer: typeof import('./src/components/PageContainer.vue')['default']
     TheRightMenu: typeof import('./src/components/TheRightMenu.vue')['default']
   }
 }

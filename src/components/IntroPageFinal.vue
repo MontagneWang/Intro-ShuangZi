@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import Modal from "../utils/ToastComp.vue";
+
 const showModal = ref(false);
 let fu = ref<HTMLDivElement | null>(null);
 let li = ref<HTMLDivElement | null>(null);
+
 onMounted(() => {
   // 判断元素是否在视窗内
   let observer3 = new IntersectionObserver((entries3) => {

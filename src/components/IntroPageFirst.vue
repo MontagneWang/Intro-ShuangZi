@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+
 let logo = ref<HTMLDivElement | null>(null);
 let fu = ref<HTMLDivElement | null>(null);
 let li = ref<HTMLDivElement | null>(null);
+
 onMounted(() => {
   // 判断元素是否在视窗内
   let observer0 = new IntersectionObserver((entries0) => {
@@ -241,7 +243,6 @@ onMounted(() => {
     width: 30vw !important;
   }
 }
-
 
 a {
   text-decoration: none;
