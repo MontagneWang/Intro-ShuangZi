@@ -381,16 +381,10 @@ a {
       position: relative;
       left: -4.5%;
       .name {
-        position: absolute;
-        writing-mode: vertical-rl;
-        font-size: 2.5em;
-        left: 16%;
+        left: 18%;
         top: 4%;
-        padding: 12px 7px 18px 8px;
         border: 2px inset rgba(153, 255, 0, 0.7);
-        border-radius: 5px;
-        background-color: rgba(0, 0, 0, 0.15);
-        z-index: -1;
+        @include name;
       }
     }
   }
@@ -405,8 +399,8 @@ a {
     padding: 1.5% 1.4%;
 
     border-top-right-radius: 10px;
-    border-top: 1.5px solid #99ff00;
-    border-right: 1.5px solid #99ff00;
+    border-top: 2.5px solid #99ff00;
+    border-right: 2.5px solid #99ff00;
 
     transition-delay: 500ms;
     .el-card {

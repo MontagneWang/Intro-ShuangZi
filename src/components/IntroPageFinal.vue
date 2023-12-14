@@ -152,11 +152,11 @@ onMounted(() => {
     font-size: 1.4em;
     .character {
       &.fu {
-        left: 0vw !important;
+        left: 5vw !important;
       }
 
       &.li {
-        right: 1vw !important;
+        right: 5vw !important;
       }
     }
   }
