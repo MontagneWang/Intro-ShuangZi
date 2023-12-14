@@ -66,7 +66,7 @@ onMounted(() => {
 
   <div class="content">
     <div class="outro">
-      <h2>每一位虚拟歌手都由爱诞生，因爱成长</h2>
+      <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
       <h2>我们将情感寄托于他们的歌声之中</h2>
       <h2>借由他们之口，唱出心中所思</h2>
       <h2>祝我们的双子越来越好，听众越来越多🎉</h2>
@@ -154,7 +154,6 @@ onMounted(() => {
       &.fu {
         left: 5vw !important;
       }
-
       &.li {
         right: 5vw !important;
       }
