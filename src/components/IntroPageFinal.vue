@@ -1,25 +1,21 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import Modal from "../utils/ToastComp.vue";
+import createObserver, { delay } from "../utils/observer";
 
 const showModal = ref(false);
-let fu = ref<HTMLDivElement | null>(null);
-let li = ref<HTMLDivElement | null>(null);
+
+let [li, fu] = [
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+];
 
 onMounted(() => {
-  // 判断元素是否在视窗内
-  let observer3 = new IntersectionObserver((entries3) => {
-    entries3.forEach((entry) => {
-      // 元素出现在视窗内
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          fu.value!.classList.add("fade-in");
-          li.value!.classList.add("fade-in");
-        }, 400);
-      }
-    });
+  createObserver(fu.value as HTMLDivElement, async () => {
+    await delay(500);
+    fu.value!.classList.add("fade-in");
+    li.value!.classList.add("fade-in");
   });
-  observer3.observe(fu.value as HTMLDivElement);
 });
 </script>
 

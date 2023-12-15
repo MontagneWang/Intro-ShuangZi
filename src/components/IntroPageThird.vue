@@ -1,67 +1,51 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+import createObserver, { delay } from "../utils/observer";
 
-let fu = ref<HTMLDivElement | null>(null);
-let text = ref<HTMLDivElement | null>(null);
-let timeline2 = ref<HTMLDivElement | null>(null);
-
-onMounted(() => {
-  document.querySelectorAll(".text .el-card").forEach((item, index) => {
-    item.classList.add("hide");
-  });
-  // 判断元素是否在视窗内
-  let observer2 = new IntersectionObserver((entries2) => {
-    entries2.forEach(async (entry) => {
-      // 元素出现在视窗内
-      if (entry.isIntersecting) {
-        // 通过在添加	animation-delay 实现延迟，而不是 setTimeOut（会存在系统与性能误差）
-        const delay = (ms: number) =>
-          new Promise((resolve) => setTimeout(resolve, ms));
-
-        // 人物动画 显示
-        await delay(500);
-        fu.value!.classList.remove("hide");
-        fu.value!.classList.add("animate__animated", "animate__fadeIn");
-        await delay(1000);
-
-        // 文本框动画 向右移动
-        text.value!.classList.add("textMove");
-        await delay(1000);
-
-        // 人物属性文本动画 向上滑动显示
-        document
-          .querySelectorAll(".fu .text .el-card")
-          .forEach((item, index) => {
-            let delayTime = index * 70;
-            (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-            item.classList.remove("hide");
-            item.classList.add("animate__animated", "animate__flipInX");
-          });
-        await delay(200);
-
-        // 显示时间线背景板
-        timeline2.value!.classList.add("fade-in");
-        await delay(1000);
-
-        // 显示每项时间线 计算每个元素的延迟时间，设置 animation-delay 属性
-        document
-          .querySelectorAll(".fu .el-timeline-item")
-          .forEach((item, index) => {
-            const delay = index * 500 + 2000; // 计算每个元素的延迟时间
-            (item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
-            item.classList.remove("hide");
-            item.classList.add("animate__animated", "animate__fadeInUp");
-          });
-      }
-    });
-  });
-
-  observer2.observe(fu.value as HTMLDivElement);
-});
-
+let [fu, text, timeline2] = [
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+];
 let now = new Date();
 let year = now.getFullYear();
 let age = ref(5005 + year - 2022);
+
+onMounted(() => {
+  document.querySelectorAll(".text .el-card").forEach(item => {
+    item.classList.add("hide");
+  });
+  createObserver(fu.value as HTMLDivElement, async () => {
+    // 人物动画 显示
+    await delay(500);
+    fu.value!.classList.remove("hide");
+    fu.value!.classList.add("animate__animated", "animate__fadeIn");
+    await delay(1000);
+    // 文本框动画 向右移动
+    text.value!.classList.add("textMove");
+    await delay(1000);
+    // 人物属性文本动画 向上滑动显示
+    document.querySelectorAll(".fu .text .el-card").forEach((item, index) => {
+      let delayTime = index * 70;
+      (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
+      item.classList.remove("hide");
+      item.classList.add("animate__animated", "animate__flipInX");
+    });
+    await delay(200);
+    // 显示时间线背景板
+    timeline2.value!.classList.add("fade-in");
+    await delay(1000);
+    // 显示每项时间线 计算每个元素的延迟时间，设置 animation-delay 属性
+    document
+      .querySelectorAll(".fu .el-timeline-item")
+      .forEach((item, index) => {
+        const delay = index * 500 + 2000; // 计算每个元素的延迟时间
+        (item as HTMLElement).style.animationDelay = `${delay}ms`; // 设置 animation-delay 属性
+        item.classList.remove("hide");
+        item.classList.add("animate__animated", "animate__fadeInUp");
+      });
+  });
+});
 </script>
 
 <template>

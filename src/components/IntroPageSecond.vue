@@ -1,71 +1,50 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+import createObserver, { delay } from "../utils/observer";
 
-let li = ref<HTMLDivElement | null>(null);
-let text = ref<HTMLDivElement | null>(null);
-let timeline = ref<HTMLDivElement | null>(null);
+let [li, text, timeline] = [
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+];
 
 onMounted(() => {
-  document.querySelectorAll(".el-timeline-item").forEach((item, index) => {
-    item.classList.add("hide");
-  });
-  document.querySelectorAll(".text .el-card").forEach((item, index) => {
-    item.classList.add("hide");
-  });
-  // 判断元素是否在视窗内
-  let observer = new IntersectionObserver((entries) => {
-    entries.forEach(async (entry) => {
-      /**
-       * 当元素出现在视窗内时触发
-       * 使用 异步 与 Promise 来解决 setTimeout 的嵌套问题
-       * 通过在添加	animation-delay 实现延迟，而不是 setTimeOut（会存在系统与性能误差）
-       */
-      if (entry.isIntersecting) {
-        const delay = (ms: number) =>
-          new Promise((resolve) => setTimeout(resolve, ms));
-        // 人物动画 向左移动
-        li.value!.classList.add("move");
-        await delay(1300);
-
-        // 文本框动画 向右移动
-        text.value!.classList.add("textMove");
-        await delay(1000);
-
-        // 人物介绍文本动画 逐行展示
-        document
-          .querySelectorAll(".li .text .el-card")
-          .forEach((item, index) => {
-            let delayTime = index * 70;
-            (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-            item.classList.remove("hide");
-            item.classList.add("animate__animated", "animate__flipInX");
-          });
-        await delay(10);
-        // 显示时间线背景板
-        // timeline.value!.classList.add("animate__animated", "animate__fadeIn");
-        timeline.value!.classList.add("fade-in");
-        await delay(700);
-
-        // 显示每项时间线 计算每个元素的延迟时间，设置 animation-delay 属性
-        document
-          .querySelectorAll(".li .el-timeline-item")
-          .forEach((item, index) => {
-            let delayTime = index * 500 + 2500;
-            (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
-            item.classList.remove("hide");
-            item.classList.add("animate__animated", "animate__fadeInUp");
-          });
-      }
-    });
-  });
-
-  observer.observe(li.value as HTMLDivElement);
+  document
+    .querySelectorAll(".el-timeline-item, .text .el-card")
+    .forEach(item => item.classList.add("hide"));
 
   document
     .querySelectorAll(".el-timeline-item__node--normal")
-    .forEach((item) => {
-      item.classList.add("el-timeline-item__node--large");
+    .forEach(item => item.classList.add("el-timeline-item__node--large"));
+
+  createObserver(li.value as HTMLDivElement, async () => {
+    // 人物动画 向左移动
+    li.value!.classList.add("move");
+    await delay(1300);
+    // 文本框动画 向右移动
+    text.value!.classList.add("textMove");
+    await delay(1000);
+    // 人物介绍文本动画 逐行展示
+    document.querySelectorAll(".li .text .el-card").forEach((item, index) => {
+      let delayTime = index * 70;
+      (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
+      item.classList.remove("hide");
+      item.classList.add("animate__animated", "animate__flipInX");
     });
+    await delay(10);
+    // 显示时间线背景板
+    timeline.value!.classList.add("fade-in");
+    await delay(700);
+    // 显示每项时间线 计算每个元素的延迟时间，设置 animation-delay 属性
+    document
+      .querySelectorAll(".li .el-timeline-item")
+      .forEach((item, index) => {
+        let delayTime = index * 500 + 2500;
+        (item as HTMLElement).style.animationDelay = `${delayTime}ms`;
+        item.classList.remove("hide");
+        item.classList.add("animate__animated", "animate__fadeInUp");
+      });
+  });
 });
 </script>
 
@@ -380,6 +359,7 @@ a {
   opacity: 0;
   position: relative;
   left: -3%;
+
   .name {
     @include name;
     left: 16%;
@@ -387,12 +367,15 @@ a {
     border: 2px outset rgba(255, 0, 153, 0.7);
   }
 }
+
 .text {
   @include text(#ff0099);
 }
+
 .timeline {
   @include timeline;
   animation-delay: 2000ms;
+
   .el-timeline {
     --el-fill-color-blank: rgba(255, 255, 255, 0.5);
   }

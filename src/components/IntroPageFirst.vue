@@ -2,16 +2,18 @@
 import { onMounted, ref } from "vue";
 import createObserver, { delay } from "../utils/observer";
 
-let logo = ref<HTMLDivElement | null>(null);
-let fu = ref<HTMLDivElement | null>(null);
-let li = ref<HTMLDivElement | null>(null);
-let nameLi = ref<HTMLDivElement | null>(null);
-let nameFu = ref<HTMLDivElement | null>(null);
-let intro = ref<HTMLDivElement | null>(null);
+let [logo, fu, li, nameLi, nameFu, intro] = [
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+];
 
 onMounted(() => {
   createObserver(logo.value as HTMLDivElement, async () => {
-    await delay(500);
+    await delay(750);
     logo.value!.classList.add("fade-in");
     await delay(500);
     fu.value!.classList.add("slide-from-left");
@@ -22,16 +24,6 @@ onMounted(() => {
     await delay(1000);
     intro.value!.classList.add("fade-in");
   });
-  // let observer0 = new IntersectionObserver((entries0) => {
-  //   entries0.forEach((entry) => {
-  //     // 元素出现在视窗内
-  //     if (entry.isIntersecting) {
-  //       fu.value!.classList.add("slide-from-left");
-  //       li.value!.classList.add("slide-from-right");
-  //     }
-  //   });
-  // });
-  // observer0.observe(logo.value as HTMLDivElement);
 });
 </script>
 
