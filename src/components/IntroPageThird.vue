@@ -11,10 +11,30 @@ let now = new Date();
 let year = now.getFullYear();
 let age = ref(5005 + year - 2022);
 
+import { version as vueVersion } from "vue";
+import { version as EpVersion } from "element-plus";
+import { MoreFilled } from "@element-plus/icons-vue";
+const activities = [
+  {
+    content: "Custom icon",
+    timestamp: "2018-04-12 20:46",
+  },
+  {
+    content: "Custom color",
+    timestamp: "2018-04-03 20:46",
+  },
+];
 onMounted(() => {
+  // document.querySelector(
+  //   "div.timeline.fade-in > ul > li:nth-child(2) > div.el-timeline-item__node.el-timeline-item__node--normal.el-timeline-item__node--success.el-timeline-item__node--large"
+  // ).style.left = '-20px'
+  // element.style.color = "red";
+
   document.querySelectorAll(".text .el-card").forEach(item => {
     item.classList.add("hide");
   });
+  // todo 把图标左移
+
   createObserver(fu.value as HTMLDivElement, async () => {
     // 人物动画 显示
     await delay(500);
@@ -96,7 +116,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          年龄：12 <span class="blur">其实已经{{ age }}岁了</span>
+          年龄：<span class="blur">{{ age }} 岁</span>
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -149,26 +169,47 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：红瞳，黑发带墨绿挑染。左侧有个小麻花辫，右侧有三角耳饰。
+          形象：红瞳，黑发带墨绿挑染；左侧有个小麻花辫，右侧有三角耳饰
         </el-card>
       </div>
 
       <div ref="timeline2" class="timeline">
         <el-timeline>
           <el-timeline-item
-            icon="mic"
+            icon="Promotion"
             placement="top"
+            color="#99ff00cc"
             timestamp="2021 年 7 月 13 日"
             type="primary"
           >
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
             双子四周年，生贺曲《交彗 Comets Meet》发布
           </el-timeline-item>
           <el-timeline-item
-            icon="Promotion"
+            icon="Mic"
             placement="top"
+            color="#99ff00cc"
             timestamp="2022 年 5 月 1 日"
             type="success"
           >
+            <template #dot>
+              <el-icon
+                color="#99ff00"
+                class="avatar"
+                style="
+                  width: 2rem;
+                  height: 2rem;
+                  font-size: 1.6rem;
+                  top: -0.3rem;
+                "
+              >
+                <Mic />
+              </el-icon>
+            </template>
             <el-card>
               <h3>
                 🎉 起氏双子 Ace 声库发布&emsp;<a
@@ -193,19 +234,31 @@ onMounted(() => {
             </el-card>
           </el-timeline-item>
           <el-timeline-item
-            icon="mic"
+            icon="Promotion"
             placement="top"
+            color="#99ff00cc"
             timestamp="2022 年 7 月 13 日"
             type="primary"
           >
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
             双子五周年，《如果仅靠谎言将我的世界照亮》发布
           </el-timeline-item>
           <el-timeline-item
             icon="Management"
             placement="top"
+            color="#99ff00cc"
             timestamp="2022 年 9 月 2 日"
             type="danger"
           >
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Management />
+              </el-icon>
+            </template>
             设定集《万灵梦书》发售，您可在
             <a
               href="https://gf.bilibili.com/item/detail/1105040028"
@@ -216,20 +269,31 @@ onMounted(() => {
             获取小说版
           </el-timeline-item>
           <el-timeline-item
-            icon="mic"
+            icon="Promotion"
             placement="top"
+            color="#99ff00cc"
             timestamp="2023 年 7 月 13 日"
             type="primary"
           >
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
             起氏双子六岁啦，生贺曲《神子》发布
           </el-timeline-item>
           <el-timeline-item
             icon="Promotion"
             placement="top"
+            color="#99ff00cc"
             timestamp="「但愿你走向我那个时刻，一切都没改变过」"
             type="success"
           >
-            <!--  -->
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar" style="top: -0.3rem">
+                <MoonNight />
+              </el-icon>
+            </template>
           </el-timeline-item>
         </el-timeline>
       </div>
@@ -352,6 +416,24 @@ a {
   @include hyperlink(#99ff00, #ff0099);
 }
 
+.avatar {
+  border: 2px solid #99ff00;
+  background-color: #00000077;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  top: -0.2rem;
+  left: calc(100% - 150% + 5px);
+  font-size: 1.1rem;
+  position: relative;
+  // overflow: hidden;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // margin: 0px !important;
+  // background-image: url("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+  // background-position: center center;
+}
+
 .character {
   opacity: 0;
   position: relative;
@@ -371,6 +453,7 @@ a {
 .timeline {
   @include timeline;
   animation-delay: 1500ms;
+
   .el-timeline {
     --el-fill-color-blank: rgba(255, 255, 255, 0.15);
   }

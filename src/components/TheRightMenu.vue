@@ -7,7 +7,7 @@ const showModal = ref(false);
 let rightMenu = ref<HTMLDivElement | null>(null);
 
 // 全局变量，整个圆盘的半径 radius
-const radius = 110;
+const radius = 150;
 onMounted(() => {
   const items = document.querySelectorAll(
     ".eachItem"
@@ -149,12 +149,14 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss" scoped>
+
 .rightMenu {
   margin: 0;
   padding: 0;
   display: none;
   position: fixed;
   z-index: 999;
+  font-size: 1.5rem;
 
   .circle {
     //height: 200px;
@@ -187,8 +189,8 @@ onMounted(() => {
   -moz-transform: scale(1) rotate(0);
   -transform: scale(1) rotate(0);
 }
-
-$eachItemHeight: 60px;
+// 在这里修改每个小圆的大小
+$eachItemHeight: 90px;
 .eachItem {
   border-radius: 50%;
   color: #eeeeee;
@@ -209,11 +211,11 @@ $eachItemHeight: 60px;
   overflow: hidden;
 
   &:nth-child(2n-1) {
-    border: 1.5px #ff0099 solid;
+    border: 3px #ff0099 solid;
   }
 
   &:nth-child(2n) {
-    border: 1.5px #99ff00 solid;
+    border: 3px #99ff00 solid;
   }
 
   // 放大且变亮

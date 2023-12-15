@@ -70,16 +70,20 @@ onMounted(() => {
       <br />
       <br />
       <br />
-      <p>
-        您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
-          >「右键菜单」</span
-        >了解更多双子的信息
-      </p>
-      <p>
-        也可以点击 [<span @click="showModal = !showModal" style="color: #ff0099"
-          >此处</span
-        >] 查看关于本站点的相关信息
-      </p>
+      <div class="more">
+        <p>
+          您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
+            >「右键菜单」</span
+          >了解更多双子的信息
+        </p>
+        <p style="margin-top: -0.8rem;">
+          也可以点击 [<span
+            @click="showModal = !showModal"
+            style="color: #ff0099"
+            >此处</span
+          >] 查看关于本站点的相关信息
+        </p>
+      </div>
     </div>
 
     <div ref="fu" class="character fu">
@@ -165,8 +169,8 @@ a {
   position: relative;
 
   .outro {
-    width: 50vw;
-    margin: 33vh auto 24vh;
+    margin: 29vh auto 0;
+    font-size: 1.5rem;
   }
 
   .character {

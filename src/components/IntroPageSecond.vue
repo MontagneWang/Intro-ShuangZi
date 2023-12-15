@@ -97,7 +97,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          年龄：<span class="blur">秘密</span>
+          年龄：<span class="blur">年龄是秘密</span>
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -149,7 +149,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：绿瞳，发色外白内粉。有四条长发与一条侧马尾。
+          形象：绿瞳，发色外白内粉；有四条长发与一条侧马尾
         </el-card>
       </div>
 
@@ -158,10 +158,16 @@ onMounted(() => {
           <el-timeline-item
             icon="FolderChecked"
             placement="top"
+            color="#ff0099"
             timestamp="2016 年 3 月 19 日"
             type="primary"
             style="font-weight: bold"
           >
+            <template #dot>
+              <el-icon color="#ff0099" class="avatar">
+                <FolderChecked />
+              </el-icon>
+            </template>
             「<a
               href="https://space.bilibili.com/193181849"
               target="_blank"
@@ -176,11 +182,26 @@ onMounted(() => {
           </el-timeline-item>
 
           <el-timeline-item
-            icon="Promotion"
+            icon="Mic"
+            color="#ff0099"
             placement="top"
             timestamp="2018 年 1 月 6 日"
             type="success"
           >
+            <template #dot>
+              <el-icon
+                color="#ff0099"
+                class="avatar"
+                style="
+                  width: 2rem;
+                  height: 2rem;
+                  font-size: 1.6rem;
+                  top: -0.3rem;
+                "
+              >
+                <mic />
+              </el-icon>
+            </template>
             <el-card>
               <h3>🎉 起氏双子首个 Utau 声库发布</h3>
               <p>
@@ -202,11 +223,26 @@ onMounted(() => {
           </el-timeline-item>
 
           <el-timeline-item
-            icon="Promotion"
+            icon="mic"
+            color="#ff0099"
             placement="top"
             timestamp="2019 年 7 月 13 日"
             type="success"
           >
+            <template #dot>
+              <el-icon
+                color="#ff0099"
+                class="avatar"
+                style="
+                  width: 2rem;
+                  height: 2rem;
+                  font-size: 1.6rem;
+                  top: -0.3rem;
+                "
+              >
+                <mic />
+              </el-icon>
+            </template>
             <el-card>
               <h3>🎉 起氏双子 DeepVocal 声库发布</h3>
               <p>
@@ -226,11 +262,17 @@ onMounted(() => {
             </el-card>
           </el-timeline-item>
           <el-timeline-item
-            icon="mic"
+            icon="Promotion"
+            color="#ff0099"
             placement="top"
             timestamp="2020 年 7 月 13 日"
             type="primary"
           >
+            <template #dot>
+              <el-icon color="#ff0099" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
             双子三周年，生贺曲《不揽清风不望月》发布
           </el-timeline-item>
         </el-timeline>
@@ -354,7 +396,23 @@ onMounted(() => {
 a {
   @include hyperlink(#ff0099, #99ff00);
 }
-
+.avatar {
+  border: 2px solid #ff0099;
+  background-color: #ffffff34;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  top: -0.2rem;
+  left: calc(100% - 150% + 5px);
+  font-size: 1.1rem;
+  position: relative;
+  // overflow: hidden;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // margin: 0px !important;
+  // background-image: url("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+  // background-position: center center;
+}
 .character {
   opacity: 0;
   position: relative;

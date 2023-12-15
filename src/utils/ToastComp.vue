@@ -39,6 +39,7 @@ const props = defineProps({
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   transition: opacity 0.3s ease;
+  font-size: 1.3rem;
 }
 
 .modal-container {
