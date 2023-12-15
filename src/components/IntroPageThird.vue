@@ -254,191 +254,141 @@ let age = ref(5005 + year - 2022);
 </template>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 1280px) {
-  .content {
-    .name {
-      font-size: 2.5em !important;
-      left: 16% !important;
-    }
-    .text {
-      width: 18vw !important;
-      font-size: 1rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        --el-font-size-small: 1rem !important;
-        --el-timeline-node-size-large: 1.2rem !important;
-        .el-card {
-          font-size: 1rem !important;
-          --el-card-padding: 0.5rem 1.3rem !important;
-        }
-        .el-timeline-item {
-          font-size: 1.2rem !important;
-        }
-      }
-    }
-  }
-}
+// @media screen and (min-width: 1280px) {
+//   .content {
+//     .name {
+//       font-size: 2.5em !important;
+//       left: 16% !important;
+//     }
+//     .text {
+//       width: 18vw !important;
+//       font-size: 1rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         --el-font-size-small: 1rem !important;
+//         --el-timeline-node-size-large: 1.2rem !important;
+//         .el-card {
+//           font-size: 1rem !important;
+//           --el-card-padding: 0.5rem 1.3rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 1.2rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1536px) {
-  .content {
-    .name {
-      font-size: 3rem !important;
-      left: 16% !important;
-    }
+// @media screen and (min-width: 1536px) {
+//   .content {
+//     .name {
+//       font-size: 3rem !important;
+//       left: 16% !important;
+//     }
 
-    .text {
-      width: 18vw !important;
-      font-size: 1.25rem !important;
-    }
+//     .text {
+//       width: 18vw !important;
+//       font-size: 1.25rem !important;
+//     }
 
-    .timeline {
-      .el-timeline {
-        font-size: 1rem !important;
-        --el-font-size-small: 1.3rem !important;
-        --el-timeline-node-size-large: 1.5rem !important;
+//     .timeline {
+//       .el-timeline {
+//         font-size: 1rem !important;
+//         --el-font-size-small: 1.3rem !important;
+//         --el-timeline-node-size-large: 1.5rem !important;
 
-        .el-card {
-          font-size: 1.3rem !important;
-          --el-card-padding: 1rem 2rem !important;
-        }
-        .el-timeline-item {
-          font-size: 1.5rem !important;
-        }
-      }
-    }
-  }
-}
+//         .el-card {
+//           font-size: 1.3rem !important;
+//           --el-card-padding: 1rem 2rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 1.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1920px) {
-  .content {
-    .name {
-      font-size: 4rem !important;
-      left: 17% !important;
-      top: 5% !important;
-    }
-    .text {
-      width: 20vw !important;
-      font-size: 1.7rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        font-size: 1.8rem !important;
-        --el-font-size-small: 1.8rem !important;
-        --el-timeline-node-size-large: 2rem !important;
+// @media screen and (min-width: 1920px) {
+//   .content {
+//     .name {
+//       font-size: 4rem !important;
+//       left: 17% !important;
+//       top: 5% !important;
+//     }
+//     .text {
+//       width: 20vw !important;
+//       font-size: 1.7rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         font-size: 1.8rem !important;
+//         --el-font-size-small: 1.8rem !important;
+//         --el-timeline-node-size-large: 2rem !important;
 
-        .el-card {
-          --el-card-padding: 0.75rem 2.5rem !important;
-        }
-      }
-    }
-  }
-}
+//         .el-card {
+//           --el-card-padding: 0.75rem 2.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 2560px) {
-  .content {
-    .name {
-      font-size: 6rem !important;
-      left: 17% !important;
-      top: 4.5% !important;
-    }
-    .text {
-      margin-left: -13.5% !important;
-      width: 18vw !important;
-      font-size: 2.3rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        font-size: 2.4rem !important;
-        --el-font-size-small: 2.4rem !important;
-        --el-timeline-node-size-large: 3rem !important;
-        .el-card {
-          --el-card-padding: 1.75rem 3.5rem !important;
-          width: 100% !important;
-          font-size: 2.5rem !important;
-        }
-        .el-timeline-item {
-          font-size: 2.5rem !important;
-        }
-      }
-    }
-  }
-}
+// @media screen and (min-width: 2560px) {
+//   .content {
+//     .name {
+//       font-size: 6rem !important;
+//       left: 17% !important;
+//       top: 4.5% !important;
+//     }
+//     .text {
+//       margin-left: -13.5% !important;
+//       width: 18vw !important;
+//       font-size: 2.3rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         font-size: 2.4rem !important;
+//         --el-font-size-small: 2.4rem !important;
+//         --el-timeline-node-size-large: 3rem !important;
+//         .el-card {
+//           --el-card-padding: 1.75rem 3.5rem !important;
+//           width: 100% !important;
+//           font-size: 2.5rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 2.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 a {
   @include hyperlink(#99ff00, #ff0099);
 }
-.content {
-  height: 100vh;
-  overflow: hidden;
-  .container {
-    width: 84vw;
-    height: 88vh;
-    margin: 6vh auto;
-    text-align: left;
-    display: flex;
-    .character {
-      opacity: 0;
-      position: relative;
-      left: -4.5%;
-      .name {
-        left: 18%;
-        top: 4%;
-        border: 2px inset rgba(153, 255, 0, 0.7);
-        @include name;
-      }
-    }
+
+.character {
+  opacity: 0;
+  position: relative;
+  left: -4.5%;
+  .name {
+    @include name;
+    left: 18%;
+    top: 4%;
+    border: 2px inset rgba(153, 255, 0, 0.7);
   }
-  .text {
-    opacity: 0;
-    overflow: hidden;
+}
 
-    width: 14.5em;
-    max-width: 20vw;
+.text {
+  @include text(#99ff00);
+}
 
-    margin: 4% 1.6% 4.5% -13%;
-    padding: 1.5% 1.4%;
-
-    border-top-right-radius: 10px;
-    border-top: 2.5px solid #99ff00;
-    border-right: 2.5px solid #99ff00;
-
-    transition-delay: 500ms;
-    .el-card {
-      --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      margin-bottom: 0.25rem !important;
-    }
-  }
-
-  .timeline {
-    overflow: hidden;
-    margin: 2%;
-    margin-left: 0;
-    flex-grow: 1; // 占满剩余空间
-
-    background-color: #00000040;
-    border-radius: 10px;
-    opacity: 0;
-    animation-delay: 1500ms;
-
-    .el-timeline-item__timestamp {
-      color: #ff0099 !important;
-    }
-
-    .el-timeline {
-      width: 92%;
-        margin: 3.5% auto;
-      --el-text-color-secondary: #fff;
-      --el-fill-color-blank: rgba(255, 255, 255, 0.15);
-      .el-card {
-        width: 92%;
-        font-size: 0.9rem;
-      }
-      .el-timeline-item {
-        font-size: 1.1rem;
-        --el-text-color-primary: #000;
-      }
-    }
+.timeline {
+  @include timeline;
+  animation-delay: 1500ms;
+  .el-timeline {
+    --el-fill-color-blank: rgba(255, 255, 255, 0.15);
   }
 }
 </style>

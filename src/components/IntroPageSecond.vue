@@ -261,185 +261,140 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 1280px) {
-  .content {
-    .name {
-      font-size: 2.5em !important;
-      left: 16% !important;
-    }
-    .text {
-      width: 18vw !important;
-      font-size: 1rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        --el-font-size-small: 1rem !important;
-        --el-timeline-node-size-large: 1.2rem !important;
-        .el-card {
-          font-size: 1rem !important;
-          --el-card-padding: 0.5rem 1.3rem !important;
-        }
-        .el-timeline-item {
-          font-size: 1.2rem !important;
-        }
-      }
-    }
-  }
-}
+// @media screen and (min-width: 1280px) {
+//   .content {
+//     .name {
+//       font-size: 2.5em !important;
+//       left: 16% !important;
+//     }
+//     .text {
+//       width: 18vw !important;
+//       font-size: 1rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         --el-font-size-small: 1rem !important;
+//         --el-timeline-node-size-large: 1.2rem !important;
+//         .el-card {
+//           font-size: 1rem !important;
+//           --el-card-padding: 0.5rem 1.3rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 1.2rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1536px) {
-  .content {
-    .name {
-      font-size: 3rem !important;
-      left: 16% !important;
-    }
+// @media screen and (min-width: 1536px) {
+//   .content {
+//     .name {
+//       font-size: 3rem !important;
+//       left: 16% !important;
+//     }
 
-    .text {
-      width: 19vw !important;
-      font-size: 1.2rem !important;
-    }
+//     .text {
+//       width: 19vw !important;
+//       font-size: 1.2rem !important;
+//     }
 
-    .timeline {
-      .el-timeline {
-        font-size: 1rem !important;
-        --el-font-size-small: 1.3rem !important;
-        --el-timeline-node-size-large: 1.5rem !important;
+//     .timeline {
+//       .el-timeline {
+//         font-size: 1rem !important;
+//         --el-font-size-small: 1.3rem !important;
+//         --el-timeline-node-size-large: 1.5rem !important;
 
-        .el-card {
-          font-size: 1.2rem !important;
-          --el-card-padding: 1rem 2rem !important;
-        }
-        .el-timeline-item {
-          font-size: 1.5rem !important;
-        }
-      }
-    }
-  }
-}
+//         .el-card {
+//           font-size: 1.2rem !important;
+//           --el-card-padding: 1rem 2rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 1.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 1920px) {
-  .content {
-    .name {
-      font-size: 4rem !important;
-      left: 17% !important;
-      top: 5% !important;
-    }
-    .text {
-      width: 20vw !important;
-      font-size: 1.7rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        font-size: 1.8rem !important;
-        --el-font-size-small: 1.8rem !important;
-        --el-timeline-node-size-large: 2rem !important;
+// @media screen and (min-width: 1920px) {
+//   .content {
+//     .name {
+//       font-size: 4rem !important;
+//       left: 17% !important;
+//       top: 5% !important;
+//     }
+//     .text {
+//       width: 20vw !important;
+//       font-size: 1.7rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         font-size: 1.8rem !important;
+//         --el-font-size-small: 1.8rem !important;
+//         --el-timeline-node-size-large: 2rem !important;
 
-        .el-card {
-          --el-card-padding: 0.75rem 2.5rem !important;
-        }
-      }
-    }
-  }
-}
+//         .el-card {
+//           --el-card-padding: 0.75rem 2.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media screen and (min-width: 2560px) {
-  .content {
-    .name {
-      font-size: 6rem !important;
-      left: 17% !important;
-      top: 4.5% !important;
-    }
-    .text {
-      margin-left: -13.5% !important;
-      width: 18vw !important;
-      font-size: 2.3rem !important;
-    }
-    .timeline {
-      .el-timeline {
-        font-size: 2.4rem !important;
-        --el-font-size-small: 2.4rem !important;
-        --el-timeline-node-size-large: 3rem !important;
-        .el-card {
-          --el-card-padding: 1.75rem 3.5rem !important;
-          width: 100% !important;
-          font-size: 2.5rem !important;
-        }
-        .el-timeline-item {
-          font-size: 2.5rem !important;
-        }
-      }
-    }
-  }
-}
+// @media screen and (min-width: 2560px) {
+//   .content {
+//     .name {
+//       font-size: 6rem !important;
+//       left: 17% !important;
+//       top: 4.5% !important;
+//     }
+//     .text {
+//       margin-left: -13.5% !important;
+//       width: 18vw !important;
+//       font-size: 2.3rem !important;
+//     }
+//     .timeline {
+//       .el-timeline {
+//         font-size: 2.4rem !important;
+//         --el-font-size-small: 2.4rem !important;
+//         --el-timeline-node-size-large: 3rem !important;
+//         .el-card {
+//           --el-card-padding: 1.75rem 3.5rem !important;
+//           width: 100% !important;
+//           font-size: 2.5rem !important;
+//         }
+//         .el-timeline-item {
+//           font-size: 2.5rem !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
 a {
   @include hyperlink(#ff0099, #99ff00);
 }
-.content {
-  height: 100vh;
-  overflow: hidden;
-  .container {
-    width: 84vw;
-    height: 88vh;
-    margin: 6vh auto;
-    text-align: left;
-    display: flex;
-    .character {
-      opacity: 0;
-      position: relative;
-      left: -3%;
-      .name {
-        @include name;
-        left: 16%;
-        top: 4%;
-        border: 2px outset rgba(255, 0, 153, 0.7);
-      }
-    }
-    .text {
-      opacity: 0;
-      overflow: hidden;
 
-      width: 14.5em;
-      max-width: 20vw;
-
-      margin: 4% 1.6% 4.5% -13%;
-      padding: 1.5% 1.4%;
-
-      border-top-right-radius: 10px;
-      border-top: 2.5px solid #ff0099;
-      border-right: 2.5px solid #ff0099;
-      .el-card {
-        --el-card-bg-color: rgba(0, 0, 0, 0.1) !important;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        margin-bottom: 0.25rem !important;
-        font-size: 1.3rem;
-      }
-    }
-    .timeline {
-      overflow: hidden;
-      margin: 2%;
-      margin-left: 0;
-      flex-grow: 1; // 占满剩余空间
-
-      background-color: #00000040;
-      border-radius: 10px;
-      opacity: 0;
-      animation-delay: 2000ms;
-      .el-timeline {
-        width: 92%;
-        margin: 3.5% auto;
-        --el-text-color-secondary: #fff;
-        --el-fill-color-blank: rgba(255, 255, 255, 0.5);
-        .el-card {
-          width: 92%;
-          font-size: 1rem;
-        }
-        .el-timeline-item {
-          font-size: 1.1rem;
-          --el-text-color-primary: #000;
-        }
-      }
-    }
+.character {
+  opacity: 0;
+  position: relative;
+  left: -3%;
+  .name {
+    @include name;
+    left: 16%;
+    top: 4%;
+    border: 2px outset rgba(255, 0, 153, 0.7);
+  }
+}
+.text {
+  @include text(#ff0099);
+}
+.timeline {
+  @include timeline;
+  animation-delay: 2000ms;
+  .el-timeline {
+    --el-fill-color-blank: rgba(255, 255, 255, 0.5);
   }
 }
 </style>

@@ -117,89 +117,56 @@ onMounted(() => {
 // 		}
 // 	}
 // }
-@media screen and (min-width: 1366px) {
-  .content {
-    font-size: 1.25em;
-    .character {
-      &.fu {
-        left: 0 !important;
-      }
+// @media screen and (min-width: 1536px) {
+//   .content {
+//     font-size: 1.4em;
+//     .character {
+//       &.fu {
+//         left: 5vw !important;
+//       }
+//       &.li {
+//         right: 5vw !important;
+//       }
+//     }
+//   }
+// }
 
-      &.li {
-        right: 0 !important;
-      }
-    }
-  }
-}
+// @media screen and (min-width: 1920px) {
+//   .content {
+//     font-size: 1.75em;
+//     .character {
+//       &.fu {
+//         left: 0vw !important;
+//       }
 
-@media screen and (min-width: 1440px) {
-  .content {
-    font-size: 1.45em;
-    .character {
-      &.fu {
-        left: 0 !important;
-      }
+//       &.li {
+//         right: 1vw !important;
+//       }
+//     }
+//   }
+// }
 
-      &.li {
-        right: 0 !important;
-      }
-    }
-  }
-}
+// @media screen and (min-width: 2560px) {
+//   .content {
+//     font-size: 2.3em;
+//     .character {
+//       &.fu {
+//         left: 0vw !important;
+//       }
 
-@media screen and (min-width: 1536px) {
-  .content {
-    font-size: 1.4em;
-    .character {
-      &.fu {
-        left: 5vw !important;
-      }
-      &.li {
-        right: 5vw !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .content {
-    font-size: 1.75em;
-    .character {
-      &.fu {
-        left: 0vw !important;
-      }
-
-      &.li {
-        right: 1vw !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 2560px) {
-  .content {
-    font-size: 2.3em;
-    .character {
-      &.fu {
-        left: 0vw !important;
-      }
-
-      &.li {
-        right: 1vw !important;
-      }
-    }
-  }
-}
+//       &.li {
+//         right: 1vw !important;
+//       }
+//     }
+//   }
+// }
 
 a {
-  text-decoration: none;
   color: #000;
 }
 
 .content {
-  height: 100vh;
   position: relative;
-  overflow: hidden;
 
   .outro {
     width: 50vw;

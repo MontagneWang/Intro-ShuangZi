@@ -1,23 +1,37 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+import createObserver, { delay } from "../utils/observer";
 
 let logo = ref<HTMLDivElement | null>(null);
 let fu = ref<HTMLDivElement | null>(null);
 let li = ref<HTMLDivElement | null>(null);
+let nameLi = ref<HTMLDivElement | null>(null);
+let nameFu = ref<HTMLDivElement | null>(null);
+let intro = ref<HTMLDivElement | null>(null);
 
 onMounted(() => {
-  // 判断元素是否在视窗内
-  let observer0 = new IntersectionObserver((entries0) => {
-    entries0.forEach((entry) => {
-      // 元素出现在视窗内
-      if (entry.isIntersecting) {
-        fu.value!.classList.add("slide-from-left");
-        li.value!.classList.add("slide-from-right");
-      }
-    });
+  createObserver(logo.value as HTMLDivElement, async () => {
+    await delay(500);
+    logo.value!.classList.add("fade-in");
+    await delay(500);
+    fu.value!.classList.add("slide-from-left");
+    li.value!.classList.add("slide-from-right");
+    await delay(1500);
+    nameLi.value!.classList.add("fade-in");
+    nameFu.value!.classList.add("fade-in");
+    await delay(1000);
+    intro.value!.classList.add("fade-in");
   });
-
-  observer0.observe(logo.value as HTMLDivElement);
+  // let observer0 = new IntersectionObserver((entries0) => {
+  //   entries0.forEach((entry) => {
+  //     // 元素出现在视窗内
+  //     if (entry.isIntersecting) {
+  //       fu.value!.classList.add("slide-from-left");
+  //       li.value!.classList.add("slide-from-right");
+  //     }
+  //   });
+  // });
+  // observer0.observe(logo.value as HTMLDivElement);
 });
 </script>
 
@@ -29,7 +43,9 @@ onMounted(() => {
           alt="起复"
           src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
         />
-        <div class="name fu">起 <span style="color: #99ff00">复</span></div>
+        <div ref="nameFu" class="name fu">
+          起 <span style="color: #99ff00">复</span>
+        </div>
       </div>
 
       <main class="main">
@@ -46,7 +62,7 @@ onMounted(() => {
           </a>
         </div>
 
-        <div class="intro">
+        <div ref="intro" class="intro">
           <h2>
             你好！这里是『<a
               href="https://space.bilibili.com/193181849"
@@ -94,7 +110,9 @@ onMounted(() => {
           alt="起礼"
           src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
         />
-        <div class="name li">起 <span style="color: #ff0099">礼</span></div>
+        <div ref="nameLi" class="name li">
+          起 <span style="color: #ff0099">礼</span>
+        </div>
       </div>
     </div>
   </div>
@@ -125,57 +143,8 @@ onMounted(() => {
 // 		width: 25vw !important;
 // 	}
 // }
-// @media screen and (min-width: 1366px) {
-//   .fu .name {
-//     right: 16% !important;
-//     font-size: 3rem !important;
-//   }
-//   .li .name {
-//     left: 16% !important;
-//     top: 3% !important;
-//     font-size: 3rem !important;
-//   }
-//   .intro {
-//     width: 42vw !important;
-//     font-size: 1.1rem !important;
-//     padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-//   }
-//   .logo {
-//     img {
-//       margin-top: 10vh !important;
-//     }
-//   }
-//   iframe {
-//     width: 25vw !important;
-//   }
-// }
 
-// @media screen and (min-width: 1440px) {
-//   .fu .name {
-//     right: 18% !important;
-//     font-size: 3rem !important;
-//   }
-//   .li .name {
-//     left: 18% !important;
-//     top: 5% !important;
-//     font-size: 3rem !important;
-//   }
-//   .intro {
-//     width: 35vw !important;
-//     font-size: 1.1rem !important;
-//     padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-//   }
-//   .logo {
-//     img {
-//       margin-top: 10vh !important;
-//     }
-//   }
-//   iframe {
-//     width: 25vw !important;
-//   }
-// }
-
-// @media screen and (min-width: 1500px) {
+// @media screen and (min-width: 1536px) {
 //   .fu .name {
 //     right: 16% !important;
 //     font-size: 3rem !important;
@@ -250,8 +219,6 @@ onMounted(() => {
 // }
 
 a {
-  text-decoration: none;
-
   &:link,
   &:visited {
     span:nth-child(1),
@@ -288,78 +255,69 @@ a {
 .qifu {
   @include underline(#99ff00, #99ff00);
 }
-
 .qili {
   @include underline(#ff0099, #ff0099);
 }
 
-.content {
-  height: 100vh;
-  overflow: hidden;
-  .container {
-    width: 100vw;
-    height: 88vh;
-    margin: 6vh auto;
-    text-align: left;
-    display: flex;
+.content .container {
+  width: 100vw;
+  position: relative;
+  top: 7%;
+  left: 2.5%;
+
+  .character {
+    height: 92%;
+    opacity: 0;
     position: relative;
-    top: 7%;
-    left: 2.5%;
+    //max-width: 30vw;
 
-    .character {
-      height: 92%;
-      position: relative;
-      opacity: 0;
-      //max-width: 30vw;
-
-      &.fu {
-        .name {
-          @include name;
-          right: 14%;
-          top: 30%;
-          border: 2px inset rgba(153, 255, 0, 0.7);
-        }
-      }
-      &.li {
-        .name {
-          @include name;
-          left: 15%;
-          top: 3%;
-          border: 2px outset rgba(255, 0, 153, 0.7);
-        }
+    &.fu {
+      .name {
+        @include name;
+        opacity: 0;
+        right: 14%;
+        top: 30%;
+        border: 2px inset rgba(153, 255, 0, 0.7);
       }
     }
-    .main {
-      width: 40vw;
-      max-width: 40vw;
-      height: 80vh;
-
-      .logo {
+    &.li {
+      .name {
+        @include name;
         opacity: 0;
-        transform: translateY(-4vh);
-        height: 15vh;
-        text-align: center;
-        animation: fade-in 0.75s ease 0.5s forwards;
+        left: 15%;
+        top: 3%;
+        border: 2px outset rgba(255, 0, 153, 0.7);
       }
+    }
+  }
+  .main {
+    width: 40vw;
+    max-width: 40vw;
+    height: 80vh;
 
-      .intro {
-        font-size: 1.2rem;
-        max-height: 50vh;
-        min-height: 50vh;
-        margin: 3vh 0;
-        padding: 0% 4%;
-        opacity: 0;
-        overflow: hidden;
-        animation: fade-in 1s ease 3.5s forwards;
-        border-radius: 7px;
-        border: #ff0099 2px solid;
-        border-bottom-color: #99ff00;
-        border-left-color: #99ff00;
-        background-color: rgba(0, 0, 0, 0.15);
+    .logo {
+      opacity: 0;
+      transform: translateY(-4vh);
+      height: 15vh;
+      text-align: center;
+    }
 
-        p:last-of-type {
-          margin-bottom: -1rem;
-        }
+    .intro {
+      font-size: 1.2rem;
+      max-height: 50vh;
+      min-height: 50vh;
+      margin: 3vh 0;
+      padding: 0% 4%;
+      opacity: 0;
+      overflow: hidden;
+      border-radius: 7px;
+      border: #ff0099 2px solid;
+      border-bottom-color: #99ff00;
+      border-left-color: #99ff00;
+      background-color: rgba(0, 0, 0, 0.15);
+
+      p:last-of-type {
+        margin-bottom: -1rem;
       }
     }
   }
