@@ -92,7 +92,7 @@ onMounted(() => {
             marginheight="0"
             marginwidth="0"
             src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-            style="width:30vw;height:13vh;margin-left: -0.5vw;"
+            style="width:30vw;height:10vh;margin-left: -0.5vw;"
           ></iframe>
         </div>
       </main>
@@ -111,105 +111,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1280px) {
-// 	.fu .name {
-// 		right: 14% !important;
-// 		font-size: 2.5rem !important;
-// 	}
-// 	.li .name {
-// 		left: 16% !important;
-// 		top: 3% !important;
-// 		font-size: 2.5rem !important;
-// 	}
-// 	.intro {
-// 		width: 40vw !important;
-// 		font-size: 1rem !important;
-// 		padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-// 	}
-// 	.logo {
-// 		img {
-// 			margin-top: 10vh !important;
-// 		}
-// 	}
-// 	iframe {
-// 		width: 25vw !important;
-// 	}
-// }
-
-// @media screen and (min-width: 1536px) {
-//   .fu .name {
-//     right: 16% !important;
-//     font-size: 3rem !important;
-//   }
-//   .li .name {
-//     left: 16% !important;
-//     top: 3% !important;
-//     font-size: 3rem !important;
-//   }
-//   .intro {
-//     width: 40vw !important;
-//     font-size: 1.2rem !important;
-//     padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-//   }
-//   .logo {
-//     img {
-//       margin-top: 10vh !important;
-//     }
-//   }
-//   iframe {
-//     width: 25vw !important;
-//   }
-// }
-
-// @media screen and (min-width: 1920px) {
-//   .fu .name {
-//     right: 18% !important;
-//     font-size: 3.5rem !important;
-//   }
-//   .li .name {
-//     left: 18% !important;
-//     font-size: 3.5rem !important;
-//   }
-//   .intro {
-//     width: 43vw !important;
-//     font-size: 1.6rem !important;
-//     padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-//   }
-//   .logo {
-//     img {
-//       margin-top: 10vh !important;
-//     }
-//   }
-//   iframe {
-//     width: 30vw !important;
-//   }
-// }
-
-// @media screen and (min-width: 2560px) {
-//   .fu .name {
-//     right: 18% !important;
-//     font-size: 5rem !important;
-//   }
-//   .li .name {
-//     left: 18% !important;
-//     font-size: 5rem !important;
-//   }
-//   .intro {
-//     margin-top: 16vh !important;
-//     width: 42vw !important;
-//     font-size: 2.3rem !important;
-//     padding: 1.5% 1.5% 1% !important; // 最下方为 1%
-//   }
-//   .logo {
-//     img {
-//       margin-top: 10vh !important;
-//     }
-//   }
-//   iframe {
-//     width: 30vw !important;
-//   }
-// }
-
 a {
   &:link,
   &:visited {
@@ -236,7 +137,6 @@ a {
     }
   }
 }
-
 .link {
   @include underline(#99ff00, #ff0099);
 
@@ -250,7 +150,6 @@ a {
 .qili {
   @include underline(#ff0099, #ff0099);
 }
-
 .content .container {
   width: 100vw;
   position: relative;
@@ -295,10 +194,10 @@ a {
     }
 
     .intro {
-      font-size: 1.2vw;
-      max-height: 50vh;
-      min-height: 50vh;
-      margin: 3vh 0;
+      font-size: 1.24vw;
+      max-height: 49vh;
+      min-height: 49vh;
+      margin: 4vh 0;
       padding: 0% 4%;
       opacity: 0;
       overflow: hidden;

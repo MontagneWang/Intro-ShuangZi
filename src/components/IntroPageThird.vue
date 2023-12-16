@@ -282,7 +282,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-
 a {
   @include hyperlink(#99ff00, #ff0099);
 }
@@ -297,12 +296,6 @@ a {
   left: calc(100% - 150% + 5px);
   font-size: 1.1vw;
   position: relative;
-  // overflow: hidden;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // margin: 0 !important;
-  // background-image: url("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
-  // background-position: center center;
 }
 
 .character {
