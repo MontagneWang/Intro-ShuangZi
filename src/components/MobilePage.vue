@@ -14,7 +14,7 @@ onMounted(() => {
   let backgroundPosition = Math.random() >= 0.5 ? "left" : "right";
   let element = document.querySelector(".mobile-container") as HTMLElement;
   element.style.background =
-    "url('https://article.biliimg.com/bfs/new_dyn/c91d2ea651071acd4e005038eb735c981402305269.jpg@1e_1c.webp') no-repeat center " +
+    "url('https://article.biliimg.com/bfs/new_dyn/83898a52606bbd43acdb4fc7394e438f1402305269.jpg@1e_1c.webp') no-repeat center " +
     backgroundPosition;
   element.style.backgroundSize = "cover";
 
@@ -33,7 +33,6 @@ onMounted(() => {
 
 <template>
   <!-- 竖排文字 向上滑入 -->
-  <!-- todo 做一个从中间向四角推开的动画 -->
   <div ref="mask" class="mask"></div>
   <div class="mobile-container">
     <div class="content">
@@ -66,7 +65,7 @@ onMounted(() => {
   border-radius: 6vw;
 }
 .mobile-container {
-  background: url("https://article.biliimg.com/bfs/new_dyn/c91d2ea651071acd4e005038eb735c981402305269.jpg@1e_1c.webp")
+  background: url("https://article.biliimg.com/bfs/new_dyn/83898a52606bbd43acdb4fc7394e438f1402305269.jpg@1e_1c.webp")
     no-repeat center right;
   background-size: cover;
 
