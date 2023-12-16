@@ -7,11 +7,14 @@ const showModal = ref(false);
 let rightMenu = ref<HTMLDivElement | null>(null);
 
 // 全局变量，整个圆盘的半径 radius；并将小圆的直径存入根半径，方便 SCSS 调用
-let radius = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
-document.documentElement.style.setProperty("--screen-width", `${radius*0.6}px`);
+let radius = ref(window.innerWidth / 12.8); // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+document.documentElement.style.setProperty("--screen-width", `${radius.value*0.6}px`);
 
-function setMenu() {}
-window.addEventListener("resize", setMenu);
+// 窗口缩放时保持右键菜单大小不变
+window.addEventListener("resize", ()=>{
+ radius.value = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+ document.documentElement.style.setProperty("--screen-width", `${radius.value*0.6}px`);
+});
 
 onMounted(() => {
   let items = document.querySelectorAll(
@@ -67,8 +70,8 @@ onMounted(() => {
   // 显示右键菜单
   function showRightMenu(e: MouseEvent) {
     clearTimeout(zIndexTimer);
-    let top = e.clientY - radius;
-    let left = e.clientX - radius;
+    let top = e.clientY - radius.value;
+    let left = e.clientX - radius.value;
     // 设置 rightMenu 的位置并显示，z-index 取反为正
     rightMenu.value!.style.zIndex = zIndex;
     rightMenu.value!.style.top = top + "px";
