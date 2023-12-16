@@ -83,16 +83,14 @@ onMounted(() => {
           <p>名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
           <p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
           <br />
-          <!-- todo 优化 -->
           <iframe
             border="0"
             title="要将等待换成什么"
             frameborder="no"
-            height="86"
             marginheight="0"
             marginwidth="0"
             src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-            style="width:30vw;height:10vh;margin-left: -0.5vw;"
+            style="width: 30vw; height: 10vh; margin-left: -0.5vw"
           ></iframe>
         </div>
       </main>
@@ -194,7 +192,7 @@ a {
     }
 
     .intro {
-      font-size: 1.24vw;
+      font-size: 1.2vw;
       max-height: 49vh;
       min-height: 49vh;
       margin: 4vh 0;

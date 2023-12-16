@@ -2,11 +2,7 @@
 import { onMounted, ref } from "vue";
 import PageContainer from "./components/PageContainer.vue";
 import TheRightMenu from "./components/TheRightMenu.vue";
-
-// 移动端跳转
-if (window.innerWidth <= 768) {
-  window.location.href = "https://space.bilibili.com/193181849";
-}
+import MobilePage from "./components/MobilePage.vue";
 
 // 随机返回一个字符串
 function randomChoose(str1: string, str2: string) {
@@ -58,16 +54,38 @@ document.addEventListener("keydown", e => {
     );
   }
 });
+onMounted(() => {
+  console.clear();
+  console.log(
+    ` %c「要将等待换成什么 我早就数不清楚了」\n%c「但愿你走向我那个时刻 一切都没改变过」`,
+    `color: #99FF00; font-size: 16px;margin: 10px 0 5px 0 ;`,
+    "color: #FF0099; font-size: 16px;margin: 5px 0 15px 0 ;"
+  );
+});
 
+// 移动端跳转
+let width = ref(window.innerWidth);
+window.addEventListener("resize", () => {
+  width.value = window.innerWidth;
+});
 </script>
 
 <template>
-  <the-right-menu />
-  <page-container />
+  <mobile-page v-if="width <= 768" />
+  <template v-else>
+    <page-container />
+    <the-right-menu />
+  </template>
 </template>
 
 <style lang="scss">
 html * {
   font-family: LXGW WenKai Lite, serif !important;
+}
+// 在最外层设置背景而不是在 full-page 设置，修复快速滚动时空白问题
+body{
+  background: url("https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg@1e_1c.webp")
+    no-repeat fixed bottom;
+  background-size: cover;
 }
 </style>

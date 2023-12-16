@@ -5,16 +5,21 @@ import createObserver, { delay } from "../utils/observer";
 
 const showModal = ref(false);
 
-let [li, fu] = [
+let [text, fu] = [
   ref<HTMLDivElement | null>(null),
   ref<HTMLDivElement | null>(null),
 ];
 
 onMounted(() => {
-  createObserver(fu.value as HTMLDivElement, async () => {
+  createObserver(text.value as HTMLDivElement, async () => {
     await delay(500);
+    (document.querySelector(".finalContainer") as HTMLElement).classList.add(
+      "change"
+    );
+    await delay(1000);
     fu.value!.classList.add("fade-in");
-    li.value!.classList.add("fade-in");
+    await delay(1500);
+    text.value!.classList.add("fade-in");
   });
 });
 </script>
@@ -60,60 +65,82 @@ onMounted(() => {
     </modal>
   </Teleport>
 
-  <div class="content">
-    <div class="outro">
-      <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
-      <h2>我们将情感寄托于他们的歌声之中</h2>
-      <h2>借由他们之口，唱出心中所思</h2>
-      <h2>祝我们的双子越来越好，听众越来越多🎉</h2>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div class="more">
-        <p>
-          您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
-            >「右键菜单」</span
-          >了解更多双子的信息
-        </p>
-        <p style="margin-top: -0.8vw;">
-          也可以点击 [<span
-            @click="showModal = !showModal"
-            style="color: #ff0099"
-            >此处</span
-          >] 查看关于本站点的相关信息
-        </p>
+  <div class="finalContainer">
+    <div class="mask"></div>
+    <div class="content">
+      <div ref="text" class="outro">
+        <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
+        <h2>我们将情感寄托于他们的歌声之中</h2>
+        <h2>借由他们之口，唱出心中所思</h2>
+        <h2>祝我们的双子越来越好，听众越来越多🎉</h2>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="more">
+          <p>
+            您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
+              >「右键菜单」</span
+            >了解更多双子的信息
+          </p>
+          <p style="margin-top: -0.8vw">
+            也可以点击 [<span
+              @click="showModal = !showModal"
+              style="color: #ff0099"
+              >此处</span
+            >] 查看关于本站点的相关信息
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div ref="fu" class="character fu">
-      <img
-        alt="起复"
-        src="https://article.biliimg.com/bfs/article/ce971427853edff10f6c81718ac4ae0ceff0cd41.png@1e_1c.webp"
-      />
-    </div>
+      <div ref="fu" class="character fu">
+        <img
+          alt="双子"
+          src="https://article.biliimg.com/bfs/new_dyn/7073c0305d8d30a6a33b4db9687289b91402305269.png@1e_1c.webp"
+        />
+      </div>
 
-    <div ref="li" class="character li">
-      <img
-        alt="起礼"
-        src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
-      />
+      <!-- <div ref="li" class="character li">
+        <img
+          alt="起礼"
+          src="https://article.biliimg.com/bfs/article/e41acee7c137303a9743f04fc263a749999518c3.png@1e_1c.webp"
+        />
+      </div> -->
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 a {
   color: #000;
 }
 
+.finalContainer {
+  // idea 是不是直接用一个 img 标签撑满屏幕，配合 fadeIn 就可以解决？
+  background: url("https://article.biliimg.com/bfs/new_dyn/ac887267f2ef6a0c2207eb18b21e8c9e1402305269.gif@1e_1c.webp")
+    no-repeat fixed center;
+  background-size: cover;
+  transition: opacity 1s ease;
+  opacity: 0;
+  &.change {
+    opacity: 1;
+  }
+
+  .mask {
+    width: 84vw;
+    height: 88vh;
+    position: fixed;
+    left: 8vw;
+    top: 6vh;
+    background-color: #ffffffa0;
+    border-radius: 1.2vw;
+  }
+}
 .content {
   position: relative;
-
   .outro {
-    margin: 29vh auto 0;
+    opacity: 0;
+    margin: 31vh 0 0 20vw;
     font-size: 1.5vw;
   }
 
@@ -122,10 +149,13 @@ a {
     height: 85vh;
     position: absolute;
     bottom: 2vh;
-
     &.fu {
+      // opacity: 0;
+      // left: 4vw;
       opacity: 0;
-      left: 4vw;
+      left: 3vw;
+      bottom: -23vh;
+      height: 130vh;
     }
 
     &.li {

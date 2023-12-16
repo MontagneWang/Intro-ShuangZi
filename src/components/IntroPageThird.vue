@@ -149,7 +149,7 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          形象：红瞳，黑发带墨绿挑染；左侧有个小麻花辫，右侧有三角耳饰
+          形象：红瞳，黑发带墨绿挑染；有个小麻花辫和三角耳饰，四条眉毛
         </el-card>
       </div>
 
