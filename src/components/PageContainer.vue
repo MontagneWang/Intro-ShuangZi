@@ -56,7 +56,7 @@ onMounted(() => {
   left: 8vw;
   top: 6vh;
   background-color: #ffffffa0;
-  border-radius: 10px;
+  border-radius: 1.2vw;
 }
 
 .logo2 {

@@ -83,6 +83,7 @@ onMounted(() => {
           <p>名字源于论语中的克己复礼，设计灵感源于「箫韶九成 凤凰来仪」</p>
           <p>如果您是第一次了解到『起氏双子』，不妨听听下面这首歌曲</p>
           <br />
+          <!-- todo 优化 -->
           <iframe
             border="0"
             title="要将等待换成什么"
@@ -91,8 +92,7 @@ onMounted(() => {
             marginheight="0"
             marginwidth="0"
             src="//music.163.com/outchain/player?type=2&id=1957143939&auto=0&height=66"
-            style="box-shadow: none !important; margin-left: -8px"
-            width="450"
+            style="width:30vw;height:13vh;margin-left: -0.5vw;"
           ></iframe>
         </div>
       </main>
@@ -269,7 +269,7 @@ a {
         opacity: 0;
         right: 14%;
         top: 30%;
-        border: 2px inset rgba(153, 255, 0, 0.7);
+        border: 0.25vw inset rgba(153, 255, 0, 0.7);
       }
     }
     &.li {
@@ -278,7 +278,7 @@ a {
         opacity: 0;
         left: 15%;
         top: 3%;
-        border: 2px outset rgba(255, 0, 153, 0.7);
+        border: 0.25vw outset rgba(255, 0, 153, 0.7);
       }
     }
   }
@@ -295,15 +295,15 @@ a {
     }
 
     .intro {
-      font-size: 1.2rem;
+      font-size: 1.2vw;
       max-height: 50vh;
       min-height: 50vh;
       margin: 3vh 0;
       padding: 0% 4%;
       opacity: 0;
       overflow: hidden;
-      border-radius: 7px;
-      border: #ff0099 2px solid;
+      border-radius: 0.7vw;
+      border: #ff0099 0.25vw solid;
       border-bottom-color: #99ff00;
       border-left-color: #99ff00;
       background-color: rgba(0, 0, 0, 0.15);

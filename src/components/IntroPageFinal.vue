@@ -76,7 +76,7 @@ onMounted(() => {
             >「右键菜单」</span
           >了解更多双子的信息
         </p>
-        <p style="margin-top: -0.8rem;">
+        <p style="margin-top: -0.8vw;">
           也可以点击 [<span
             @click="showModal = !showModal"
             style="color: #ff0099"
@@ -103,63 +103,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1280px) {
-// 	.content{
-// 		font-size: 1.15em;
-// 		.character {
-// 			&.fu {
-// 				left: -0.5vw!important;
-// 			}
-
-// 			&.li {
-// 				right: 1vw!important;
-// 			}
-// 		}
-// 	}
-// }
-// @media screen and (min-width: 1536px) {
-//   .content {
-//     font-size: 1.4em;
-//     .character {
-//       &.fu {
-//         left: 5vw !important;
-//       }
-//       &.li {
-//         right: 5vw !important;
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 1920px) {
-//   .content {
-//     font-size: 1.75em;
-//     .character {
-//       &.fu {
-//         left: 0vw !important;
-//       }
-
-//       &.li {
-//         right: 1vw !important;
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 2560px) {
-//   .content {
-//     font-size: 2.3em;
-//     .character {
-//       &.fu {
-//         left: 0vw !important;
-//       }
-
-//       &.li {
-//         right: 1vw !important;
-//       }
-//     }
-//   }
-// }
 
 a {
   color: #000;
@@ -170,7 +113,7 @@ a {
 
   .outro {
     margin: 29vh auto 0;
-    font-size: 1.5rem;
+    font-size: 1.5vw;
   }
 
   .character {

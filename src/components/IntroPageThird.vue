@@ -11,30 +11,10 @@ let now = new Date();
 let year = now.getFullYear();
 let age = ref(5005 + year - 2022);
 
-import { version as vueVersion } from "vue";
-import { version as EpVersion } from "element-plus";
-import { MoreFilled } from "@element-plus/icons-vue";
-const activities = [
-  {
-    content: "Custom icon",
-    timestamp: "2018-04-12 20:46",
-  },
-  {
-    content: "Custom color",
-    timestamp: "2018-04-03 20:46",
-  },
-];
 onMounted(() => {
-  // document.querySelector(
-  //   "div.timeline.fade-in > ul > li:nth-child(2) > div.el-timeline-item__node.el-timeline-item__node--normal.el-timeline-item__node--success.el-timeline-item__node--large"
-  // ).style.left = '-20px'
-  // element.style.color = "red";
-
   document.querySelectorAll(".text .el-card").forEach(item => {
     item.classList.add("hide");
   });
-  // todo 把图标左移
-
   createObserver(fu.value as HTMLDivElement, async () => {
     // 人物动画 显示
     await delay(500);
@@ -156,7 +136,7 @@ onMounted(() => {
         <el-card
           style="
             margin-bottom: 0.15em;
-            /* font-size: 0.95rem; */
+            /* font-size: 0.95vw; */
             background-image: linear-gradient(
               20deg,
               #99ff00aa 0%,
@@ -201,10 +181,10 @@ onMounted(() => {
                 color="#99ff00"
                 class="avatar"
                 style="
-                  width: 2rem;
-                  height: 2rem;
-                  font-size: 1.6rem;
-                  top: -0.3rem;
+                  width: 2vw;
+                  height: 2vw;
+                  font-size: 1.6vw;
+                  top: -0.3vw;
                 "
               >
                 <Mic />
@@ -290,7 +270,7 @@ onMounted(() => {
             type="success"
           >
             <template #dot>
-              <el-icon color="#99ff00" class="avatar" style="top: -0.3rem">
+              <el-icon color="#99ff00" class="avatar" style="top: -0.3vw">
                 <MoonNight />
               </el-icon>
             </template>
@@ -302,134 +282,25 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1280px) {
-//   .content {
-//     .name {
-//       font-size: 2.5em !important;
-//       left: 16% !important;
-//     }
-//     .text {
-//       width: 18vw !important;
-//       font-size: 1rem !important;
-//     }
-//     .timeline {
-//       .el-timeline {
-//         --el-font-size-small: 1rem !important;
-//         --el-timeline-node-size-large: 1.2rem !important;
-//         .el-card {
-//           font-size: 1rem !important;
-//           --el-card-padding: 0.5rem 1.3rem !important;
-//         }
-//         .el-timeline-item {
-//           font-size: 1.2rem !important;
-//         }
-//       }
-//     }
-//   }
-// }
 
-// @media screen and (min-width: 1536px) {
-//   .content {
-//     .name {
-//       font-size: 3rem !important;
-//       left: 16% !important;
-//     }
-
-//     .text {
-//       width: 18vw !important;
-//       font-size: 1.25rem !important;
-//     }
-
-//     .timeline {
-//       .el-timeline {
-//         font-size: 1rem !important;
-//         --el-font-size-small: 1.3rem !important;
-//         --el-timeline-node-size-large: 1.5rem !important;
-
-//         .el-card {
-//           font-size: 1.3rem !important;
-//           --el-card-padding: 1rem 2rem !important;
-//         }
-//         .el-timeline-item {
-//           font-size: 1.5rem !important;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 1920px) {
-//   .content {
-//     .name {
-//       font-size: 4rem !important;
-//       left: 17% !important;
-//       top: 5% !important;
-//     }
-//     .text {
-//       width: 20vw !important;
-//       font-size: 1.7rem !important;
-//     }
-//     .timeline {
-//       .el-timeline {
-//         font-size: 1.8rem !important;
-//         --el-font-size-small: 1.8rem !important;
-//         --el-timeline-node-size-large: 2rem !important;
-
-//         .el-card {
-//           --el-card-padding: 0.75rem 2.5rem !important;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 2560px) {
-//   .content {
-//     .name {
-//       font-size: 6rem !important;
-//       left: 17% !important;
-//       top: 4.5% !important;
-//     }
-//     .text {
-//       margin-left: -13.5% !important;
-//       width: 18vw !important;
-//       font-size: 2.3rem !important;
-//     }
-//     .timeline {
-//       .el-timeline {
-//         font-size: 2.4rem !important;
-//         --el-font-size-small: 2.4rem !important;
-//         --el-timeline-node-size-large: 3rem !important;
-//         .el-card {
-//           --el-card-padding: 1.75rem 3.5rem !important;
-//           width: 100% !important;
-//           font-size: 2.5rem !important;
-//         }
-//         .el-timeline-item {
-//           font-size: 2.5rem !important;
-//         }
-//       }
-//     }
-//   }
-// }
 a {
   @include hyperlink(#99ff00, #ff0099);
 }
 
 .avatar {
-  border: 2px solid #99ff00;
+  border: 0.2vw solid #99ff00;
   background-color: #00000077;
   border-radius: 50%;
-  width: 1.6rem;
-  height: 1.6rem;
-  top: -0.2rem;
+  width: 1.6vw;
+  height: 1.6vw;
+  top: -0.2vw;
   left: calc(100% - 150% + 5px);
-  font-size: 1.1rem;
+  font-size: 1.1vw;
   position: relative;
   // overflow: hidden;
   // background-repeat: no-repeat;
   // background-size: cover;
-  // margin: 0px !important;
+  // margin: 0 !important;
   // background-image: url("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
   // background-position: center center;
 }
@@ -442,7 +313,7 @@ a {
     @include name;
     left: 18%;
     top: 4%;
-    border: 2px inset rgba(153, 255, 0, 0.7);
+    border: 0.2vw inset rgba(153, 255, 0, 0.7);
   }
 }
 
