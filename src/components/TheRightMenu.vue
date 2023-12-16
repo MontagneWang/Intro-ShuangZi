@@ -8,12 +8,18 @@ let rightMenu = ref<HTMLDivElement | null>(null);
 
 // 全局变量，整个圆盘的半径 radius；并将小圆的直径存入根半径，方便 SCSS 调用
 let radius = ref(window.innerWidth / 12.8); // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
-document.documentElement.style.setProperty("--screen-width", `${radius.value*0.6}px`);
+document.documentElement.style.setProperty(
+  "--screen-width",
+  `${radius.value * 0.6}px`
+);
 
 // 窗口缩放时保持右键菜单大小不变
-window.addEventListener("resize", ()=>{
- radius.value = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
- document.documentElement.style.setProperty("--screen-width", `${radius.value*0.6}px`);
+window.addEventListener("resize", () => {
+  radius.value = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+  document.documentElement.style.setProperty(
+    "--screen-width",
+    `${radius.value * 0.6}px`
+  );
 });
 
 onMounted(() => {
@@ -73,17 +79,22 @@ onMounted(() => {
     let top = e.clientY - radius.value;
     let left = e.clientX - radius.value;
     // 设置 rightMenu 的位置并显示，z-index 取反为正
-    rightMenu.value!.style.zIndex = zIndex;
-    rightMenu.value!.style.top = top + "px";
-    rightMenu.value!.style.left = left + "px";
-    rightMenu.value!.style.display = "block";
-    rightMenu.value!.style.opacity = String(0);
-    rightMenu.value!.style.transition = "opacity 0.5s";
+    let menuStyle = rightMenu.value!.style;
+    Object.assign(menuStyle, {
+      zIndex: zIndex.toString(),
+      top: `${top}px`,
+      left: `${left}px`,
+      display: "block",
+      opacity: "0",
+      transition: "opacity 0.5s",
+    });
     // 使用requestAnimationFrame触发动画
     requestAnimationFrame(() => {
-      rightMenu.value!.style.opacity = String(1);
+      Object.assign(menuStyle, {
+        opacity: "1",
+        display: "block",
+      });
       rightMenu.value!.classList.add("active");
-      rightMenu.value!.style.display = "block";
     });
   }
 
