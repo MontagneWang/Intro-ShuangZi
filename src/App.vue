@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import PageContainer from "./components/PageContainer.vue";
 import TheRightMenu from "./components/TheRightMenu.vue";
 
@@ -42,7 +43,7 @@ document.addEventListener("visibilitychange", function () {
 });
 
 // 控制台输出
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", e => {
   if (
     e.code === "F12" ||
     ((e.code === "KeyJ" || e.code === "KeyI") &&
@@ -57,6 +58,7 @@ document.addEventListener("keydown", (e) => {
     );
   }
 });
+
 </script>
 
 <template>
@@ -67,7 +69,5 @@ document.addEventListener("keydown", (e) => {
 <style lang="scss">
 html * {
   font-family: LXGW WenKai Lite, serif !important;
-  //font-size: 2rem!important;
 }
-
 </style>

@@ -10,7 +10,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElCard: typeof import('element-plus/es')['ElCard']
+    ElCol: typeof import('element-plus/es')['ElCol']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElTimeline: typeof import('element-plus/es')['ElTimeline']
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     IntroPageFinal: typeof import('./src/components/IntroPageFinal.vue')['default']

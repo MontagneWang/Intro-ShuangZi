@@ -39,15 +39,15 @@ const props = defineProps({
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   transition: opacity 0.3s ease;
+  font-size: 1.3vw;
 }
 
 .modal-container {
-  /*width: 300px;*/
   margin: auto;
-  padding: 25px 30px 10px 30px;
+  padding: 2vw 2.3vw 0.5vw;
   background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  border-radius: 0.6vw;
+  box-shadow: 0 0.2vw 0.8vw rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }
 
@@ -57,7 +57,7 @@ const props = defineProps({
 }
 
 .modal-body {
-  margin: 20px 0;
+  margin: 2vw 0;
 }
 
 .modal-default-button {

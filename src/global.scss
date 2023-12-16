@@ -1,115 +1,119 @@
 // 最少需要传入两个颜色参数，不然下划线不会显示
 @mixin underline($colors...) {
-  // 使用可变参数
   text-decoration: none;
   position: relative;
   &:after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -2px;
+    bottom: -0.2vw;
     width: 100%;
-    height: 2px;
+    height: 0.2vw;
     background: linear-gradient(to right, $colors); // 使用 $colors 变量
   }
   &:hover {
     color: nth($colors, 1); // 设置 hover 时的颜色为第一个颜色
   }
 }
-
 @mixin hyperlink($color1, $color2) {
   text-decoration: none;
-
   &:link {
     color: $color1;
   }
-
   &:hover {
     color: $color2;
   }
-
   &:visited {
     color: $color1;
   }
-
   &:hover:visited {
     color: $color2;
   }
 }
-
-@mixin name-li {
+@mixin name {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.15);
+  padding: 0.8vw 0.5vw 1.2vw;
   writing-mode: vertical-rl;
-  font-size: 2.5em;
-  left: 14%;
-  top: 2%;
-  padding: 12px 7px 18px 8px;
-  border: 2px outset rgba(255, 0, 153, 0.7);
-  border-radius: 5px;
+  border-radius: 0.5vw;
   z-index: -1;
-}
-
-@mixin name-fu {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.15);
-  writing-mode: vertical-rl;
-  font-size: 2.5em;
-
-  border: 2px inset rgba(153, 255, 0, 0.7);
-  border-radius: 5px;
-  z-index: -1;
-}
-
-@mixin timeline {
-  position: absolute;
-  top: 15vh;
-  right: 10vw;
-  height: 80vh;
-  width: 40vw;
-  margin-top: -5vh;
-  background-color: #00000040;
-  border-radius: 10px;
-  padding: 2.5% 0 0 4.5%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  text-align: left;
-  opacity: 0;
+  font-size: 3vw;
 }
 @mixin text($color) {
-  position: absolute;
-  text-align: left;
-  font-size: 1.1em;
-  padding: 3%;
-  margin-top: 2%;
   opacity: 0;
-  width: 72%;
-  transition: all 1s;
-  border-top-right-radius: 10px;
-  border-top: 1.5px solid $color;
-  border-right: 1.5px solid $color;
+  overflow: hidden;
+  width: 15vw;
+  max-width: 20vw;
+  margin: 4% 1.6% 4.5% -13%;
+  padding: 1.5% 1.4%;
+  border-top-right-radius: 1vw;
+  border-top: 0.25vw solid $color;
+  border-right: 0.25vw solid $color;
+  .el-card {
+    --el-card-bg-color: rgba(0, 0, 0, 0.1);
+    border: 0.1vw solid rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.25vw !important;
+    font-size: 1.26vw;
+  }
 }
-
-.hide {
+// todo 样式响应优化
+@mixin timeline {
+  overflow: hidden;
+  margin: 2%;
+  margin-left: 0;
+  flex-grow: 1; // 占满剩余空间
+  background-color: #00000040;
+  border-radius: 1vw;
   opacity: 0;
+  .el-timeline {
+    width: 92%;
+    margin: 3.5% auto;
+    --el-font-size-small: 1.3vw;
+    --el-text-color-secondary: #fff;
+    --el-timeline-node-size-large: 2vw;
+    .el-card {
+      width: 92%;
+      font-size: 1.3vw;
+    }
+    .el-timeline-item {
+      font-size: 1.5vw;
+      --el-text-color-primary: #000;
+    }
+  }
 }
 
-.blur {
-  filter: blur(2.5px);
-  transition: all 0.75s;
+.content {
+  height: 100vh;
+  overflow: hidden;
+  .container {
+    width: 84vw;
+    height: 88vh;
+    margin: 6vh auto;
+    text-align: left;
+    display: flex;
+  }
 }
 
-.blur:hover {
-  transition: all 0.75s;
-  filter: none;
+a {
+  text-decoration: none;
 }
 img {
   height: 100%;
 }
-// 动画
+.hide {
+  opacity: 0;
+}
+.blur {
+  filter: blur(0.25vw);
+  transition: all 0.75s;
+  &:hover {
+    transition: all 0.75s;
+    filter: none;
+  }
+}
+
 .fade-in {
-  animation: fade-in 0.75s forwards;
+  animation: fade-in 0.75s ease forwards;
 }
 .fadeInUp {
   opacity: 0;
@@ -118,12 +122,12 @@ img {
 }
 // 动画名 | 持续时间 | 动画方式 | 延迟时间 | forwards 保持在最后一帧
 .slide-from-left {
-  animation: slide-from-left 1s ease 1s forwards;
+  animation: slide-from-left 1s ease forwards;
 }
 .slide-from-right {
-  animation: slide-from-right 1s ease 1s forwards;
+  animation: slide-from-right 1s ease forwards;
 }
-
+// 动画
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -142,7 +146,6 @@ img {
     transform: translateY(0);
   }
 }
-
 @keyframes slide-from-left {
   0% {
     opacity: 0;
@@ -152,7 +155,6 @@ img {
     opacity: 1;
   }
 }
-
 @keyframes slide-from-right {
   0% {
     opacity: 0;
@@ -162,7 +164,6 @@ img {
     opacity: 1;
   }
 }
-
 @keyframes li-right2left {
   0% {
     opacity: 0;
@@ -176,7 +177,6 @@ img {
 .move {
   animation: li-right2left 1s ease forwards;
 }
-
 @keyframes text-left2right {
   0% {
     opacity: 0;

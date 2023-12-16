@@ -6,13 +6,27 @@ import { ref } from "vue";
 const showModal = ref(false);
 let rightMenu = ref<HTMLDivElement | null>(null);
 
-// 全局变量，整个圆盘的半径 radius
-const radius = 110;
+// 全局变量，整个圆盘的半径 radius；并将小圆的直径存入根半径，方便 SCSS 调用
+let radius = ref(window.innerWidth / 12.8); // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+document.documentElement.style.setProperty(
+  "--screen-width",
+  `${radius.value * 0.6}px`
+);
+
+// 窗口缩放时保持右键菜单大小不变
+window.addEventListener("resize", () => {
+  radius.value = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+  document.documentElement.style.setProperty(
+    "--screen-width",
+    `${radius.value * 0.6}px`
+  );
+});
+
 onMounted(() => {
-  const items = document.querySelectorAll(
+  let items = document.querySelectorAll(
     ".eachItem"
   ) as unknown as HTMLElement[];
-  const zIndex = window
+  let zIndex = window
     .getComputedStyle(rightMenu.value!)
     .getPropertyValue("z-index");
   // @ts-ignore
@@ -29,7 +43,7 @@ onMounted(() => {
     ).toFixed(4)}%`;
   });
   // （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
-  window.addEventListener("mousedown", (e) => {
+  window.addEventListener("mousedown", e => {
     if (
       e.which !== 3 &&
       rightMenu.value!.classList.contains("active") &&
@@ -39,7 +53,7 @@ onMounted(() => {
     }
   });
   // 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
-  window.addEventListener("contextmenu", (e) => {
+  window.addEventListener("contextmenu", e => {
     // ctrl + 右键，呼出原版菜单
     if (e.ctrlKey) {
       return;
@@ -62,20 +76,25 @@ onMounted(() => {
   // 显示右键菜单
   function showRightMenu(e: MouseEvent) {
     clearTimeout(zIndexTimer);
-    let top = e.clientY - radius;
-    let left = e.clientX - radius;
+    let top = e.clientY - radius.value;
+    let left = e.clientX - radius.value;
     // 设置 rightMenu 的位置并显示，z-index 取反为正
-    rightMenu.value!.style.zIndex = zIndex;
-    rightMenu.value!.style.top = top + "px";
-    rightMenu.value!.style.left = left + "px";
-    rightMenu.value!.style.display = "block";
-    rightMenu.value!.style.opacity = String(0);
-    rightMenu.value!.style.transition = "opacity 0.5s";
+    let menuStyle = rightMenu.value!.style;
+    Object.assign(menuStyle, {
+      zIndex: zIndex.toString(),
+      top: `${top}px`,
+      left: `${left}px`,
+      display: "block",
+      opacity: "0",
+      transition: "opacity 0.5s",
+    });
     // 使用requestAnimationFrame触发动画
     requestAnimationFrame(() => {
-      rightMenu.value!.style.opacity = String(1);
+      Object.assign(menuStyle, {
+        opacity: "1",
+        display: "block",
+      });
       rightMenu.value!.classList.add("active");
-      rightMenu.value!.style.display = "block";
     });
   }
 
@@ -127,7 +146,6 @@ onMounted(() => {
           href="https://www.bilibili.com/read/cv16388511"
           target="_blank"
         ></a>
-        <!--加群改为 toast 提醒，展示两个群号-->
         <a
           class="eachItem"
           href="/"
@@ -149,93 +167,44 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-.rightMenu {
-  margin: 0;
-  padding: 0;
-  display: none;
-  position: fixed;
-  z-index: 999;
-
-  .circle {
-    //height: 200px;
-    //width: 200px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .item {
-    //height: 200px;
-    //width: 200px;
-    position: relative;
-    border-radius: 50%;
-    opacity: 0;
-    -webkit-transform-origin: 50% 50%;
-    -moz-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: scale(0.1) rotate(-270deg);
-    -moz-transform: scale(0.1) rotate(-270deg);
-    -transform: scale(0.1) rotate(-270deg);
-    -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
-  }
-}
-
-.active .item {
-  opacity: 1;
-  -webkit-transform: scale(1) rotate(0);
-  -moz-transform: scale(1) rotate(0);
-  -transform: scale(1) rotate(0);
-}
-
-$eachItemHeight: 60px;
+// 在这里修改每个小圆的大小
+// $eachHeight: 90px;
+$eachHeight: var(--screen-width);
 .eachItem {
   border-radius: 50%;
   color: #eeeeee;
   display: block;
-  width: $eachItemHeight;
-  height: $eachItemHeight;
-  line-height: $eachItemHeight;
-  // 避免使用除法
-  margin-left: -($eachItemHeight * 0.5 + 1px);
-  margin-top: -($eachItemHeight * 0.5 + 1px);
-  background-size: $eachItemHeight;
   position: absolute;
   text-align: center;
-  //box-shadow: inset 0 0 $eachItemHeight #ffffff30;
-  //-webkit-box-shadow: inset 0 0 $eachItemHeight #ffffff30;
-  //-moz-box-shadow: inset 0 0 $eachItemHeight #ffffff30;
   transition: all 0.5s;
   overflow: hidden;
-
-  &:nth-child(2n-1) {
-    border: 1.5px #ff0099 solid;
-  }
-
-  &:nth-child(2n) {
-    border: 1.5px #99ff00 solid;
-  }
-
+  width: $eachHeight;
+  height: $eachHeight;
+  line-height: $eachHeight;
+  // 避免使用除法
+  margin-left: calc(-1 * $eachHeight * 0.5 - 1px);
+  margin-top: calc(-1 * $eachHeight * 0.5 - 1px);
+  background-size: $eachHeight;
   // 放大且变亮
   &:hover {
     z-index: 1000;
     transition: all 0.5s;
-    //box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
-    //-webkit-box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
-    //-moz-box-shadow: inset 0 0 $eachItemHeight*1.5 #ffffff00;
-    width: $eachItemHeight * 1.6;
-    height: $eachItemHeight * 1.6;
-    line-height: $eachItemHeight * 1.6;
-    // 避免使用除法
-    margin-left: -($eachItemHeight * 0.8 + 1px);
-    margin-top: -($eachItemHeight * 0.8 + 1px);
-    background-size: $eachItemHeight * 1.6;
+    width: calc($eachHeight * 1.6);
+    height: calc($eachHeight * 1.6);
+    line-height: calc($eachHeight * 1.6);
+    margin-left: calc(-1 * ($eachHeight * 0.8) - 1px);
+    margin-top: calc(-1 * ($eachHeight * 0.8) - 1px);
+    background-size: calc($eachHeight * 1.6);
   }
-
+  &:nth-child(2n-1) {
+    border: 0.2vw #ff0099 solid;
+  }
+  &:nth-child(2n) {
+    border: 0.2vw #99ff00 solid;
+  }
   &:hover::before {
     opacity: 1;
   }
-
   // 白色透密遮罩
   &::before {
     content: "";
@@ -301,7 +270,40 @@ $eachItemHeight: 60px;
     background-color: #00000070;
   }
 }
+.rightMenu {
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: fixed;
+  z-index: 999;
+  font-size: 1.3vw;
 
+  .circle {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .item {
+    position: relative;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: scale(0.1) rotate(-270deg);
+    -moz-transform: scale(0.1) rotate(-270deg);
+    -transform: scale(0.1) rotate(-270deg);
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+  }
+}
+.active .item {
+  opacity: 1;
+  -webkit-transform: scale(1) rotate(0);
+  -moz-transform: scale(1) rotate(0);
+  -transform: scale(1) rotate(0);
+}
 .item a {
   background-size: cover;
 

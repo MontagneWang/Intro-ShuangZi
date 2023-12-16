@@ -1,25 +1,21 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import Modal from "../utils/ToastComp.vue";
+import createObserver, { delay } from "../utils/observer";
 
 const showModal = ref(false);
-let fu = ref<HTMLDivElement | null>(null);
-let li = ref<HTMLDivElement | null>(null);
+
+let [li, fu] = [
+  ref<HTMLDivElement | null>(null),
+  ref<HTMLDivElement | null>(null),
+];
 
 onMounted(() => {
-  // 判断元素是否在视窗内
-  let observer3 = new IntersectionObserver((entries3) => {
-    entries3.forEach((entry) => {
-      // 元素出现在视窗内
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          fu.value!.classList.add("fade-in");
-          li.value!.classList.add("fade-in");
-        }, 400);
-      }
-    });
+  createObserver(fu.value as HTMLDivElement, async () => {
+    await delay(500);
+    fu.value!.classList.add("fade-in");
+    li.value!.classList.add("fade-in");
   });
-  observer3.observe(fu.value as HTMLDivElement);
 });
 </script>
 
@@ -66,7 +62,7 @@ onMounted(() => {
 
   <div class="content">
     <div class="outro">
-      <h2>每一位虚拟歌手都由爱诞生，因爱成长</h2>
+      <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
       <h2>我们将情感寄托于他们的歌声之中</h2>
       <h2>借由他们之口，唱出心中所思</h2>
       <h2>祝我们的双子越来越好，听众越来越多🎉</h2>
@@ -74,16 +70,21 @@ onMounted(() => {
       <br />
       <br />
       <br />
-      <p>
-        您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
-          >「右键菜单」</span
-        >了解更多双子的信息
-      </p>
-      <p>
-        也可以点击 [<span @click="showModal = !showModal" style="color: #ff0099"
-          >此处</span
-        >] 查看关于本站点的相关信息
-      </p>
+      <br />
+      <div class="more">
+        <p>
+          您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
+            >「右键菜单」</span
+          >了解更多双子的信息
+        </p>
+        <p style="margin-top: -0.8vw;">
+          也可以点击 [<span
+            @click="showModal = !showModal"
+            style="color: #ff0099"
+            >此处</span
+          >] 查看关于本站点的相关信息
+        </p>
+      </div>
     </div>
 
     <div ref="fu" class="character fu">
@@ -103,108 +104,17 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1280px) {
-// 	.content{
-// 		font-size: 1.15em;
-// 		.character {
-// 			&.fu {
-// 				left: -0.5vw!important;
-// 			}
-
-// 			&.li {
-// 				right: 1vw!important;
-// 			}
-// 		}
-// 	}
-// }
-@media screen and (min-width: 1366px) {
-  .content {
-    font-size: 1.25em;
-    .character {
-      &.fu {
-        left: 0 !important;
-      }
-
-      &.li {
-        right: 0 !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .content {
-    font-size: 1.45em;
-    .character {
-      &.fu {
-        left: 0 !important;
-      }
-
-      &.li {
-        right: 0 !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1536px) {
-  .content {
-    font-size: 1.4em;
-    .character {
-      &.fu {
-        left: 0vw !important;
-      }
-
-      &.li {
-        right: 1vw !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .content {
-    font-size: 1.75em;
-    .character {
-      &.fu {
-        left: 0vw !important;
-      }
-
-      &.li {
-        right: 1vw !important;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 2560px) {
-  .content {
-    font-size: 2.3em;
-    .character {
-      &.fu {
-        left: 0vw !important;
-      }
-
-      &.li {
-        right: 1vw !important;
-      }
-    }
-  }
-}
 
 a {
-  text-decoration: none;
   color: #000;
 }
 
 .content {
-  height: 100vh;
   position: relative;
-  overflow: hidden;
 
   .outro {
-    width: 50vw;
-    margin: 33vh auto 24vh;
+    margin: 29vh auto 0;
+    font-size: 1.5vw;
   }
 
   .character {
