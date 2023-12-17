@@ -96,7 +96,7 @@ onMounted(() => {
       <div ref="fu" class="character fu">
         <img
           alt="双子"
-          src="https://article.biliimg.com/bfs/new_dyn/682bb4e3d7d918509ec5eb324b4a411c1402305269.png@1e_1c.webp"
+          src="https://i0.hdslb.com/bfs/article/20cd3e08d4c3833a8261976b884bac811402305269.png@1e_1c.webp"
         />
       </div>
 
@@ -117,7 +117,7 @@ a {
 
 .finalContainer {
   // idea 是不是直接用一个 img 标签撑满屏幕，配合 fadeIn 就可以解决？
-  background: url("https://article.biliimg.com/bfs/new_dyn/a9afbbf66c3752c4d2b69377b01c0d921402305269.gif@1e_1c.webp")
+  background: url("https://i0.hdslb.com/bfs/article/253d000fa666a0204953a09ca82797fa1402305269.gif@1e_1c.webp")
     no-repeat fixed center;
   background-size: cover;
   transition: opacity 1s ease;

@@ -14,7 +14,7 @@ onMounted(() => {
   let backgroundPosition = Math.random() >= 0.5 ? "left" : "right";
   let element = document.querySelector(".mobile-container") as HTMLElement;
   element.style.background =
-    "url('https://article.biliimg.com/bfs/new_dyn/83898a52606bbd43acdb4fc7394e438f1402305269.jpg@1e_1c.webp') no-repeat center " +
+    "url('https://i0.hdslb.com/bfs/article/749043f5069e1e846d71ef594eba93801402305269.jpg@1e_1c.webp') no-repeat center " +
     backgroundPosition;
   element.style.backgroundSize = "cover";
 
@@ -65,7 +65,7 @@ onMounted(() => {
   border-radius: 6vw;
 }
 .mobile-container {
-  background: url("https://article.biliimg.com/bfs/new_dyn/83898a52606bbd43acdb4fc7394e438f1402305269.jpg@1e_1c.webp")
+  background: url("https://i0.hdslb.com/bfs/article/749043f5069e1e846d71ef594eba93801402305269.jpg@1e_1c.webp")
     no-repeat center right;
   background-size: cover;
 
