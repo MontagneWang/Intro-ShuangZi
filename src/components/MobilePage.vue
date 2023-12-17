@@ -29,12 +29,13 @@ onMounted(() => {
     text3.value!.classList.add("animate__animated", "animate__fadeInLeft");
   });
 });
+let height = window.innerHeight;
 </script>
 
 <template>
   <!-- 竖排文字 向上滑入 -->
   <div ref="mask" class="mask"></div>
-  <div class="mobile-container">
+  <div class="mobile-container" :style="`height: ${height}px`">
     <div class="content">
       <div class="text">
         <p ref="text">「万分抱歉</p>
@@ -70,7 +71,7 @@ onMounted(() => {
   background-size: cover;
 
   writing-mode: vertical-rl;
-  height: 100vh;
+  // height: 100vh; 会算上手机浏览器的底部导航栏
   width: 100vw;
   display: flex;
   align-items: center;
