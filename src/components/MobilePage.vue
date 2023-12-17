@@ -60,10 +60,10 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 .mask {
   opacity: 0;
   width: 84vw;
-  height: 88vh;
+  height: calc(88 * var(--vh));
   position: fixed;
   left: 8vw;
-  top: 6vh;
+  top: calc(6 * var(--vh));
   background-color: #ffffffa0;
   border-radius: 6vw;
   border: #ff0099 0.75vw solid;
@@ -76,7 +76,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
   background-size: cover;
 
   writing-mode: vertical-rl;
-  height: 100vh;
+  height:  calc(100 * var(--vh));
   width: 100vw;
   display: flex;
   align-items: center;
