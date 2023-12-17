@@ -12,7 +12,7 @@ let [text, fu] = [
 
 onMounted(() => {
   createObserver(text.value as HTMLDivElement, async () => {
-    await delay(500);
+    await delay(750);
     (document.querySelector(".finalContainer") as HTMLElement).classList.add(
       "change"
     );
@@ -20,6 +20,11 @@ onMounted(() => {
     fu.value!.classList.add("fade-in");
     await delay(1500);
     text.value!.classList.add("fade-in");
+  },async () => {
+    await delay(500);
+    (document.querySelector(".finalContainer") as HTMLElement).classList.remove(
+      "change"
+    );
   });
 });
 </script>
