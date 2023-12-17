@@ -29,13 +29,15 @@ onMounted(() => {
     text3.value!.classList.add("animate__animated", "animate__fadeInLeft");
   });
 });
-let height = window.innerHeight;
+// let height = window.innerHeight;
+let vh = window.innerHeight * 0.01; // 重新设置 vh，去除地址栏与底部导航栏
+document.documentElement.style.setProperty("--vh", `${vh}px`);
 </script>
 
 <template>
   <!-- 竖排文字 向上滑入 -->
   <div ref="mask" class="mask"></div>
-  <div class="mobile-container" :style="`height: ${height}px`">
+  <div class="mobile-container">
     <div class="content">
       <div class="text">
         <p ref="text">「万分抱歉</p>
@@ -74,7 +76,7 @@ let height = window.innerHeight;
   background-size: cover;
 
   writing-mode: vertical-rl;
-  // height: 100vh; 会算上手机浏览器的底部导航栏
+  height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
