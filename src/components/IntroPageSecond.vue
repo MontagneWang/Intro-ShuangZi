@@ -159,7 +159,7 @@ onMounted(() => {
             icon="FolderChecked"
             placement="top"
             color="#ff0099"
-            timestamp="2016 年 3 月 19 日"
+            timestamp="&numsp;2016 年 3 月 19 日"
             type="primary"
             style="font-weight: bold"
           >
@@ -168,36 +168,33 @@ onMounted(() => {
                 <FolderChecked />
               </el-icon>
             </template>
-            「<a
-              href="https://space.bilibili.com/193181849"
-              target="_blank"
-              title="点击前往 B 站"
-              >起氏双子</a
-            >」立项 —— 官方负责人：<a
-              href="https://space.bilibili.com/1961304"
-              target="_blank"
-              title="点击前往 B 站"
-              >阿铃养鲸鱼</a
-            >
+            <div class="single-line">
+              「<a
+                href="https://space.bilibili.com/193181849"
+                target="_blank"
+                title="点击前往 B 站"
+                >起氏双子</a
+              >」立项 —— 官方负责人：<a
+                href="https://space.bilibili.com/1961304"
+                target="_blank"
+                title="点击前往 B 站"
+                >阿铃养鲸鱼</a
+              >
+            </div>
           </el-timeline-item>
 
           <el-timeline-item
             icon="Mic"
             color="#ff0099"
             placement="top"
-            timestamp="2018 年 1 月 6 日"
+            timestamp="&numsp;2018 年 1 月 6 日"
             type="success"
           >
             <template #dot>
               <el-icon
                 color="#ff0099"
                 class="avatar"
-                style="
-                  width: 2vw;
-                  height: 2vw;
-                  font-size: 1.6vw;
-                  top: -0.3vw;
-                "
+                style="width: 2vw; height: 2vw; font-size: 1.6vw; top: -0.3vw"
               >
                 <mic />
               </el-icon>
@@ -226,19 +223,14 @@ onMounted(() => {
             icon="mic"
             color="#ff0099"
             placement="top"
-            timestamp="2019 年 7 月 13 日"
+            timestamp="&numsp;2019 年 7 月 13 日"
             type="success"
           >
             <template #dot>
               <el-icon
                 color="#ff0099"
                 class="avatar"
-                style="
-                  width: 2vw;
-                  height: 2vw;
-                  font-size: 1.6vw;
-                  top: -0.3vw;
-                "
+                style="width: 2vw; height: 2vw; font-size: 1.6vw; top: -0.3vw"
               >
                 <mic />
               </el-icon>
@@ -265,7 +257,7 @@ onMounted(() => {
             icon="Promotion"
             color="#ff0099"
             placement="top"
-            timestamp="2020 年 7 月 13 日"
+            timestamp="&numsp;2020 年 7 月 13 日"
             type="primary"
           >
             <template #dot>
@@ -273,7 +265,9 @@ onMounted(() => {
                 <Promotion />
               </el-icon>
             </template>
-            双子三周年，生贺曲《不揽清风不望月》发布
+            <div class="single-line">
+              &numsp;双子三周年，生贺曲《不揽清风不望月》发布
+            </div>
           </el-timeline-item>
         </el-timeline>
       </div>
@@ -282,6 +276,14 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 1280px) {
+  .el-timeline-item {
+    padding-bottom: 0.7vw !important;
+    .single-line {
+      margin-top: 0.2vw !important;
+    }
+  }
+}
 a {
   @include hyperlink(#ff0099, #99ff00);
 }

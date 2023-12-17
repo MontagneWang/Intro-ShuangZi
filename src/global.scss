@@ -56,7 +56,6 @@
     font-size: 1.26vw;
   }
 }
-// todo 样式优化
 @mixin timeline {
   overflow: hidden;
   margin: 2%;
@@ -72,12 +71,24 @@
     --el-text-color-secondary: #fff;
     --el-timeline-node-size-large: 2vw;
     .el-card {
-      width: 92%;
+      width: 90%;
       font-size: 1.3vw;
+      margin-top: 1vw;
+      margin-left: 1vw;
+      padding: 0.2vw 0 0.2vw 1vw;
+      border-radius: 0.7vw;
+      h3,
+      p {
+        margin: 1.2vw 0;
+      }
     }
     .el-timeline-item {
       font-size: 1.5vw;
       --el-text-color-primary: #000;
+      padding-bottom: 1vw;
+      .single-line{
+        margin-top: 1vw;
+      }
     }
   }
 }

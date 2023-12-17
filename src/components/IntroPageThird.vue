@@ -159,7 +159,7 @@ onMounted(() => {
             icon="Promotion"
             placement="top"
             color="#99ff00cc"
-            timestamp="2021 年 7 月 13 日"
+            timestamp="&numsp;2021 年 7 月 13 日"
             type="primary"
           >
             <template #dot>
@@ -167,25 +167,22 @@ onMounted(() => {
                 <Promotion />
               </el-icon>
             </template>
-            双子四周年，生贺曲《交彗 Comets Meet》发布
+            <div class="single-line">
+              &numsp;双子四周年，生贺曲《交彗 Comets Meet》发布
+            </div>
           </el-timeline-item>
           <el-timeline-item
             icon="Mic"
             placement="top"
             color="#99ff00cc"
-            timestamp="2022 年 5 月 1 日"
+            timestamp="&numsp;2022 年 5 月 1 日"
             type="success"
           >
             <template #dot>
               <el-icon
                 color="#99ff00"
                 class="avatar"
-                style="
-                  width: 2vw;
-                  height: 2vw;
-                  font-size: 1.6vw;
-                  top: -0.3vw;
-                "
+                style="width: 2vw; height: 2vw; font-size: 1.6vw; top: -0.3vw"
               >
                 <Mic />
               </el-icon>
@@ -217,7 +214,7 @@ onMounted(() => {
             icon="Promotion"
             placement="top"
             color="#99ff00cc"
-            timestamp="2022 年 7 月 13 日"
+            timestamp="&numsp;2022 年 7 月 13 日"
             type="primary"
           >
             <template #dot>
@@ -225,13 +222,15 @@ onMounted(() => {
                 <Promotion />
               </el-icon>
             </template>
-            双子五周年，《如果仅靠谎言将我的世界照亮》发布
+            <div class="single-line">
+              &numsp;双子五周年，《如果仅靠谎言将我的世界照亮》发布
+            </div>
           </el-timeline-item>
           <el-timeline-item
             icon="Management"
             placement="top"
             color="#99ff00cc"
-            timestamp="2022 年 9 月 2 日"
+            timestamp="&numsp;2022 年 9 月 2 日"
             type="danger"
           >
             <template #dot>
@@ -239,20 +238,21 @@ onMounted(() => {
                 <Management />
               </el-icon>
             </template>
-            设定集《万灵梦书》发售，您可在
+            <div class="single-line">
+            &numsp;设定集《万灵梦书》发售，您可在
             <a
               href="https://gf.bilibili.com/item/detail/1105040028"
               target="_blank"
               title="点击前往 B 站工房"
               >此处</a
             >
-            获取小说版
+            获取小说版</div>
           </el-timeline-item>
           <el-timeline-item
             icon="Promotion"
             placement="top"
             color="#99ff00cc"
-            timestamp="2023 年 7 月 13 日"
+            timestamp="&numsp;2023 年 7 月 13 日"
             type="primary"
           >
             <template #dot>
@@ -260,7 +260,8 @@ onMounted(() => {
                 <Promotion />
               </el-icon>
             </template>
-            起氏双子六岁啦，生贺曲《神子》发布
+            <div class="single-line">
+            &numsp;起氏双子六岁啦，生贺曲《神子》发布</div>
           </el-timeline-item>
           <el-timeline-item
             icon="Promotion"
@@ -282,6 +283,14 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 1280px) {
+  .el-timeline-item {
+    padding-bottom: 0.8vw !important;
+    .single-line {
+      margin-top: 0.8vw !important;
+    }
+  }
+}
 a {
   @include hyperlink(#99ff00, #ff0099);
 }

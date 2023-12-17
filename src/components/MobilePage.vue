@@ -76,7 +76,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
   background-size: cover;
 
   writing-mode: vertical-rl;
-  height:  calc(100 * var(--vh));
+  height: calc(100 * var(--vh));
   width: 100vw;
   display: flex;
   align-items: center;
