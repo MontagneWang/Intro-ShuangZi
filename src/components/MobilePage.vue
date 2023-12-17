@@ -64,6 +64,9 @@ let height = window.innerHeight;
   top: 6vh;
   background-color: #ffffffa0;
   border-radius: 6vw;
+  border: #ff0099 0.75vw solid;
+  border-bottom-color: #99ff00;
+  border-left-color: #99ff00;
 }
 .mobile-container {
   background: url("https://i0.hdslb.com/bfs/article/749043f5069e1e846d71ef594eba93801402305269.jpg@1e_1c.webp")
@@ -81,10 +84,11 @@ let height = window.innerHeight;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     .text {
       z-index: 1;
       display: block;
-      font-size: 7.5vw;
+      font-size: 7vw;
       font-weight: bold;
       letter-spacing: 1.25vw;
       p {
