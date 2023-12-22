@@ -4,72 +4,104 @@ import Modal from "../utils/ToastComp.vue";
 import { ref } from "vue";
 
 const showModal = ref(false);
-let rightMenu = ref<HTMLDivElement | null>(null);
+let rightMenuContainer = ref<HTMLDivElement | null>(null);
 
-// 全局变量，整个圆盘的半径 radius；并将小圆的直径存入根半径，方便 SCSS 调用
-let radius = ref(window.innerWidth / 12.8); // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+// 设置整个菜单圆盘的半径 radius；并将小圆的直径存入浏览器根样式（以便 SCSS 调用）
+// 1920÷12.8 = 150，此时小圆直径为 150*0.6 = 90;
+let [menuRate, itemRate] = [12.8, 0.6]; // 设置大圆与小圆比例
+let radius = ref(window.innerWidth / menuRate);
 document.documentElement.style.setProperty(
-  "--screen-width",
-  `${radius.value * 0.6}px`
+  "--item-diameter",
+  `${radius.value * itemRate}px`
 );
 
-// 窗口缩放时保持右键菜单大小不变
+// 窗口缩放时 保持右键菜单尺寸大小不变
 window.addEventListener("resize", () => {
-  radius.value = window.innerWidth / 12.8; // 1920÷12.8=150，此时小圆直径为 150*0.6=90;
+  radius.value = window.innerWidth / menuRate;
   document.documentElement.style.setProperty(
-    "--screen-width",
-    `${radius.value * 0.6}px`
+    "--item-diameter",
+    `${radius.value * itemRate}px`
   );
 });
 
 onMounted(() => {
+  // 整个菜单圆盘元素
+  let rightMenu = rightMenuContainer.value as HTMLElement;
+  let zIndex = window.getComputedStyle(rightMenu).getPropertyValue("z-index");
+  let zIndexTimer: number; // 关闭圆盘后设置 z-index 的计时器
   let items = document.querySelectorAll(
     ".eachItem"
   ) as unknown as HTMLElement[];
-  let zIndex = window
-    .getComputedStyle(rightMenu.value!)
-    .getPropertyValue("z-index");
-  // @ts-ignore
-  let zIndexTimer: string | number | NodeJS.Timeout | undefined;
-  // 设置每个元素位置
+  // 设置圆盘上每个 item 元素位置
   items.forEach((item, index) => {
-    item.style.left = `${(
-      50 -
-      35 * Math.cos(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)
-    ).toFixed(4)}%`;
-    item.style.top = `${(
-      50 +
-      35 * Math.sin(-0.5 * Math.PI - 2 * (1 / items.length) * index * Math.PI)
-    ).toFixed(4)}%`;
+    let angle = Math.PI * (-index / 3 - 0.5);
+    item.style.left = `${50 - 35 * Math.cos(angle)}%`;
+    item.style.top = `${50 + 35 * Math.sin(angle)}%`;
+    /** angle = -0.5 * Math.PI - 2 * Math.PI * (1 / items.length) * index;
+     * item.style.left = `${(50 - 35 * Math.cos(angle)).toFixed(4)}%`;
+     * item.style.top = `${(50 + 35 * Math.sin(angle)).toFixed(4)}%`;
+     *
+     * 右键菜单圆盘 通过以下步骤来布局：
+     * angle 代表每个 item 相对于圆盘中心的角度（以弧度为单位，例如 2π）
+     * 计算每个 item 的 angle，代入三角函数来确定每个 item 在圆盘上的坐标
+     * 从而将圆盘菜单的每个 item 均匀地分布在圆周上
+     *
+     * 0.5 * Math.PI 是 90 度的弧度值（1π = 180°）
+     * 因为在极坐标系中，角度是从圆的最右侧（x轴）开始测量的，顺时针方向
+     * -0.5 * Math.PI 实际上是将[起始点]设置到了圆盘的顶部（y轴）
+     *
+     * 2 * Math.PI * (1 / items.length) * index
+     * ↑ 这句是计算当前项的角度位置（即相对于起始位置的偏移角度），其中：
+     * 2 * Math.PI 是一个完整圆周的弧度（360°）
+     * 1 / items.length 是每个项占据的圆的部分（如有 6 个项，则每个项占 1/6 圆）
+     * 乘以 index 就得到了当前项的相对偏移量
+     *
+     * 计算出的 angle 是每个 item 的绝对角度位置
+     * 通过 Math.cos(angle) 和 Math.sin(angle) 的三角函数
+     * 可以将极坐标转换为笛卡尔坐标系（即屏幕上的 x 和 y 坐标）
+     * 从而定位它们在圆盘上的确切位置
+     * 50 - 35 * Math.cos(angle) 计算了每个 item 的水平位置（left）
+     * 35 * Math.cos(angle) 是从中心点向左或向右的偏移量，单位是百分比
+     * 其中 50% 是中心点（圆心的位置），35 代表的是圆盘菜单项距离圆心的百分比距离
+     * 这个值决定了菜单项在圆盘上的半径大小
+     * 因为百分比是相对于父容器的大小来计算的
+     * 35% 意味着每个 item 的中心会被放置在距离父容器中心点 35% 宽度的位置
+     * 如果没有任何偏移，菜单项将会被放置在父容器的中心
+     * 通过从 50% 中减去或加上 35% 的水平和垂直偏移量，将每个 item 被定位在圆盘上
+     * 形成一个以父容器中心为圆心，35% 宽度为半径的圆环状布局。
+     * 因此，35 这个数字可以根据设计需求进行调整，以改变菜单项围绕中心的距离。
+     */
   });
-  // （左键其他区域关闭菜单）如果[不是右键点击]或者[点击的元素不是右键菜单的子元素]，则关闭菜单
+
+  // 左键其他区域关闭菜单 如果[不是右键点击]or[点击的不是右键菜单的子元素]=>关闭菜单
   window.addEventListener("mousedown", e => {
     if (
       e.which !== 3 &&
-      rightMenu.value!.classList.contains("active") &&
-      !isDescendant(rightMenu.value as HTMLElement, e.target as HTMLElement)
+      rightMenu.classList.contains("active") &&
+      !isDescendant(rightMenu, e.target as HTMLElement)
     ) {
       closeRightMenu();
     }
   });
-  // 右键点击，若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
+
+  // 右键开关菜单 若已有 active 类，则关闭 rightMenu，否则打开 rightMenu
   window.addEventListener("contextmenu", e => {
     // ctrl + 右键，呼出原版菜单
     if (e.ctrlKey) {
       return;
     }
     e.preventDefault();
-    rightMenu.value!.classList.contains("active")
+    rightMenu.classList.contains("active")
       ? closeRightMenu()
       : showRightMenu(e);
   });
 
-  // 关闭右键菜单，z-index 取反 防止无法点击页面
+  // 关闭右键菜单 [z-index 取反，防止无法点击页面]
   function closeRightMenu() {
-    rightMenu.value!.classList.remove("active");
+    rightMenu.classList.remove("active");
     clearTimeout(zIndexTimer);
     zIndexTimer = setTimeout(() => {
-      rightMenu.value!.style.zIndex = `-${zIndex}`;
+      rightMenu.style.zIndex = `-${zIndex}`;
     }, 400);
   }
 
@@ -79,8 +111,7 @@ onMounted(() => {
     let top = e.clientY - radius.value;
     let left = e.clientX - radius.value;
     // 设置 rightMenu 的位置并显示，z-index 取反为正
-    let menuStyle = rightMenu.value!.style;
-    Object.assign(menuStyle, {
+    Object.assign(rightMenu.style, {
       zIndex: zIndex.toString(),
       top: `${top}px`,
       left: `${left}px`,
@@ -88,13 +119,13 @@ onMounted(() => {
       opacity: "0",
       transition: "opacity 0.5s",
     });
-    // 使用requestAnimationFrame触发动画
+    // 使用 requestAnimationFrame 触发动画
     requestAnimationFrame(() => {
-      Object.assign(menuStyle, {
+      Object.assign(rightMenu.style, {
         opacity: "1",
         display: "block",
       });
-      rightMenu.value!.classList.add("active");
+      rightMenu.classList.add("active");
     });
   }
 
@@ -113,7 +144,6 @@ onMounted(() => {
 
 <template>
   <Teleport to="body">
-    <!-- 使用这个 modal 组件，传入 prop -->
     <modal :show="showModal" @close="showModal = false">
       <template #header>
         <h3>欢迎加入『起氏双子』官方 QQ 群 ~</h3>
@@ -125,7 +155,7 @@ onMounted(() => {
     </modal>
   </Teleport>
 
-  <div ref="rightMenu" class="rightMenu circleMenu">
+  <div ref="rightMenuContainer" class="rightMenu circleMenu">
     <div id="rightCircle" ref="rightCircle" class="circle">
       <div
         :style="{ height: radius * 2 + 'px', width: radius * 2 + 'px' }"
@@ -167,9 +197,20 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-// 在这里修改每个小圆的大小
-// $eachHeight: 90px;
-$eachHeight: var(--screen-width);
+$bgUrl1: "https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg@1e_1c.webp";
+$bgUrl2: "https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg@1e_1c.webp";
+$bgUrl3: "https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg@1e_1c.webp";
+$bgUrl4: "https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp";
+$bgUrl5: "https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp";
+$bgUrl6: "https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp";
+$content1: "B站\A账号";
+$content2: "微博\A账号";
+$content3: "官方\A百科";
+$content4: "加入\A Q群";
+$content5: "双子\A作品";
+$content6: "反馈\A Bug";
+// 直接使用根样式 // $eachHeight: 90px; // 在这里修改每个小圆的大小
+$eachHeight: var(--item-diameter);
 .eachItem {
   border-radius: 50%;
   color: #eeeeee;
@@ -180,96 +221,71 @@ $eachHeight: var(--screen-width);
   overflow: hidden;
   width: $eachHeight;
   height: $eachHeight;
-  line-height: $eachHeight;
+  margin-left: calc(-0.5 * $eachHeight);
+  margin-top: calc(-0.5 * $eachHeight);
   // 避免使用除法
-  margin-left: calc(-1 * $eachHeight * 0.5 - 1px);
-  margin-top: calc(-1 * $eachHeight * 0.5 - 1px);
-  background-size: $eachHeight;
+  // margin-left: calc(-0.5 * $eachHeight - 1px);
+  // margin-top: calc(-0.5 * $eachHeight - 1px);
+  // line-height: $eachHeight;
+  // background-size: $eachHeight;
   // 放大且变亮
   &:hover {
     z-index: 1000;
     transition: all 0.5s;
-    width: calc($eachHeight * 1.6);
-    height: calc($eachHeight * 1.6);
-    line-height: calc($eachHeight * 1.6);
-    margin-left: calc(-1 * ($eachHeight * 0.8) - 1px);
-    margin-top: calc(-1 * ($eachHeight * 0.8) - 1px);
-    background-size: calc($eachHeight * 1.6);
+    width: calc(1.6 * $eachHeight);
+    height: calc(1.6 * $eachHeight);
+    margin-left: calc(-0.8 * $eachHeight);
+    margin-top: calc(-0.8 * $eachHeight);
+    background-size: calc(1.6 * $eachHeight);
+    // line-height: calc($eachHeight * 1.6);
+    // margin-left: calc(-0.8 * $eachHeight - 1px);
+    // margin-top: calc(-0.8 * $eachHeight - 1px);
+    &::before {
+      opacity: 1;
+    }
   }
   &:nth-child(2n-1) {
     border: 0.2vw #ff0099 solid;
+    &::before {
+      color: #ff0099;
+    }
   }
   &:nth-child(2n) {
     border: 0.2vw #99ff00 solid;
+    &::before {
+      color: #99ff00;
+      background-color: #00000070;
+    }
   }
-  &:hover::before {
-    opacity: 1;
-  }
-  // 白色透密遮罩
   &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff70;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  // 说明文字
-  &::before {
-    content: "占位\A文字";
-    white-space: pre;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     line-height: 1;
-    font-size: 1.8em;
+    font-size: 2.3vw;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex; /* 添加flex布局 */
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
     color: #000;
+    background-color: #ffffff70;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center; // 水平居中
+    align-items: center; // 垂直居中
+    white-space: pre;
   }
 
-  &:nth-child(1)::before {
-    content: "B站\A账号";
-    color: #ff0099;
+  $contents: $content1, $content2, $content3, $content4, $content5, $content6;
+  @for $i from 1 through length($contents) {
+    &:nth-child(#{$i})::before {
+      content: nth($contents, $i);
+    }
   }
-
-  &:nth-child(2)::before {
-    content: "微博\A账号";
-    color: #99ff00;
-    background-color: #00000070;
-  }
-
-  &:nth-child(3)::before {
-    content: "官方\A百科";
-    color: #ff0099;
-  }
-
-  &:nth-child(4)::before {
-    content: "加入\A Q群";
-    color: #99ff00;
-    background-color: #00000070;
-  }
-
-  &:nth-child(5)::before {
-    content: "双子\A作品";
-    color: #ff0099;
-  }
-
-  &:nth-child(6)::before {
-    content: "反馈\A Bug";
-    color: #99ff00;
-    background-color: #00000070;
-  }
+  // &:nth-child(n)::before {
+  //   content: $content(n);
+  // }
 }
+// rightMenu circleMenu => circle => item => eachItem
 .rightMenu {
   margin: 0;
   padding: 0;
@@ -277,64 +293,52 @@ $eachHeight: var(--screen-width);
   position: fixed;
   z-index: 999;
   font-size: 1.3vw;
-
   .circle {
     margin: 0 auto;
     position: relative;
   }
-
   .item {
     position: relative;
     border-radius: 50%;
     opacity: 0;
+    transform-origin: 50% 50%;
     -webkit-transform-origin: 50% 50%;
     -moz-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
+    transform: scale(0.1) rotate(-270deg);
+    -transform: scale(0.1) rotate(-270deg);
     -webkit-transform: scale(0.1) rotate(-270deg);
     -moz-transform: scale(0.1) rotate(-270deg);
-    -transform: scale(0.1) rotate(-270deg);
+    transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
   }
 }
-.active .item {
+.rightMenu.active .item {
   opacity: 1;
+  transform: scale(1) rotate(0);
+  -transform: scale(1) rotate(0);
   -webkit-transform: scale(1) rotate(0);
   -moz-transform: scale(1) rotate(0);
-  -transform: scale(1) rotate(0);
 }
 .item a {
   background-size: cover;
-
   &:nth-of-type(1) {
-    background-image: url("https://article.biliimg.com/bfs/article/5456879a3ea125f5fdb6e1fd7f7e380d3e83dab1.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/1.jpg");
+    background-image: url($bgUrl1);
   }
-
   &:nth-of-type(2) {
-    background-image: url("https://article.biliimg.com/bfs/article/6beb9223cabc578bf4478f342e6288cd6f6d3d6e.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/3.jpg");
+    background-image: url($bgUrl2);
   }
-
   &:nth-of-type(3) {
-    background-image: url("https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba52b902ddea.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/5.jpg");
+    background-image: url($bgUrl3);
   }
-
   &:nth-of-type(4) {
-    background-image: url("https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/welcomejpg.jpg");
+    background-image: url($bgUrl4);
   }
-
   &:nth-of-type(5) {
-    background-image: url("https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/2.jpg");
+    background-image: url($bgUrl5);
   }
-
   &:nth-of-type(6) {
-    background-image: url("https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp");
-    //background-image: url("../../static/Icon/4.jpg");
+    background-image: url($bgUrl6);
   }
 }
 </style>
