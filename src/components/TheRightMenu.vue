@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted } from "vue";
+import { computed, onMounted, watch } from "vue";
 import Modal from "../utils/ToastComp.vue";
 import { ref } from "vue";
 
@@ -8,7 +8,7 @@ let rightMenuContainer = ref<HTMLDivElement | null>(null);
 
 // 设置整个菜单圆盘的半径 radius；并将小圆的直径存入浏览器根样式（以便 SCSS 调用）
 // 1920÷12.8 = 150，此时小圆直径为 150*0.6 = 90;
-let [menuRate, itemRate] = [12.8, 0.6]; // 设置大圆与小圆比例
+let [menuRate, itemRate, offset] = [12.8, 0.6, 38]; // 设置大圆比例、小圆比例、小圆到圆心的偏移量
 let radius = ref(window.innerWidth / menuRate);
 document.documentElement.style.setProperty(
   "--item-diameter",
@@ -29,49 +29,49 @@ onMounted(() => {
   let rightMenu = rightMenuContainer.value as HTMLElement;
   let zIndex = window.getComputedStyle(rightMenu).getPropertyValue("z-index");
   let zIndexTimer: number; // 关闭圆盘后设置 z-index 的计时器
-  let items = document.querySelectorAll(
-    ".eachItem"
-  ) as unknown as HTMLElement[];
   // 设置圆盘上每个 item 元素位置
-  items.forEach((item, index) => {
-    let angle = Math.PI * (-index / 3 - 0.5);
-    item.style.left = `${50 - 35 * Math.cos(angle)}%`;
-    item.style.top = `${50 + 35 * Math.sin(angle)}%`;
-    /** angle = -0.5 * Math.PI - 2 * Math.PI * (1 / items.length) * index;
-     * item.style.left = `${(50 - 35 * Math.cos(angle)).toFixed(4)}%`;
-     * item.style.top = `${(50 + 35 * Math.sin(angle)).toFixed(4)}%`;
-     *
-     * 右键菜单圆盘 通过以下步骤来布局：
-     * angle 代表每个 item 相对于圆盘中心的角度（以弧度为单位，例如 2π）
-     * 计算每个 item 的 angle，代入三角函数来确定每个 item 在圆盘上的坐标
-     * 从而将圆盘菜单的每个 item 均匀地分布在圆周上
-     *
-     * 0.5 * Math.PI 是 90 度的弧度值（1π = 180°）
-     * 因为在极坐标系中，角度是从圆的最右侧（x轴）开始测量的，顺时针方向
-     * -0.5 * Math.PI 实际上是将[起始点]设置到了圆盘的顶部（y轴）
-     *
-     * 2 * Math.PI * (1 / items.length) * index
-     * ↑ 这句是计算当前项的角度位置（即相对于起始位置的偏移角度），其中：
-     * 2 * Math.PI 是一个完整圆周的弧度（360°）
-     * 1 / items.length 是每个项占据的圆的部分（如有 6 个项，则每个项占 1/6 圆）
-     * 乘以 index 就得到了当前项的相对偏移量
-     *
-     * 计算出的 angle 是每个 item 的绝对角度位置
-     * 通过 Math.cos(angle) 和 Math.sin(angle) 的三角函数
-     * 可以将极坐标转换为笛卡尔坐标系（即屏幕上的 x 和 y 坐标）
-     * 从而定位它们在圆盘上的确切位置
-     * 50 - 35 * Math.cos(angle) 计算了每个 item 的水平位置（left）
-     * 35 * Math.cos(angle) 是从中心点向左或向右的偏移量，单位是百分比
-     * 其中 50% 是中心点（圆心的位置），35 代表的是圆盘菜单项距离圆心的百分比距离
-     * 这个值决定了菜单项在圆盘上的半径大小
-     * 因为百分比是相对于父容器的大小来计算的
-     * 35% 意味着每个 item 的中心会被放置在距离父容器中心点 35% 宽度的位置
-     * 如果没有任何偏移，菜单项将会被放置在父容器的中心
-     * 通过从 50% 中减去或加上 35% 的水平和垂直偏移量，将每个 item 被定位在圆盘上
-     * 形成一个以父容器中心为圆心，35% 宽度为半径的圆环状布局。
-     * 因此，35 这个数字可以根据设计需求进行调整，以改变菜单项围绕中心的距离。
-     */
-  });
+  (document.querySelectorAll(".eachItem") as unknown as HTMLElement[]).forEach(
+    (item, index) => {
+      let angle = Math.PI * (-index / 3 - 0.5);
+      item.style.left = `${50 - offset * Math.cos(angle)}%`;
+      item.style.top = `${50 + offset * Math.sin(angle)}%`;
+      /** angle = -0.5 * Math.PI - 2 * Math.PI * (1 / items.length) * index;
+       * item.style.left = `${(50 - 35 * Math.cos(angle)).toFixed(4)}%`;
+       * item.style.top = `${(50 + 35 * Math.sin(angle)).toFixed(4)}%`;
+       *
+       * 右键菜单圆盘 通过以下步骤来布局：
+       * angle 代表每个 item 相对于圆盘中心的角度（以弧度为单位，例如 2π）
+       * 计算每个 item 的 angle，代入三角函数来确定每个 item 在圆盘上的坐标
+       * 从而将圆盘菜单的每个 item 均匀地分布在圆周上
+       *
+       * 0.5 * Math.PI 是 90 度的弧度值（1π = 180°）
+       * 因为在极坐标系中，角度是从圆的最右侧（x轴）开始测量的，顺时针方向
+       * -0.5 * Math.PI 实际上是将[起始点]设置到了圆盘的顶部（y轴）
+       *
+       * 2 * Math.PI * (1 / items.length) * index
+       * ↑ 这句是计算当前项的角度位置（即相对于起始位置的偏移角度），其中：
+       * 2 * Math.PI 是一个完整圆周的弧度（360°）
+       * 1 / items.length 是每个项占据的圆的部分（如有 6 个项，则每个项占 1/6 圆）
+       * 乘以 index 就得到了当前项的相对偏移量
+       *
+       * 计算出的 angle 是每个 item 的绝对角度位置
+       * 通过 Math.cos(angle) 和 Math.sin(angle) 的三角函数
+       * 可以将极坐标转换为笛卡尔坐标系（即屏幕上的 x 和 y 坐标）
+       * 从而定位它们在圆盘上的确切位置
+       * 50 - offset * Math.cos(angle) 计算了每个 item 的水平位置（left）
+       * offset * Math.cos(angle) 是从中心点向左或向右的偏移量，单位是百分比
+       * 其中 50% 是中心点（圆心的位置）
+       * offset 代表的是圆盘菜单项距离圆心的百分比距离
+       * 这个值决定了菜单项在圆盘上的半径大小
+       * 因为百分比是相对于父容器的大小来计算的
+       * offset 意味着每个 item 的中心会被放置在距离父容器中心点 offset% 宽度的位置
+       * 如果没有任何偏移，菜单项将会被放置在父容器的中心
+       * 通过从 50% 中 -/+ offset% 的水平和垂直偏移量，将每个 item 被定位在圆盘上
+       * 形成一个以父容器中心为圆心，offset% 宽度为半径的圆环状布局
+       * 因此，offset 可以根据设计需求进行调整，以改变菜单项围绕中心的距离（如35、38）
+       */
+    }
+  );
 
   // 左键其他区域关闭菜单 如果[不是右键点击]or[点击的不是右键菜单的子元素]=>关闭菜单
   window.addEventListener("mousedown", e => {
@@ -203,13 +203,13 @@ $bgUrl3: "https://article.biliimg.com/bfs/article/6f647cb01240601158f33c9bb265ba
 $bgUrl4: "https://article.biliimg.com/bfs/article/5fe5a42f956d08fc5455c8321c3f758fa1e1aba4.jpg@1e_1c.webp";
 $bgUrl5: "https://article.biliimg.com/bfs/article/07a346ab03789c65ec95b40846dfacb90d1d220e.jpg@1e_1c.webp";
 $bgUrl6: "https://article.biliimg.com/bfs/article/48e203f62461899c8b4070907576005cd2944db9.jpg@1e_1c.webp";
-$content1: "B站\A账号";
-$content2: "微博\A账号";
-$content3: "官方\A百科";
-$content4: "加入\A Q群";
-$content5: "双子\A作品";
-$content6: "反馈\A Bug";
-// 直接使用根样式 // $eachHeight: 90px; // 在这里修改每个小圆的大小
+$cont1: "B站\A账号";
+$cont2: "微博\A账号";
+$cont3: "官方\A百科";
+$cont4: "加入\A Q群";
+$cont5: "双子\A作品";
+$cont6: "反馈\A Bug";
+// 使用设置好的根样式 带有单位 ($eachHeight:90px;)
 $eachHeight: var(--item-diameter);
 .eachItem {
   border-radius: 50%;
@@ -224,39 +224,6 @@ $eachHeight: var(--item-diameter);
   margin-left: calc(-0.5 * $eachHeight);
   margin-top: calc(-0.5 * $eachHeight);
   // 避免使用除法
-  // margin-left: calc(-0.5 * $eachHeight - 1px);
-  // margin-top: calc(-0.5 * $eachHeight - 1px);
-  // line-height: $eachHeight;
-  // background-size: $eachHeight;
-  // 放大且变亮
-  &:hover {
-    z-index: 1000;
-    transition: all 0.5s;
-    width: calc(1.6 * $eachHeight);
-    height: calc(1.6 * $eachHeight);
-    margin-left: calc(-0.8 * $eachHeight);
-    margin-top: calc(-0.8 * $eachHeight);
-    background-size: calc(1.6 * $eachHeight);
-    // line-height: calc($eachHeight * 1.6);
-    // margin-left: calc(-0.8 * $eachHeight - 1px);
-    // margin-top: calc(-0.8 * $eachHeight - 1px);
-    &::before {
-      opacity: 1;
-    }
-  }
-  &:nth-child(2n-1) {
-    border: 0.2vw #ff0099 solid;
-    &::before {
-      color: #ff0099;
-    }
-  }
-  &:nth-child(2n) {
-    border: 0.2vw #99ff00 solid;
-    &::before {
-      color: #99ff00;
-      background-color: #00000070;
-    }
-  }
   &::before {
     width: 100%;
     height: 100%;
@@ -274,18 +241,42 @@ $eachHeight: var(--item-diameter);
     align-items: center; // 垂直居中
     white-space: pre;
   }
-
-  $contents: $content1, $content2, $content3, $content4, $content5, $content6;
-  @for $i from 1 through length($contents) {
-    &:nth-child(#{$i})::before {
-      content: nth($contents, $i);
+  // 放大且变亮
+  &:hover {
+    z-index: 1000;
+    transition: all 0.5s;
+    width: calc(1.6 * $eachHeight);
+    height: calc(1.6 * $eachHeight);
+    margin-left: calc(-0.8 * $eachHeight);
+    margin-top: calc(-0.8 * $eachHeight);
+    background-size: calc(1.6 * $eachHeight);
+    &::before {
+      opacity: 1;
     }
   }
-  // &:nth-child(n)::before {
-  //   content: $content(n);
-  // }
+  // 边框颜色 + 文字颜色
+  &:nth-child(2n-1) {
+    border: 0.2vw #ff0099 solid;
+    &::before {
+      color: #ff0099;
+    }
+  }
+  &:nth-child(2n) {
+    border: 0.2vw #99ff00 solid;
+    &::before {
+      color: #99ff00;
+      background-color: #00000070;
+    }
+  }
+  // 每个 item 的文字内容
+  $contents: $cont1, $cont2, $cont3, $cont4, $cont5, $cont6;
+  @for $i from 1 through length($contents) {
+    &:nth-child(#{$i})::before {
+      content: nth($contents, $i); // content: $cont(i);
+    }
+  }
 }
-// rightMenu circleMenu => circle => item => eachItem
+// .rightMenu.circleMenu => .circle => .item => a.eachItem
 .rightMenu {
   margin: 0;
   padding: 0;
@@ -296,6 +287,14 @@ $eachHeight: var(--item-diameter);
   .circle {
     margin: 0 auto;
     position: relative;
+  }
+  // 展示时动画
+  &.active .item {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    -transform: scale(1) rotate(0);
+    -webkit-transform: scale(1) rotate(0);
+    -moz-transform: scale(1) rotate(0);
   }
   .item {
     position: relative;
@@ -312,33 +311,15 @@ $eachHeight: var(--item-diameter);
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
   }
-}
-.rightMenu.active .item {
-  opacity: 1;
-  transform: scale(1) rotate(0);
-  -transform: scale(1) rotate(0);
-  -webkit-transform: scale(1) rotate(0);
-  -moz-transform: scale(1) rotate(0);
-}
-.item a {
-  background-size: cover;
-  &:nth-of-type(1) {
-    background-image: url($bgUrl1);
-  }
-  &:nth-of-type(2) {
-    background-image: url($bgUrl2);
-  }
-  &:nth-of-type(3) {
-    background-image: url($bgUrl3);
-  }
-  &:nth-of-type(4) {
-    background-image: url($bgUrl4);
-  }
-  &:nth-of-type(5) {
-    background-image: url($bgUrl5);
-  }
-  &:nth-of-type(6) {
-    background-image: url($bgUrl6);
+  // 设置每个 item 的背景 如果想要图片居中放大，把下方 a 样式放入上方 .item 类就行
+  a {
+    background-size: cover;
+    $bgUrls: $bgUrl1, $bgUrl2, $bgUrl3, $bgUrl4, $bgUrl5, $bgUrl6;
+    @for $i from 1 through length($bgUrls) {
+      &:nth-of-type(#{$i}) {
+        background-image: url(nth($bgUrls, $i)); // url($bgUrl(i))
+      }
+    }
   }
 }
 </style>
