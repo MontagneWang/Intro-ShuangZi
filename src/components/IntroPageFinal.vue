@@ -16,8 +16,9 @@ onMounted(() => {
     (document.querySelector(".finalContainer") as HTMLElement).classList.add(
       "change"
     );
-    await delay(1000);
+    // await delay(1000);
     fu.value!.classList.add("fade-in");
+    await delay(500);
     await delay(1500);
     text.value!.classList.add("fade-in");
   },async () => {
@@ -83,18 +84,19 @@ onMounted(() => {
         <br />
         <br />
         <div class="more">
+          <br>
           <p>
             您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
               >「右键菜单」</span
             >了解更多双子的信息
           </p>
-          <p style="margin-top: -0.8vw">
+          <!-- <p style="margin-top: -0.8vw">
             也可以点击 [<span
               @click="showModal = !showModal"
               style="color: #ff0099"
               >此处</span
             >] 查看关于本站点的相关信息
-          </p>
+          </p> -->
         </div>
       </div>
 
