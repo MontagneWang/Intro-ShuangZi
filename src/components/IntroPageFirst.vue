@@ -56,7 +56,7 @@ onMounted(() => {
 
         <div ref="intro" class="intro">
           <h2>
-            你好！这里是『<a
+            欢迎光临，这里是『<a
               href="https://space.bilibili.com/193181849"
               target="_blank"
               title="点击前往 起氏双子 官方"
@@ -66,7 +66,7 @@ onMounted(() => {
               <span>氏</span>
               <span>双</span>
               <span>子</span> </a
-            >』的介绍页面
+            >』的介绍页面~
           </h2>
           <h3>
             『起氏双子』是 <span class="text-underline qifu">起复</span> 与

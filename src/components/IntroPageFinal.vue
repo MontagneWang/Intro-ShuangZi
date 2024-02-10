@@ -37,9 +37,12 @@ onMounted(() => {
         <h3>关于本站</h3>
       </template>
       <template #body>
-        <p>
-          ⚠️ 请注意：本站点<span style="color: #ff0099">并非</span
-          >官方站点，仅由爱好者创建，旨在为到访者提供「起氏双子」的相关信息与资源。
+        <p>&ensp;⚠️ 请注意：本站点<span style="
+                    text-decoration: underline;
+                    text-decoration-color: #ff0099;
+                    text-underline-offset: 0.3em;
+                  "><span style="color: #ff0099">并非</span
+          >官方站点</span>，仅由爱好者创建，旨在为到访者提供「起氏双子」的相关信息与资源。
         </p>
         <p>
           本站点将尽力确保内容的准确性和时效性，但仍可能会出现有失偏颇的表述，这<span
@@ -57,7 +60,7 @@ onMounted(() => {
             >反馈Bug</a
           >]联系我，我会尽可能及时修正。
         </p>
-        <p>
+        <!-- <p>
           如果您是<span style="color: #ff0099">官方</span
           >且需要回收该域名，可以通过[<a
             href="mailto:ling.vc@foxmail.com"
@@ -66,7 +69,7 @@ onMounted(() => {
             title="邮箱：ling.vc@foxmail.com"
             >邮箱</a
           >]联系我，我会将当前域名转入到您所提供的域名注册商。
-        </p>
+        </p> -->
       </template>
     </modal>
   </Teleport>
@@ -82,7 +85,6 @@ onMounted(() => {
         <br />
         <br />
         <br />
-        <br />
         <div class="more">
           <br>
           <p>
@@ -90,13 +92,13 @@ onMounted(() => {
               >「右键菜单」</span
             >了解更多双子的信息
           </p>
-          <!-- <p style="margin-top: -0.8vw">
+          <p style="margin-top: -0.8vw">
             也可以点击 [<span
               @click="showModal = !showModal"
               style="color: #ff0099"
               >此处</span
             >] 查看关于本站点的相关信息
-          </p> -->
+          </p>
         </div>
       </div>
 
@@ -123,7 +125,7 @@ a {
 }
 
 .finalContainer {
-  // idea 是不是直接用一个 img 标签撑满屏幕，配合 fadeIn 就可以解决？
+  // 可以考虑直接用 img 标签撑满屏幕，配合 fadeIn 解决
   background: url("https://i0.hdslb.com/bfs/article/253d000fa666a0204953a09ca82797fa1402305269.gif@1e_1c.webp")
     no-repeat fixed center;
   background-size: cover;

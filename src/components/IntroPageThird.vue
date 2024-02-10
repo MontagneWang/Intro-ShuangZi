@@ -189,11 +189,12 @@ onMounted(() => {
             </template>
             <el-card>
               <h3>
-                🎉 起氏双子 Ace 声库发布&emsp;<a
+                🎉 起氏双子 Ace 声库发布&emsp;&ensp;🎧<a
                   href="https://www.bilibili.com/video/BV1wL4y1c7J8"
+                  class="fu-underline"
                   target="_blank"
                   title="点击前往 B 站"
-                  >🎧试听曲</a
+                  >试听曲</a
                 >
               </h3>
               <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
@@ -203,6 +204,7 @@ onMounted(() => {
                 <a
                   href="https://ace-studio.timedomain.cn/#download_home"
                   target="_blank"
+                  class="fu-underline"
                   title="点击前往单音阶声库下载地址"
                   >此处</a
                 >
@@ -243,6 +245,7 @@ onMounted(() => {
             <a
               href="https://gf.bilibili.com/item/detail/1105040028"
               target="_blank"
+                  class="fu-underline"
               title="点击前往 B 站工房"
               >此处</a
             >
@@ -291,6 +294,14 @@ onMounted(() => {
     }
   }
 }
+.fu-underline {
+  @include underline(#99ff00, #99ff00);
+
+  &:hover {
+    @include underline(#ff0099, #ff0099);
+  }
+}
+
 a {
   @include hyperlink(#99ff00, #ff0099);
 }

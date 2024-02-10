@@ -173,11 +173,13 @@ onMounted(() => {
                 href="https://space.bilibili.com/193181849"
                 target="_blank"
                 title="点击前往 B 站"
+                class="li-underline"
                 >起氏双子</a
               >」立项 —— 官方负责人：<a
                 href="https://space.bilibili.com/1961304"
                 target="_blank"
                 title="点击前往 B 站"
+                class="li-underline"
                 >阿铃养鲸鱼</a
               >
             </div>
@@ -206,11 +208,13 @@ onMounted(() => {
                 <a
                   href="https://pan.baidu.com/s/1Rwu-U5OixQyX5yHm5uh6_g?pwd=04tx"
                   target="_blank"
+                class="li-underline"
                   title="点击前往单音阶声库下载地址"
                   >单音阶</a
                 >、<a
                   href="https://share.weiyun.com/5eC8EqP"
                   target="_blank"
+                class="li-underline"
                   title="点击前往三音阶声库下载地址"
                   >三音阶</a
                 >
@@ -241,11 +245,13 @@ onMounted(() => {
                 DeepVocal 共更新了两版声库：<a
                   href="https://pan.baidu.com/s/1HDjBLn8HFJIu5lKLDXx6Gw?pwd=4bl1"
                   target="_blank"
+                class="li-underline"
                   title="点击前往 1.0 版声库下载地址"
                   >1.0版</a
                 >、<a
                   href="https://pan.baidu.com/s/18LWNKq5hxL4P_xTp7Xv0Qg?pwd=ggv7"
                   target="_blank"
+                class="li-underline"
                   title="点击前往三音阶声库下载地址"
                   >三音阶</a
                 >
@@ -284,6 +290,14 @@ onMounted(() => {
     }
   }
 }
+.li-underline {
+  @include underline(#ff0099, #ff0099);
+
+  &:hover {
+    @include underline(#99ff00, #99ff00);
+  }
+}
+
 a {
   @include hyperlink(#ff0099, #99ff00);
 }
