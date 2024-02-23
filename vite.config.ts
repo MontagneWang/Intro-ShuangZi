@@ -15,11 +15,11 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    viteCompression({
-      algorithm: "gzip",
-      threshold: 102400,
-      deleteOriginFile: true,
-    }),
+    // viteCompression({
+    //   algorithm: "gzip",
+    //   threshold: 102400,
+    //   deleteOriginFile: true,
+    // }),
   ],
   css: {
     preprocessorOptions: {
