@@ -13,7 +13,7 @@ function randomChoose(str1: string, str2: string) {
   }
 }
 // 标题切换
-let t: number | undefined;
+let t: number | ReturnType<typeof setTimeout> | undefined;
 let title: string | undefined;
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState === "hidden") {
@@ -83,7 +83,7 @@ html * {
   font-family: LXGW WenKai Lite, serif !important;
 }
 // 在最外层设置背景而不是在 full-page 设置，修复快速滚动时空白问题
-body{
+body {
   background: url("https://article.biliimg.com/bfs/article/b0cc0ad497f90d10258b5ff9ef82de7247a47114.jpg@1e_1c.webp")
     no-repeat fixed bottom;
   background-size: cover;

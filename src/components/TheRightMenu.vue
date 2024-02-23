@@ -28,7 +28,7 @@ onMounted(() => {
   // 整个菜单圆盘元素
   let rightMenu = rightMenuContainer.value as HTMLElement;
   let zIndex = window.getComputedStyle(rightMenu).getPropertyValue("z-index");
-  let zIndexTimer: number; // 关闭圆盘后设置 z-index 的计时器
+  let zIndexTimer: ReturnType<typeof setTimeout> | number; // 关闭圆盘后设置 z-index 的计时器
   // 设置圆盘上每个 item 元素位置
   (document.querySelectorAll(".eachItem") as unknown as HTMLElement[]).forEach(
     (item, index) => {
