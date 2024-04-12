@@ -80,7 +80,7 @@ window.addEventListener("resize", () => {
 
 <style lang="scss">
 html * {
-  font-family: LXGW WenKai Lite, serif !important;
+  font-family: 'LXGW WenKai', LXGW WenKai Lite, serif !important;
 }
 // 在最外层设置背景而不是在 full-page 设置，修复快速滚动时空白问题
 body {
