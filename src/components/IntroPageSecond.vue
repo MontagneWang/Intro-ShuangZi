@@ -208,13 +208,13 @@ onMounted(() => {
                 <a
                   href="https://pan.baidu.com/s/1Rwu-U5OixQyX5yHm5uh6_g?pwd=04tx"
                   target="_blank"
-                class="li-underline"
+                  class="li-underline"
                   title="点击前往单音阶声库下载地址"
                   >单音阶</a
                 >、<a
                   href="https://share.weiyun.com/5eC8EqP"
                   target="_blank"
-                class="li-underline"
+                  class="li-underline"
                   title="点击前往三音阶声库下载地址"
                   >三音阶</a
                 >
@@ -245,13 +245,13 @@ onMounted(() => {
                 DeepVocal 共更新了两版声库：<a
                   href="https://pan.baidu.com/s/1HDjBLn8HFJIu5lKLDXx6Gw?pwd=4bl1"
                   target="_blank"
-                class="li-underline"
+                  class="li-underline"
                   title="点击前往 1.0 版声库下载地址"
                   >1.0版</a
                 >、<a
                   href="https://pan.baidu.com/s/18LWNKq5hxL4P_xTp7Xv0Qg?pwd=ggv7"
                   target="_blank"
-                class="li-underline"
+                  class="li-underline"
                   title="点击前往三音阶声库下载地址"
                   >三音阶</a
                 >
@@ -272,7 +272,35 @@ onMounted(() => {
               </el-icon>
             </template>
             <div class="single-line">
-              &numsp;双子三周年，生贺曲《不揽清风不望月》发布
+              &numsp;起氏双子三周年，生贺曲「<a
+                href="https://www.bilibili.com/video/BV1Fp4y1S7vd"
+                target="_blank"
+                title="点击前往 B 站"
+                class="li-underline"
+                >不揽清风不望月</a
+              >」发布
+            </div>
+          </el-timeline-item>
+          <el-timeline-item
+            icon="Promotion"
+            placement="top"
+            color="#ff0099"
+            timestamp="&numsp;2021 年 7 月 13 日"
+            type="primary"
+          >
+            <template #dot>
+              <el-icon color="#ff0099" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
+            <div class="single-line">
+              &numsp;起氏双子四周年，生贺曲「<a
+                  href="https://www.bilibili.com/video/BV1SV411W7ju"
+                  class="li-underline"
+                  target="_blank"
+                  title="点击前往 B 站"
+                  >交彗 Comets Meet</a
+                >」发布
             </div>
           </el-timeline-item>
         </el-timeline>
@@ -335,6 +363,10 @@ a {
 
   .el-timeline {
     --el-fill-color-blank: rgba(255, 255, 255, 0.5);
+  }
+
+  :deep(.el-card__body) {
+    padding: 0 0.4em
   }
 }
 </style>

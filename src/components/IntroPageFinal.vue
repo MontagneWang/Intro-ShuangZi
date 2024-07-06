@@ -11,22 +11,26 @@ let [text, fu] = [
 ];
 
 onMounted(() => {
-  createObserver(text.value as HTMLDivElement, async () => {
-    await delay(750);
-    (document.querySelector(".finalContainer") as HTMLElement).classList.add(
-      "change"
-    );
-    // await delay(1000);
-    fu.value!.classList.add("fade-in");
-    await delay(500);
-    await delay(1500);
-    text.value!.classList.add("fade-in");
-  },async () => {
-    await delay(500);
-    (document.querySelector(".finalContainer") as HTMLElement).classList.remove(
-      "change"
-    );
-  });
+  createObserver(
+    text.value as HTMLDivElement,
+    async () => {
+      await delay(750);
+      (document.querySelector(".finalContainer") as HTMLElement).classList.add(
+        "change"
+      );
+      // await delay(1000);
+      fu.value!.classList.add("fade-in");
+      await delay(500);
+      await delay(1500);
+      text.value!.classList.add("fade-in");
+    },
+    async () => {
+      await delay(500);
+      (
+        document.querySelector(".finalContainer") as HTMLElement
+      ).classList.remove("change");
+    }
+  );
 });
 </script>
 
@@ -34,15 +38,18 @@ onMounted(() => {
   <Teleport to="body">
     <modal :show="showModal" @close="showModal = false">
       <template #header>
-        <h3>关于本站</h3>
+        <h3 class="gradient">关于本站</h3>
       </template>
       <template #body>
-        <p>&ensp;⚠️ 请注意：本站点<span style="
-                    text-decoration: underline;
-                    text-decoration-color: #ff0099;
-                    text-underline-offset: 0.3em;
-                  "><span style="color: #ff0099">并非</span
-          >官方站点</span>，仅由爱好者创建，旨在为到访者提供「起氏双子」的相关信息与资源。
+        <p>
+          &ensp;⚠️ 请注意：本站点<span
+            style="
+              text-decoration: underline;
+              text-decoration-color: #ff0099;
+              text-underline-offset: 0.3em;
+            "
+            ><span style="color: #ff0099">并非</span>官方站点</span
+          >，仅由爱好者创建，旨在为到访者提供「起氏双子」的相关信息与资源。
         </p>
         <p>
           本站点将尽力确保内容的准确性和时效性，但仍可能会出现有失偏颇的表述，这<span
@@ -52,7 +59,7 @@ onMounted(() => {
         </p>
         <p>
           如果您需要反馈页面中存在的<span style="color: #ff0099">错误/错位</span
-          >，可以通过右键菜单中的[<a
+          >，欢迎通过右键菜单中的[<a
             href="mailto:ling.vc@foxmail.com"
             style="color: #ff0099"
             target="_blank"
@@ -60,16 +67,6 @@ onMounted(() => {
             >反馈Bug</a
           >]联系我，我会尽可能及时修正。
         </p>
-        <!-- <p>
-          如果您是<span style="color: #ff0099">官方</span
-          >且需要回收该域名，可以通过[<a
-            href="mailto:ling.vc@foxmail.com"
-            style="color: #ff0099"
-            target="_blank"
-            title="邮箱：ling.vc@foxmail.com"
-            >邮箱</a
-          >]联系我，我会将当前域名转入到您所提供的域名注册商。
-        </p> -->
       </template>
     </modal>
   </Teleport>
@@ -78,15 +75,16 @@ onMounted(() => {
     <div class="mask"></div>
     <div class="content">
       <div ref="text" class="outro">
-        <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
-        <h2>我们将情感寄托于他们的歌声之中</h2>
-        <h2>借由他们之口，唱出心中所思</h2>
-        <h2>祝我们的双子越来越好，听众越来越多🎉</h2>
+        <div class="gradient">
+          <h2>每一位虚拟歌手都因爱诞生，由爱成长</h2>
+          <h2>我们将情感寄托于他们的歌声之中</h2>
+          <h2>借由他们之口，唱出心中所思</h2>
+          <h2>愿双子唱出更多的歌，被更多的人所爱</h2>
+        </div>
         <br />
         <br />
         <br />
         <div class="more">
-          <br>
           <p>
             您可以通过<span style="color: #ff0099" tilte="尝试点击你的鼠标右键"
               >「右键菜单」</span
@@ -145,11 +143,20 @@ a {
     border-radius: 1.2vw;
   }
 }
+
+.gradient {
+  background: linear-gradient(to bottom right, #ff0099, #99ff00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .content {
   position: relative;
   .outro {
     opacity: 0;
-    margin: 31vh 0 0 20vw;
+    margin: 31vh 0 0 39vw;
+    width: 30em;
     font-size: 1.5vw;
   }
 

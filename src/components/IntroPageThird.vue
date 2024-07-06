@@ -11,6 +11,24 @@ let now = new Date();
 let year = now.getFullYear();
 let age = ref(5005 + year - 2022);
 
+function countdown(targetDate: string) {
+  const now = new Date().getTime();
+  const target = new Date(targetDate).getTime();
+  const timeDifference = target - now;
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+  return `${days} 天 ${hours} 小时`;
+}
+
+const targetDate = "2024-07-13T12:00:00";
+setTimeout(() => {
+  console.log(countdown(targetDate));
+}, 1000);
+
 onMounted(() => {
   document.querySelectorAll(".text .el-card").forEach(item => {
     item.classList.add("hide");
@@ -96,7 +114,9 @@ onMounted(() => {
           body-style="padding:0.5em;"
           shadow="hover"
         >
-          年龄：<span class="blur">{{ age }} 岁</span>
+          年龄：<span class="blur"
+            ><del>{{ age }} 岁</del></span
+          >
         </el-card>
         <el-card
           style="margin-bottom: 0.15em"
@@ -156,22 +176,6 @@ onMounted(() => {
       <div ref="timeline2" class="timeline">
         <el-timeline>
           <el-timeline-item
-            icon="Promotion"
-            placement="top"
-            color="#99ff00cc"
-            timestamp="&numsp;2021 年 7 月 13 日"
-            type="primary"
-          >
-            <template #dot>
-              <el-icon color="#99ff00" class="avatar">
-                <Promotion />
-              </el-icon>
-            </template>
-            <div class="single-line">
-              &numsp;双子四周年，生贺曲《交彗 Comets Meet》发布
-            </div>
-          </el-timeline-item>
-          <el-timeline-item
             icon="Mic"
             placement="top"
             color="#99ff00cc"
@@ -189,7 +193,7 @@ onMounted(() => {
             </template>
             <el-card>
               <h3>
-                🎉 起氏双子 Ace 声库发布&emsp;&ensp;🎧<a
+                🎉 起氏双子 Ace 声库发布&ensp;🎧<a
                   href="https://www.bilibili.com/video/BV1wL4y1c7J8"
                   class="fu-underline"
                   target="_blank"
@@ -197,8 +201,6 @@ onMounted(() => {
                   >试听曲</a
                 >
               </h3>
-              <!--<p>『要将等待换成什么　我早就数不清楚了</p>-->
-              <!--<p>&emsp;但愿你走向我那个时刻　一切都没改变过』</p>-->
               <p>
                 声库依托 Ace Studio 平台，您可以在
                 <a
@@ -225,7 +227,13 @@ onMounted(() => {
               </el-icon>
             </template>
             <div class="single-line">
-              &numsp;双子五周年，《如果仅靠谎言将我的世界照亮》发布
+              &numsp;五周年生贺曲「<a
+                href="https://www.bilibili.com/video/BV1YW4y1U71A"
+                class="fu-underline"
+                target="_blank"
+                title="点击前往 B 站"
+                >如果仅靠谎言将我的世界照亮</a
+              >」发布
             </div>
           </el-timeline-item>
           <el-timeline-item
@@ -241,15 +249,22 @@ onMounted(() => {
               </el-icon>
             </template>
             <div class="single-line">
-            &numsp;设定集《万灵梦书》发售，您可在
-            <a
-              href="https://gf.bilibili.com/item/detail/1105040028"
-              target="_blank"
-                  class="fu-underline"
-              title="点击前往 B 站工房"
-              >此处</a
-            >
-            获取小说版</div>
+              &numsp;设定集《<a
+                href="https://t.bilibili.com/701249077290991617"
+                class="fu-underline"
+                target="_blank"
+                title="点击前往 B 站"
+                >万灵梦书</a
+              >》发售，您可在
+              <a
+                href="https://gf.bilibili.com/item/detail/1105040028"
+                target="_blank"
+                class="fu-underline"
+                title="点击前往 B 站工房"
+                >此处</a
+              >
+              获取小说版
+            </div>
           </el-timeline-item>
           <el-timeline-item
             icon="Promotion"
@@ -264,21 +279,77 @@ onMounted(() => {
               </el-icon>
             </template>
             <div class="single-line">
-            &numsp;起氏双子六岁啦，生贺曲《神子》发布</div>
+              &numsp;起氏双子六周年，生贺曲「<a
+                href="https://www.bilibili.com/video/BV16V4y1h7Lw"
+                class="fu-underline"
+                target="_blank"
+                title="点击前往 B 站"
+                >神子</a
+              >」发布
+            </div>
           </el-timeline-item>
-          <el-timeline-item
-            icon="Promotion"
-            placement="top"
-            color="#99ff00cc"
-            timestamp="「但愿你走向我那个时刻，一切都没改变过」"
-            type="success"
-          >
-            <template #dot>
-              <el-icon color="#99ff00" class="avatar" style="top: -0.3vw">
-                <MoonNight />
-              </el-icon>
-            </template>
-          </el-timeline-item>
+
+          <!-- todo 时间戳显示 -->
+          <template v-if="Date.now() > 1720872000000">
+            <el-timeline-item
+              icon="Promotion"
+              placement="top"
+              color="#99ff00cc"
+              timestamp="&numsp;2024 年 7 月 13 日"
+              type="primary"
+            >
+              <template #dot>
+                <el-icon color="#99ff00" class="avatar">
+                  <Promotion />
+                </el-icon>
+              </template>
+              <div class="single-line">
+                <!-- todo 链接 -->
+                &numsp;双子七岁啦，生贺曲「<a
+                  href="https://www.bilibili.com/video/"
+                  class="fu-underline"
+                  target="_blank"
+                  title="点击前往 B 站"
+                  >百年的珍珠和一日的花</a
+                >」发布
+              </div>
+            </el-timeline-item>
+            <el-timeline-item
+              icon="Promotion"
+              placement="top"
+              color="#99ff00cc"
+            >
+              <template #dot>
+                <el-icon color="#99ff00" class="avatar">
+                  <Present />
+                </el-icon>
+              </template>
+              <!-- todo 链接 -->
+              <div style="margin-top: -0.4em">
+                &numsp;起氏双子首套动态&numsp;<a
+                  href="https://www.bilibili.com/"
+                  class="fu-underline"
+                  target="_blank"
+                  title="点击前往 B 站"
+                  >个性装扮</a
+                >&numsp;上线 B 站
+              </div>
+            </el-timeline-item>
+          </template>
+          <template v-else>
+            <el-timeline-item
+              icon="Promotion"
+              placement="top"
+              color="#99ff00cc"
+              :timestamp="'「距离双子七周年生日还有 ' + countdown(targetDate) + ' 」'"
+            >
+              <template #dot>
+                <el-icon color="#99ff00" class="avatar">
+                  <MoonNight />
+                </el-icon>
+              </template>
+            </el-timeline-item>
+          </template>
         </el-timeline>
       </div>
     </div>

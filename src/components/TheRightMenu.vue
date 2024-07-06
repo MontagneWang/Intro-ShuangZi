@@ -184,7 +184,7 @@ onMounted(() => {
         ></a>
         <a
           class="eachItem"
-          href="https://space.bilibili.com/193181849/video"
+          href="https://space.bilibili.com/3494361480301170/dynamic"
           target="_blank"
         ></a>
         <a
@@ -207,7 +207,7 @@ $cont1: "B站\A账号";
 $cont2: "微博\A账号";
 $cont3: "官方\A百科";
 $cont4: "加入\A Q群";
-$cont5: "双子\A作品";
+$cont5: "同人\A收集";
 $cont6: "反馈\A Bug";
 // 使用设置好的根样式 带有单位 ($eachHeight:90px;)
 $eachHeight: var(--item-diameter);
