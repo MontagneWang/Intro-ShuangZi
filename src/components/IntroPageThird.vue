@@ -306,7 +306,7 @@ onMounted(() => {
               <div class="single-line">
                 <!-- todo 链接 -->
                 &numsp;双子七岁啦，生贺曲「<a
-                  href="https://www.bilibili.com/video/"
+                  href="https://space.bilibili.com/193181849/video"
                   class="fu-underline"
                   target="_blank"
                   title="点击前往 B 站"
@@ -327,7 +327,7 @@ onMounted(() => {
               <!-- todo 链接 -->
               <div style="margin-top: -0.4em">
                 &numsp;起氏双子首套动态&numsp;<a
-                  href="https://www.bilibili.com/"
+                  href="https://www.bilibili.com/opus/950612593720950790"
                   class="fu-underline"
                   target="_blank"
                   title="点击前往 B 站"
