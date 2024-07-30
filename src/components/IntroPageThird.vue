@@ -289,67 +289,44 @@ onMounted(() => {
             </div>
           </el-timeline-item>
 
-          <!-- todo 时间戳显示 -->
-          <template v-if="Date.now() > 1720872000000">
-            <el-timeline-item
-              icon="Promotion"
-              placement="top"
-              color="#99ff00cc"
-              timestamp="&numsp;2024 年 7 月 13 日"
-              type="primary"
-            >
-              <template #dot>
-                <el-icon color="#99ff00" class="avatar">
-                  <Promotion />
-                </el-icon>
-              </template>
-              <div class="single-line">
-                <!-- todo 链接 -->
-                &numsp;双子七岁啦，生贺曲「<a
-                  href="https://space.bilibili.com/193181849/video"
-                  class="fu-underline"
-                  target="_blank"
-                  title="点击前往 B 站"
-                  >百年的珍珠和一日的花</a
-                >」发布
-              </div>
-            </el-timeline-item>
-            <el-timeline-item
-              icon="Promotion"
-              placement="top"
-              color="#99ff00cc"
-            >
-              <template #dot>
-                <el-icon color="#99ff00" class="avatar">
-                  <Present />
-                </el-icon>
-              </template>
-              <!-- todo 链接 -->
-              <div style="margin-top: -0.4em">
-                &numsp;起氏双子首套动态&numsp;<a
-                  href="https://www.bilibili.com/opus/950612593720950790"
-                  class="fu-underline"
-                  target="_blank"
-                  title="点击前往 B 站"
-                  >个性装扮</a
-                >&numsp;上线 B 站
-              </div>
-            </el-timeline-item>
-          </template>
-          <template v-else>
-            <el-timeline-item
-              icon="Promotion"
-              placement="top"
-              color="#99ff00cc"
-              :timestamp="'「距离双子七周年生日还有 ' + countdown(targetDate) + ' 」'"
-            >
-              <template #dot>
-                <el-icon color="#99ff00" class="avatar">
-                  <MoonNight />
-                </el-icon>
-              </template>
-            </el-timeline-item>
-          </template>
+          <el-timeline-item
+            icon="Promotion"
+            placement="top"
+            color="#99ff00cc"
+            timestamp="&numsp;2024 年 7 月 13 日"
+            type="primary"
+          >
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Promotion />
+              </el-icon>
+            </template>
+            <div class="single-line">
+              &numsp;双子七岁啦，生贺曲「<a
+                href="https://www.bilibili.com/video/BV1n6421f7dp"
+                class="fu-underline"
+                target="_blank"
+                title="点击前往 B 站"
+                >百年珍珠，一日的花</a
+              >」发布
+            </div>
+          </el-timeline-item>
+          <el-timeline-item icon="Promotion" placement="top" color="#99ff00cc">
+            <template #dot>
+              <el-icon color="#99ff00" class="avatar">
+                <Present />
+              </el-icon>
+            </template>
+            <div style="margin-top: -0.4em">
+              &numsp;起氏双子首套动态&numsp;<a
+                href="https://www.bilibili.com/h5/mall/suit/detail?id=217237401"
+                class="fu-underline"
+                target="_blank"
+                title="点击前往 B 站"
+                >个性装扮</a
+              >&numsp;上线 B 站
+            </div>
+          </el-timeline-item>
         </el-timeline>
       </div>
     </div>
