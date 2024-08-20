@@ -11,24 +11,6 @@ let now = new Date();
 let year = now.getFullYear();
 let age = ref(5005 + year - 2022);
 
-function countdown(targetDate: string) {
-  const now = new Date().getTime();
-  const target = new Date(targetDate).getTime();
-  const timeDifference = target - now;
-  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-  return `${days} 天 ${hours} 小时`;
-}
-
-const targetDate = "2024-07-13T12:00:00";
-setTimeout(() => {
-  console.log(countdown(targetDate));
-}, 1000);
-
 onMounted(() => {
   document.querySelectorAll(".text .el-card").forEach(item => {
     item.classList.add("hide");
